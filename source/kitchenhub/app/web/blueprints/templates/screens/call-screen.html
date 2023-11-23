@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Top Bar -->
+{% with screenName="" %}
+    {% include 'topbar.html' %}
+{% endwith %}
+
+
+<div class="grid grid-cols-3 pt-20 h-screen">
+    
+    <!-- CREATED -->
+    <div class="col-span-1 h-full overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+        <div class="text-center">
+            <div>
+                <h1 class="text-2xl xl:text-4xl font-bold uppercase">Přijaté</h1>
+            </div>
+
+            <div id="ordersCreated" class="">
+
+                <!-- Show loading -->
+                <div class="absolute top-0 left-0 bg-opacity-50 z-10 w-full h-full">
+                    <div class="flex justify-center w-full h-full items-center rounded-lg">
+                        <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                            <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Načítání...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PROCESSING -->
+    <div class="col-span-1 h-full overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+        <div class="text-center">
+            <div>
+                <h1 class="text-2xl xl:text-4xl font-bold uppercase">Připravujeme</h1>
+            </div>
+
+            <div id="ordersProcessing" class=""></div>
+        </div>
+    </div>
+
+    <!-- READY -->
+    <div class="col-span-1 h-full overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+        <div class="text-center">
+            <div>
+                <h1 class="text-2xl xl:text-4xl font-bold uppercase">K Vyzvednutí</h1>
+            </div>
+
+            <div id="ordersReady" class=""></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    const host = window.location.host
+
+    var protocol = `ws://`
+    if (window.location.protocol === "https:") {
+        protocol = `wss://`
+    }
+
+    const socket = io(`ws://${host}?pin={{ config.pin }}`)
+    
+    // Listen for messages from the server
+    socket.on('allOrders', (message) => {
+        console.log(message)
+        handleOrders(message)
+    })
+
+    socket.on('connect_error', (error) => {
+        console.error('Socket.io connection error:', error)
+    })
+
+
+    function handleOrders(message) {
+        allOrders = JSON.parse(message.data)
+
+        // Sort the orders by pickupTime
+        allOrders.sort((a, b) => {
+            const pickupTimeA = new Date(a.pickupTime)
+            const pickupTimeB = new Date(b.pickupTime)
+            return pickupTimeA - pickupTimeB
+        })
+
+        const ordersCreated = document.getElementById("ordersCreated")
+        const ordersProcessing = document.getElementById("ordersProcessing")
+        const ordersReady = document.getElementById("ordersReady")
+
+        ordersCreated.innerHTML = ""
+        ordersProcessing.innerHTML = ""
+        ordersReady.innerHTML = ""
+
+        const currentTime = new Date()
+
+        for (let i = 0; i < allOrders.length; i++) {
+            const order = allOrders[i]
+
+            if (order.status !== "CREATED" && order.status !== "PROCESSING" && order.status !== "READY") {
+                continue
+            }
+
+            const orderDiv = `
+                <div class="bg-white shadow-lg rounded-lg p-5 m-5 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="las la-hashtag text-secondary text-2xl xl:text-4xl mt-1"></i>
+                        <h1 class="text-primary font-bold text-2xl xl:text-4xl">${order.tag}</span></h1>
+                    </div>
+            
+                    <div class="flex items-center gap-y-2">                        
+                        <h1 class="text-primary font-bold text-lg xl:text-4xl" id="pickupTime-${order.orderId}">${order.pickupTime}</h1>                
+                        <i class="las la-clock text-secondary text-2xl xl:text-4xl mt-1 xl:mt-2 ml-2"></i>
+                    </div>
+                </div>
+            `;
+
+            if (order.status === "CREATED") {
+                ordersCreated.innerHTML += orderDiv;
+            } else if (order.status === "PROCESSING") {
+                ordersProcessing.innerHTML += orderDiv;
+            } else if (order.status === "READY") {
+                ordersReady.innerHTML += `
+                    <div class="bg-white shadow-lg rounded-lg p-5 m-5 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <i class="las la-hashtag text-secondary text-2xl xl:text-4xl mt-1"></i>
+                            <h1 class="text-primary font-bold text-2xl xl:text-4xl">${order.tag}</span></h1>
+                        </div>
+                
+                        <div class="flex items-center gap-y-2">                        
+                            <h1 class="text-primary font-bold text-2xl xl:text-4xl uppercase">Připraveno</h1>                
+                        </div>
+                    </div>
+                `
+            }
+        }
+
+        // Update pickup times initially
+        updatePickupTimes()
+    }
+
+    function updatePickupTimes() {
+        const currentTime = new Date()
+
+        // Filter only "CREATED" and "PROCESSING" orders
+        const processingOrders = allOrders.filter(order => order.status === "PROCESSING" || order.status === "CREATED")
+
+        processingOrders.forEach(order => {
+            const pickupTimeDiv = document.getElementById(`pickupTime-${order.orderId}`)
+            
+            const remainingTime = new Date(order.pickupTime)
+            const timeDifference = remainingTime - currentTime
+            const remainingHours = Math.floor(Math.abs(timeDifference) / 3600000)
+            const remainingMinutes = Math.floor((Math.abs(timeDifference) % 3600000) / 60000)
+            const remainingSeconds = Math.floor((Math.abs(timeDifference) % 60000) / 1000)
+
+            const sign = timeDifference < 0 ? '-' : ''
+            
+            var formattedRemainingTime = `${sign}${remainingHours}h ${String(remainingMinutes)}m ${String(remainingSeconds)}s`
+
+            if (remainingHours === 0) {
+                formattedRemainingTime = `${sign}${remainingMinutes}m ${remainingSeconds}s`
+            }
+
+            pickupTimeDiv.innerText = formattedRemainingTime
+        });
+
+        
+        // Clear the previous interval if it exists
+        if (typeof updatePickupTimes.intervalId !== 'undefined') {
+            clearInterval(updatePickupTimes.intervalId);
+        }
+
+        // Set a new interval
+        updatePickupTimes.intervalId = setInterval(updatePickupTimes, 1000)
+    }
+
+
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="m-5">
+    <p class="text-md mb-3">
+        <a href="/products" class="hover:text-secondary"><i class="las la-angle-left"></i>Zpět</a>
+    </p>
+
+    <h1 class='text-4xl font-bold'><span class="text-secondary">Upravit</span> Produkt</h1>
+
+    <form action="/products/edit" method="POST" enctype="multipart/form-data">
+
+        <!-- Product Id -->
+        <input type="hidden" name="productId" value="{{ prod_info.productId }}">
+
+        <div class="static md:grid md:grid-cols-2">
+    
+            <div class="md:col-span-1">
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Obecné</span> Nastavení</h1>
+                    <hr>
+
+                    <div class="my-5">
+                        <img src="{{ prod_info.imagePath }}" class="w-full rounded-md shadow-md">
+                    </div>
+                    
+                    {% with text="Název Produktu", type="text", name="name", required="true", value=prod_info.name %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Obrázek", type="file", name="image" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                </div>
+
+            </div>  
+         
+        
+            <div class="md:col-span-1">
+
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Podrobnosti</span> Produktu</h1>
+                    <hr>
+                    
+                    <div class="mt-5">
+                        {% with text="Cena Produktu", type="number", name="price", required="true", value=prod_info.price %}
+                            {% include "/components/form/input.html" %}
+                        {% endwith %}  
+
+                        {% with text="Doba přípravy", type="time", sec="true", name="preparationTime", required="true", value=prod_info.preparationTime %}
+                            {% include "/components/form/input.html" %}
+                        {% endwith %}  
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Popis</span> Produktu</h1>               
+                    <hr>
+
+                    {% with text="Popis Produktu", type="textarea", name="description", required="true", maxlength="200", value=prod_info.description %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                </div>
+            </div>
+        
+        </div>
+        
+
+        <!-- Submit Button -->
+        <div class="m-5 flex justify-center">
+            {% with text="Uložit", type="submit", icon="las la-save" %}
+                {% include "/components/form/button.html" %}
+            {% endwith %}
+        </div>
+
+
+    </form>
+</div>
+
+
+
+{% endblock %}

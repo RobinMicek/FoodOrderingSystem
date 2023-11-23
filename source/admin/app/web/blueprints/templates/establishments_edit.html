@@ -1,0 +1,452 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="m-5">
+    <p class="text-md mb-3">
+        <a href="/establishments" class="hover:text-secondary"><i class="las la-angle-left"></i>Zpět</a>
+    </p>
+
+    <h1 class=' text-4xl font-bold'><span class="text-secondary">Upravit</span> Provozovnu</h1>
+
+    <form action="/establishments/edit" method="POST" enctype="multipart/form-data">
+
+        <!-- Establishment Id -->
+        <input type="hidden" name="establishmentId" value="{{ est_info.establishmentId }}">
+
+        <!-- Modal Hours -->
+        <div id="modal-hours" class="hidden m-5 p-10 bg-primary shadow-md fixed inset-0 z-10 rounded-lg">
+
+            
+            <div class="flex">
+                <div class="text-left font-bold text-2xl">
+                    <h1><span class="text-secondary">Otevírací</span> Doba</h1>
+
+                </div>
+                <!-- Close Modal Hours-->    
+                <div class="flex-grow text-right">
+                    {% with text="", type="button", icon="las la-times", button="table", id="close_modal_hours" %}
+                        {% include "/components/form/button.html" %}
+                    {% endwith %}
+                </div>
+            </div>
+
+            <script>
+                const buttonCloseHours = document.getElementById("close_modal_hours")
+                const modalOpenHours = document.getElementById("modal-hours")
+
+                buttonCloseHours.addEventListener("click", (event => {
+                    modalOpenHours.classList.add("hidden")
+                }))
+            </script>
+            
+            {% set opening_days = [
+                {
+                    "text": "Pondělí",
+                    "day": "1"
+                },
+                {
+                    "text": "Úterý",
+                    "day": "2"
+                },
+                {
+                    "text": "Středa",
+                    "day": "3"
+                },
+                {
+                    "text": "Čtvrtek",
+                    "day": "4"
+                },
+                {
+                    "text": "Pátek",
+                    "day": "5"
+                },
+                {
+                    "text": "Sobota",
+                    "day": "6"
+                },
+                {
+                    "text": "Neděle",
+                    "day": "7"
+                }
+            ] %}                    
+
+                {% for day in opening_days %}
+                    {% for est_day in est_info.openingHours %}
+                        {% if day.day | int == est_day.dayOfTheWeek | int %}
+                            <div class="static md:grid md:grid-cols-7">
+                                <div class="md:col-span-1 m-1 pt-8">                            
+                                    <div class="text-center mt-5">
+                                        <h1 class="text-xl">{{ day.text }}</h1>    
+                                    </div>
+                                </div>
+                                <div class="md:col-span-3 mr-5 m-1">
+                                    {% with text="Otevření", type="time", name="open_day_"+day.day, required="true", value=est_day.openingTime %}
+                                        {% include "/components/form/input.html" %}
+                                    {% endwith %}
+                                </div>
+                                <div class="md:col-span-3 m-1">
+                                    {% with text="Zavření", type="time", name="close_day_"+day.day, required="true", value=est_day.closingTime %}
+                                        {% include "/components/form/input.html" %}
+                                    {% endwith %}
+                                </div>                        
+                            </div>
+                            {% endif %}
+                    {% endfor %}
+                {% endfor %}                
+        </div>
+
+        <!-- Modal Connect -->
+        <div id="modal-connect" class="hidden m-5 p-10 bg-primary shadow-md fixed inset-0 z-10 rounded-lg">
+            
+            <div class="flex">
+                <div class="text-left font-bold text-2xl">
+                    <h1><span class="text-secondary">KitchenHub</span> Připojení</h1>
+
+                </div>
+                <!-- Close Modal Connect -->    
+                <div class="flex-grow text-right">
+                    {% with text="", type="button", icon="las la-times", button="table", id="close_modal_connect" %}
+                        {% include "/components/form/button.html" %}
+                    {% endwith %}
+                </div>
+            </div>
+
+            <script>
+                const buttonCloseConnect = document.getElementById("close_modal_connect")
+                const modalOpenConnect = document.getElementById("modal-connect")
+
+                buttonCloseConnect.addEventListener("click", (event => {
+                    modalOpenConnect.classList.add("hidden")
+                }))
+            </script>
+
+            <div class="mt-10">
+                <h1 class="text-lg font-bold">Jak propojit <span class="text-secondary">KitchenHub</span> a BackEnd server:</h1>
+                <div class="mt-5">                    
+                    <p>1. Spusťe KitchenHub server a pomocí webového prohlížeče jděte na jeho ip adresu</p>
+                    <p>2. Projděte prvotním nastavením</p>                    
+                    <p>3. Jděte do <span class="text-secondary font-bold">přehledů</span> a prověďte <span class="text-secondary font-bold">Připojení k Serveru</span> a <span class="text-secondary font-bold">Stáhnutí Objednávek z API</span></p>
+                    <p>4. Nyní jste připraveni používat KitchenHub k přípravě objednávek</p>                    
+                </div>
+
+                <div class="mt-10">
+                    <h1 class="text-lg font-bold">Propojovací informace:</h1>
+
+                    {% with text="URL Adresa Serveru", type="text", name="serverUrl", required="true", value="", disabled="true" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    <script>
+                        const serverUrlInput = document.getElementById("serverUrl")
+                        serverUrlInput.value = window.location.origin
+                    </script>
+
+                    {% with text="Identifikace Provozovny", type="text", name="establishmentSlug", required="true", value=est_info.slug, disabled="true" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Propojovací Kód", type="text", name="establishmentToken", required="true", value=est_info.token, disabled="true" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>   
+        
+        
+        <!-- Modal Stats -->
+        <div id="modal-stats" class="hidden m-5 p-10 bg-primary shadow-md fixed inset-0 z-10 rounded-lg">
+            
+            <div class="flex">
+                <div class="text-left font-bold text-2xl">
+                    <h1><span class="text-secondary">Statistiky</span> Prodeje</h1>
+
+                </div>
+                <!-- Close Modal Stats -->    
+                <div class="flex-grow text-right">
+                    {% with text="", type="button", icon="las la-times", button="table", id="close_modal_stats" %}
+                        {% include "/components/form/button.html" %}
+                    {% endwith %}
+                </div>
+            </div>
+
+            <script>
+                const buttonCloseStats = document.getElementById("close_modal_stats")
+                const modalOpenStats = document.getElementById("modal-stats")
+
+                buttonCloseStats.addEventListener("click", (event => {
+                    modalOpenStats.classList.add("hidden")
+                }))
+            </script>
+
+            <div class="mt-10 md:grid md:grid-cols-4 m-5 gap-5">
+                
+                <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.today == None %} 0 {% else %} {{ stats.revenue.today }} {% endif %} Kč</h1>
+                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | Tržby</h1>
+                </div>
+            
+                <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.month == None %} 0 {% else %} {{ stats.revenue.month }} {% endif %} Kč</h1>
+                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | Tržby</h1>
+                </div>
+
+                <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.year == None %} 0 {% else %} {{ stats.revenue.year }} {% endif %} Kč</h1>
+                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento Rok</span> | Tržby</h1>
+                </div>
+            
+                <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.allTime == None %} 0 {% else %} {{ stats.revenue.allTime }} {% endif %} Kč</h1>
+                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Celkově</span> | Tržby</h1>
+                </div>
+
+
+                <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
+                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.orders.today == None %} 0 {% else %} {{ stats.orders.today }} {% endif %}</h1>
+                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | Objednávky</h1>
+                </div>
+            
+                <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
+                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.orders.month == None %} 0 {% else %} {{ stats.orders.month }} {% endif %}</h1>
+                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | Objednávky</h1>
+                </div>
+
+                <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
+                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.orders.year == None %} 0 {% else %} {{ stats.orders.year }} {% endif %}</h1>
+                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento Rok</span> | Objednávky</h1>
+                </div>
+            
+                <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
+                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.orders.allTime == None %} 0 {% else %} {{ stats.orders.allTime }} {% endif %}</h1>
+                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Celkově</span> | Objednávky</h1>
+                </div>
+            </div>
+
+
+            <div class="m-5 p-5 bg-white shadow-md rounded-md">
+                <h1 class="text-lg text-secondary uppercase"><span class="font-bold">Tržby & Objednávky</span> | všechny dny s tržbou</h1>
+                <div>
+                    
+                    <canvas id="revenue-per-day" style="height: 40vh;">            
+                        <script>
+                            var chart = ""
+                            function createChart () {                                 
+                                if (chart === "") {
+                                    chart = new Chart(
+                                        document.getElementById('revenue-per-day'),
+                                        {
+                                            type: 'line',                        
+                                            data: {
+                                                labels: JSON.parse('{{ stats.revenue.revenue_per_day|tojson }}').orderDate,
+                                                datasets: [
+                                                    {
+                                                        label: "Třžby (Kč)",
+                                                        data: JSON.parse('{{ stats.revenue.revenue_per_day|tojson }}').totalRevenue,                          
+                                                        tension: 0.25,
+                                                        borderColor: '#008550',
+                                                        backgroundColor: '#008550',                              
+                                                        hoverOffset: 4
+                                                    },
+                                                    {
+                                                        label: "Objednávky (Ks)",
+                                                        data: JSON.parse('{{ stats.orders.orders_per_day|tojson }}').totalOrders,                          
+                                                        tension: 0.25,
+                                                        borderColor: '#E53E5B',
+                                                        backgroundColor: '#E53E5B',                              
+                                                        hoverOffset: 4
+                                                    },
+                                                    
+                                                ]
+                                            },
+                                            options: chartOptions
+                                        }                
+                                    )
+                                }
+                            }
+                        </script>
+                    </canvas>
+                </div>
+            </div>            
+        
+        </div>   
+        
+        
+        <div class="static md:grid md:grid-cols-2">
+    
+            <div class="md:col-span-1">
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Obecné</span> Nastavení</h1>
+                    <hr>
+
+                    <div class="my-5">
+                        <img src="{{ est_info.imagePath }}" class="w-full rounded-md shadow-md">
+                    </div>
+                    
+                    {% with text="Název Provozovny", type="text", name="name", required="true", value=est_info.name %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Adresa", type="text", name="address", required="true", value=est_info.address %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Obrázek", type="file", name="image" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+
+                    <!-- Modal Triggers -->
+                    <div class="mt-10 flex justify-start gap-x-5">
+
+                        <div>
+                            <!-- Open Modal Stats -->    
+                            {% with text="Statistiky Prodeje", type="button", icon="las la-chart-area", button="table", id="open_modal_stats" %}
+                                {% include "/components/form/button.html" %}
+                            {% endwith %}
+                            
+                            <script>
+                                const buttonOpenStats = document.getElementById("open_modal_stats")
+                                const modalCloseStats = document.getElementById("modal-stats")
+
+                                buttonOpenStats.addEventListener("click", (event => {
+                                    modalCloseStats.classList.remove("hidden")
+                                    createChart()
+                                }))
+                            </script>
+                        </div>
+
+                        <div>
+                            <!-- Open Modal Hours-->    
+                            {% with text="Otevírací Doba", type="button", icon="las la-clock", button="table", id="open_modal_hours" %}
+                                {% include "/components/form/button.html" %}
+                            {% endwith %}
+                            
+                            <script>
+                                const buttonOpenHours = document.getElementById("open_modal_hours")
+                                const modalCloseHours = document.getElementById("modal-hours")
+
+                                buttonOpenHours.addEventListener("click", (event => {
+                                    modalCloseHours.classList.remove("hidden")
+                                }))
+                            </script>
+                        </div>
+
+                        <!-- Modal Connect Trigger -->
+                        <div>
+                            <!-- Open Modal Connect-->    
+                            {% with text="KitchenHub", type="button", icon="las la-wifi", button="table", id="open_modal_connect" %}
+                                {% include "/components/form/button.html" %}
+                            {% endwith %}
+
+                            <script>
+                                const buttonOpenConnect = document.getElementById("open_modal_connect")
+                                const modalCloseConnect = document.getElementById("modal-connect")
+
+                                buttonOpenConnect.addEventListener("click", (event => {
+                                    modalCloseConnect.classList.remove("hidden")
+                                }))
+                            </script>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>  
+         
+        
+            <div class="md:col-span-1">
+
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Vlastnosti</span> Provozovny</h1>
+                    <p class="mt-1">Vyberte, jakými vlastnostmi daná provozovna disponuje.</p>                      
+                    <hr>
+                    
+                    {% with text="Wifi", type="checkbox", name="wifi", required="true", value=est_info.wifi %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Stravování na místě", type="checkbox", name="dineIn", required="true", value=est_info.dineIn %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Zahrádka", type="checkbox", name="yard", required="true", value=est_info.yard %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Dětské hřiště", type="checkbox", name="playground", required="true", value=est_info.playground %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Parkování", type="checkbox", name="parking", required="true", value=est_info.parking %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Nabíječka na elektromobily", type="checkbox", name="eCharger", required="true", value=est_info.eCharger %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                </div>
+
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Dostupná</span> Menu</h1>
+                    <p class="mt-1">Vyberte menu, která budou na provozovně dostupná k objednání.</p>
+                    <hr>
+                    
+                    <div class="mt-5">
+                        <select name="menus" multiple class=" p-1 w-full h-96 bg-primary rounded ring-2 ring-secondary ring-offset-white">                        
+                            {% set estMenuIds = [] %}
+                            {% for est_menu in est_info.menus %}
+                                {% set _ = estMenuIds.append(est_menu.menuId) %}
+                            {% endfor %}
+
+                            {% for menu in all_menus %}
+                                {% if menu.menuId in estMenuIds %}
+                                    <option selected value="{{ menu.menuId }}" class="hover:bg-secondary hover:text-primary m-1 p-2 rounded">
+                                        {{ menu.name }} | {{ menu.note }}
+                                    </option>
+                                {% else %}
+                                    <option value="{{ menu.menuId }}" class="hover:bg-secondary hover:text-primary m-1 p-2 rounded">
+                                        {{ menu.name }} | {{ menu.note }}
+                                    </option>
+                                {% endif %}
+                            {% endfor %}                                
+                        </select>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+        
+        <!-- Submit Button -->
+        <div class="m-5 flex justify-center">
+            {% with text="Uložit", type="submit", icon="las la-save" %}
+                {% include "/components/form/button.html" %}
+            {% endwith %}
+        </div>
+
+
+    </form>
+</div>
+
+{% endblock %}

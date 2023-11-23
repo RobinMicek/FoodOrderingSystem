@@ -1,0 +1,157 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="m-5">
+    <div class="flex text-left">
+        <div>
+            <p class="text-md mb-3">
+                <a href="/menus/edit?id={{ menu.menuId }}" class="hover:text-secondary"><i class="las la-angle-left"></i>Zpět</a>
+            </p>
+            <h1 class='text-4xl font-bold'>{{ menu.name }}</h1>
+            <p class="mt-3 mb-1 font-bold text-xl text-secondary">{{ menu.note }}</p>
+            <p class="mt-3 mb-1">Vyberte jaké produkty chcete, aby patřili do tohoto menu.</p>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<!-- Table -->
+<div class="m-5">
+    {% with text="Hledat", type="text", name="search" %}
+        {% include "/components/form/input.html" %}
+    {% endwith %}
+</div>
+
+<div id="datatable" class="m-5">
+    <table style="width: 100%;" class="text-center rounded-md shadow-md bg-secondary">
+        <thead class="text-white uppercase">
+            <tr id="thead">
+                <th class="px-6 py-4 text-md font-bold text-left">Název</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Popis</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Cena</th>
+                <th class="px-6 py-4 text-md font-bold text-left"></th>
+            </tr>
+        </thead>
+        <tbody class="bg-white" id="tbody">            
+            {% set menuProdIds = [] %}
+            {% for menu_prod in menu.products %}
+                {% set _ = menuProdIds.append(menu_prod.productId) %}
+            {% endfor %}
+
+            {% for product in products %}
+                {% if product.productId in menuProdIds %}
+                    <tr>                    
+                        <td class="px-6 py-4 text-md border-secondary text-left">
+                            <a href="/products/edit?id={{ product.productId }}" target="_blank" class="hover:text-secondary">{{ product.name }}</a>
+                        </td>
+                        <td class="px-6 py-4 text-md border-secondary text-left" title="{{ product.description }}">{{ product.description | truncate(50, False, '...') }}</td>
+                        <td class="px-6 py-4 text-md border-secondary text-left">{{ product.price }} Kč</td>                                                
+                        <td class="px-6 py-4 text-md border-secondary text-left">
+                            {% with text="", type="checkbox", name=product.productId, required="true", value=1 %}
+                                {% include "/components/form/input.html" %}
+                            {% endwith %}
+                        </td>  
+                    </tr>
+                {% endif %}
+            {% endfor %}
+
+            {% for product in products %}
+                {% if product.productId not in menuProdIds %}
+                    <tr>                    
+                        <td class="px-6 py-4 text-md border-secondary text-left">
+                            <a href="/products/edit?id={{ product.productId }}" target="_blank" class="hover:text-secondary">{{ product.name }}</a>
+                        </td>
+                        <td class="px-6 py-4 text-md border-secondary text-left" title="{{ product.description }}">{{ product.description | truncate(50, False, '...') }}</td>
+                        <td class="px-6 py-4 text-md border-secondary text-left">{{ product.price }} Kč</td>                                                
+                        <td class="px-6 py-4 text-md border-secondary text-left">
+                            {% with text="", type="checkbox", name=product.productId, required="true", value=0 %}
+                                {% include "/components/form/input.html" %}
+                            {% endwith %}
+                        </td>    
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="/files/js/createDataTable.js"></script>
+
+<!-- Form -->
+<div>
+    <form action="/menus/edit-products" method="POST" id="form">
+
+
+        <!-- Menu Id -->
+        <input type="hidden" name="menuId" value="{{ menu.menuId }}">
+
+        <!-- Select Input - It's hidden, data is programatically inserted base on user's selection in the table -->
+        <select name="products" id="products" multiple class="hidden"></select>
+
+        <!-- Submit Button -->
+        <div class="m-5 flex justify-center">
+            {% with text="Uložit", type="button", icon="las la-save", button="", id="submitButton" %}
+                {% include "/components/form/button.html" %}
+            {% endwith %}
+        </div>
+
+        <!-- Transform table selections into a select input -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                function getCheckedNames() {
+                    // Check which rows are checked
+                    const table = document.getElementById('datatable');
+                    const checkboxes = table.getElementsByTagName('input');
+                    const checkedNames = [];
+
+                    for (const checkbox of checkboxes) {
+                        if (checkbox.checked) {
+                            // Add those options to the select input
+                            const selectElement = document.getElementById('products');
+                            const newOption = document.createElement('option');
+
+                            newOption.text = checkbox.name;
+                            newOption.value = checkbox.name;
+                            newOption.selected = true;
+                            
+                            selectElement.appendChild(newOption);
+                        };
+                    };
+                };
+
+                // Run the getCheckedNames function with the form submit button
+                function formSubmit() {
+                    getCheckedNames();
+                    
+                    const form = document.getElementById('form');
+                    form.submit();
+                };
+                
+                const submitButton = document.getElementById("submitButton");
+                submitButton.addEventListener("click", formSubmit);
+            });
+        </script>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,63 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+<!--
+    How to use:
+        with text="", type="", icon="", button="", id=""
+            include "/components/form/button.html"
+        endwith
+-->
+
+{% if button=="nav" %}
+    <button type="{{ type }}" id="{{ id }}" class="hover:bg-primary text-primary hover:text-secondary hover:font-bold text-left pl-5 py-2 rounded-tr-md rounded-br-md" 
+        style="width: 90%;">
+        <p class="text-xl">
+            <i class="{{ icon }}"></i>
+            <span class="">{{ text }}</span>
+        </p>
+    </button>
+{% elif button=="nav-top" %}
+    <button type="{{ type }}" id="{{ id }}" class="bg-secondary_dark hover:bg-white text-primary hover:text-secondary py-2 px-4 rounded-md">
+        <p class="text-xl">
+            <i class="{{ icon }}"></i>
+            <span class="">{{ text }}</span>
+        </p>
+    </button>
+{% elif button=="table" %}
+    <button type="{{ type }}" id="{{ id }}" class="bg-secondary hover:bg-white text-primary hover:text-secondary hover:ring-2 ring-secondary py-2 px-4 rounded-md">
+        <p class="text-lg">
+            <i class="{{ icon }}"></i>
+            <span class="">{{ text }}</span>
+        </p>
+    </button>
+{% elif button=="invert" %}
+    <button type="{{ type }}" id="{{ id }}" class="bg-primary hover:bg-secondary text-secondary hover:text-primary py-2 px-4 rounded-md">
+        <p class="text-xl">
+            <i class="{{ icon }}"></i>
+            <span class="">{{ text }}</span>
+        </p>
+    </button>
+{% else %}
+    <button type="{{ type }}" id="{{ id }}" class="bg-secondary hover:bg-primary text-primary hover:text-secondary hover:ring-2 ring-secondary py-2 px-4 rounded-md">
+        <p class="text-xl">
+            <i class="{{ icon }}"></i>
+            <span class="">{{ text }}</span>
+        </p>
+    </button>
+{% endif%}

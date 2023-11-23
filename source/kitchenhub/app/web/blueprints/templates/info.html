@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Top Bar -->
+{% with screenName="Přehled" %}
+    {% include 'topbar.html' %}
+{% endwith %}
+
+
+<div class="mt-20 p-5">
+    <div class="grid grid-cols-2">
+        <div class="col-span-1">
+            <h1 class="text-4xl mb-5">Informace</h1>
+
+            <h1 class="text-xl"><span class="font-medium">Adresa Serveru:</span> {{ config.serverUrl }}</h1>
+            <h1 class="text-xl"><span class="font-medium">Název Provozovny:</span> {{ config.establishmentName }}</h1>
+            <h1 class="text-xl"><span class="font-medium">Poslední Aktualizace přes API:</span> {{ config.lastSync }}</h1>
+
+            <div class="mt-10 flex items-center">
+                <h1 class="text-xl"><span class="font-medium">Spojení se Serverem:</span></h1>
+                {% if config.socketClientConnected == 1 %} <div class="rounded-full ml-2 h-5 w-5 bg-green-500"></div> {% else %} <div class="rounded-full ml-2 h-5 w-5 bg-red-600"></div> {% endif %}
+            </div>
+        </div>
+
+        <div class="col-span-1">
+            <h1 class="text-4xl mb-5">Objednávky</h1>
+
+            <h1 class="text-xl"><span class="font-medium">Aktuální Počet Objednávek:</span> {{ orders.totalOrders }}</h1>
+            <br>
+            <h1 class="text-xl"><span class="font-medium">Přijaté:</span> {{ orders.created }}</h1>
+            <h1 class="text-xl"><span class="font-medium">Připravované:</span> {{ orders.processing }}</h1>
+            <h1 class="text-xl"><span class="font-medium">K Vyzvednutí:</span> {{ orders.ready }}</h1>
+            <h1 class="text-xl"><span class="font-medium">Vyřízené:</span> {{ orders.done }}</h1>
+            <h1 class="text-xl"><span class="font-medium">Zrušené:</span> {{ orders.canceled }}</h1>
+            <br>
+            <h1 class="text-xl"><span class="font-medium">Nesynchronizované:</span> {{ orders.notSynced }}</h1>
+        </div>        
+    </div>
+
+    <div class="grid grid-cols-2 xl:grid-cols-4">
+        <div class="grid-cols-1 w-full mt-5 xl:mt-20 p-5">
+            <a href="/func/socket-client-connect">
+                <button class="bg-secondary w-full p-5 rounded-lg text-xl">
+                    Připojit k Serveru
+                    <p class="text-sm text-gray-200">Připojit se k socketu serveru</p>
+                </button>
+            </a>
+        </div>
+        <div class="grid-cols-1 w-full mt-5 xl:mt-20 xl:p-5">
+            <a href="/func/get-orders">
+                <button class="bg-secondary w-full p-5 rounded-lg text-xl">
+                    Stáhnout Objednávky z API
+                    <p class="text-sm text-gray-200">Požádat server o zaslání všech objednávek</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="grid-cols-1 w-full mt-5 xl:mt-20 p-5">
+            <a href="/func/sync-orders">
+                <button class="bg-secondary w-full p-5 rounded-lg text-xl">
+                    Synchronizovat Objednávky
+                    <p class="text-sm text-gray-200">Synchronizovat lokální stavy objednávek se serverem</p>
+                </button>
+            </a>
+        </div>
+
+        <div class="grid-cols-1 w-full mt-5 xl:mt-20 p-5">
+            <a href="/func/send-local-socket">
+                <button class="bg-secondary w-full p-5 rounded-lg text-xl">
+                    Updatovat Obrazovky
+                    <p class="text-sm text-gray-200">Poslat všechny objednávky do lokálního socketu</p>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    </div>
+    
+</div>
+{% endblock %}

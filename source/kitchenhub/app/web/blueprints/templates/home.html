@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Top Bar -->
+{% with screenName=" " %}
+    {% include 'topbar.html' %}
+{% endwith %}
+
+
+<div class="md:flex md:items-center md:justify-center h-full md:h-screen md:w-screen">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:gap-10">
+
+        <a href="/screens/call-screen">
+            <div class="col-span-1 h-48 w-48 bg-white rounded-lg shadow-lg">
+                <div class="flex flex-col items-center justify-center w-full h-full">
+                    
+                    <i class="las la-desktop text-primary text-8xl"></i>
+                    <h1 class="text-lg text-primary font-medium">Call Screen</h1>
+
+                </div>
+            </div>
+        </a>
+
+        <a href="/screens/kitchen-screen">
+            <div class="col-span-1 h-48 w-48 bg-white rounded-lg shadow-lg">
+                <div class="flex flex-col items-center justify-center w-full h-full">
+                    
+                    <i class="las la-utensils text-primary text-8xl"></i>
+                    <h1 class="text-lg text-primary font-medium">Kitchen Screen</h1>
+
+                </div>
+            </div>
+        </a>
+        
+        <a href="/screens/collect-point">
+            <div class="col-span-1 h-48 w-48 bg-white rounded-lg shadow-lg">
+                <div class="flex flex-col items-center justify-center w-full h-full">
+                    
+                    <i class="las la-shopping-bag text-primary text-8xl"></i>
+                    <h1 class="text-lg text-primary font-medium">Collect Point</h1>
+
+                </div>                    
+            </div>
+        </a>
+        
+        <a href="/screens/kitchen-collect">
+            <div class="col-span-1 h-48 w-48 bg-white rounded-lg shadow-lg">
+                <div class="flex flex-col items-center justify-center w-full h-full">
+                    
+                    <i class="las la-concierge-bell text-primary text-8xl"></i>
+                    <h1 class="text-lg text-primary font-medium">Kitchen / Collect</h1>
+
+                </div>
+            </div>
+        </a>
+
+        <a href="/info">
+            <div class="col-span-1 h-48 w-48 bg-white rounded-lg shadow-lg">
+                <div class="flex flex-col items-center justify-center w-full h-full">
+                    
+                    <i class="las la-chart-area text-primary text-8xl"></i>
+                    <h1 class="text-lg text-primary font-medium">Přehled</h1>
+
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+
+{% endblock %}

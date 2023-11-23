@@ -1,0 +1,8 @@
+{
+  "appId": "com.robinmicek.kokenku",
+  "appName": "kOkenku",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}

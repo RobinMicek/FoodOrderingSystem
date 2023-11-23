@@ -1,0 +1,1833 @@
+2023-08-09 14:35:44.133921 [ERROR] Could not update account token - Email: micek.robin@gmail.com [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@gmail.com' at line 3]
+
+2023-08-09 14:36:44.044342 [ERROR] Could not update account token - Email: micek.robin@gmail.com [1054 (42S22): Unknown column 'a472d4176c962e25eef188bad65e5c1dff365b70dd5c7288aa9e887390f67def' in 'field list']
+
+2023-08-09 14:37:24.898395 [ERROR] Could not update account token - Email: micek.robin@gmail.com [1054 (42S22): Unknown column '2c7cbad39e60038a207903ece93e5f40c40afb155362e44c833ba4b912f5d854' in 'field list']
+
+2023-08-09 14:37:41.538276 [ERROR] Could not update account token - Email: micek.robin@gmail.com [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'e3e96d91f0b25c873d6615881d414dc78df09e0f7b2e3d5501f697c02eb9a
+                WH' at line 2]
+
+2023-08-09 14:37:52.654514 [ERROR] Could not update account token - Email: micek.robin@gmail.com [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"b93517b51de8f68e3ac4ece310b9b97470358768d6ed8e982103684b5ea08115" = token 
+    ' at line 2]
+
+2023-08-09 14:39:49.757496 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:28.050376 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:29.877841 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:30.465689 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:30.621881 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:30.795933 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:30.958386 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:31.130034 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:31.290364 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:31.466848 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:31.632715 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:31.798002 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:32.001468 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:32.207145 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:32.375478 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:32.551608 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:32.719924 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:32.917343 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:33.037580 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:33.377762 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:33.537262 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:40:33.724590 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:02.891569 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:03.503821 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:03.670436 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:03.846736 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:04.227064 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:04.408072 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:04.577867 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:05.078230 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:05.545528 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:05.947012 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:06.140199 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:06.323487 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:06.696250 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:06.876834 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:07.056930 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:07.243082 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:07.397900 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:07.572446 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:07.757060 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:07.937994 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:08.088800 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:08.290561 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:08.476613 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:08.649752 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:08.822817 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:08.993546 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:09.171771 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:25.712857 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:26.815651 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:27.587130 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:27.926541 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:28.128279 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:28.293217 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:28.482962 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:28.645112 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:28.850542 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:29.017293 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:29.161854 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:29.329955 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:29.503242 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:29.678633 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:29.837293 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:30.002228 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:30.166178 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:30.311970 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:30.483280 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:47.103178 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:41:50.261152 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:14.950790 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:15.860649 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:16.473526 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:16.873397 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:17.045280 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:17.225202 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:17.389262 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:17.574593 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:17.909150 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:18.086586 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:18.245110 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:18.407595 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:18.570419 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:18.752207 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:18.895826 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:19.229666 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:19.355258 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:19.541431 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:19.709175 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:19.870576 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:20.080753 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:20.244995 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:20.411701 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:20.597083 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:20.760420 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:20.944962 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:21.130831 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:21.314837 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:21.507486 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:21.680633 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:21.855234 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:22.068939 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:22.246058 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:22.446855 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:22.632128 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:22.943102 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:23.289731 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:23.745469 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:24.116499 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:24.332078 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:24.507537 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:24.693851 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:24.879163 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:25.065101 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:25.242410 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:25.440103 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:25.623503 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:25.804028 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:26.013906 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:26.243335 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:26.482614 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:26.733639 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:27.001139 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:27.305449 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:27.600577 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:27.879599 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:28.140542 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:28.419618 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:28.696727 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:28.900701 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:29.103389 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:29.291967 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:29.489414 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:29.672333 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:29.890964 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:30.261226 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:30.618993 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:30.799718 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:30.995515 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:31.222612 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:31.425049 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:31.657005 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:31.876441 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:32.089043 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:32.613665 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:32.789752 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:32.978492 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:33.165689 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:33.356775 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:33.527789 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:33.719098 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:33.896269 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:34.071567 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:34.253382 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:34.508401 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:34.699229 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:34.946200 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:35.143421 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:35.315171 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:35.505613 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:35.954946 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:36.170626 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:36.371960 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:36.733941 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:37.095272 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:37.390019 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 14:42:37.560760 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 18:29:42.617742 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 18:36:15.975117 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 18:37:04.407985 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 18:37:37.840069 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 18:37:49.421809 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 18:37:50.943793 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-09 18:39:41.908947 [ALERT] Created new establishment - establishmentId: 2
+
+2023-08-10 14:14:17.978642 [ALERT] Updated establishment - establishmentId: 1
+
+2023-08-10 14:19:12.806009 [ALERT] Updated establishment - establishmentId: 2
+
+2023-08-10 14:19:19.995932 [ALERT] Updated establishment - establishmentId: 2
+
+2023-08-10 14:19:27.971694 [ALERT] Updated establishment - establishmentId: 2
+
+2023-08-10 14:19:39.848321 [ALERT] Updated establishment - establishmentId: 2
+
+2023-08-10 14:21:42.080877 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 14:21:46.523717 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 14:24:08.854162 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-10 14:24:10.937493 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-10 14:24:11.642332 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-10 14:24:15.461971 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-10 14:24:55.610542 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 14:53:53.616569 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 14:53:57.931886 [ALERT] Toggled establishment visibility - establishmentId: 1
+
+2023-08-10 14:54:03.373805 [ALERT] Toggled establishment visibility - establishmentId: 1
+
+2023-08-10 14:54:06.958595 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 15:03:17.655838 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 15:09:05.208181 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:09:12.626147 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:09:57.882199 [ALERT] Updated establishment - establishmentId: 1
+
+2023-08-10 15:10:09.908044 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:10:34.574996 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:10:46.138552 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:10:52.076799 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:10:57.229057 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:13:03.115317 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:13:06.466548 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:13:07.599723 [ALERT] Toggled menu visibility - menuId: 2
+
+2023-08-10 15:13:11.719653 [ALERT] Toggled menu visibility - menuId: 1
+
+2023-08-10 15:18:31.060904 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 15:20:05.333763 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 15:24:27.694226 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 17:51:07.575395 [ALERT] Toggled menu visibility - menuId: 2
+
+2023-08-10 17:51:40.635728 [ALERT] Updated establishment - establishmentId: 1
+
+2023-08-10 17:58:48.471080 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-10 17:58:50.606888 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-10 18:09:59.078658 [ALERT] Updated product - productId: 2
+
+2023-08-10 18:10:06.387139 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-10 18:12:16.727280 [ALERT] Database has been cleaned.
+
+2023-08-10 18:12:17.000272 [ERROR] Could not inicialize the database [1304 (42000): PROCEDURE ToggleAccountActive already exists]
+
+2023-08-10 18:12:43.158650 [ALERT] Database has been cleaned.
+
+2023-08-10 18:12:43.563870 [ALERT] Database has been inicialized.
+
+2023-08-10 18:29:35.684163 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:29:36.056395 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE PROCEDURE InsertOrderProduct(
+    IN p_accountId INTEGER,
+    IN p_establ' at line 13]
+
+2023-08-10 18:31:29.022106 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:31:29.417210 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE PROCEDURE InsertOrderProduct(
+    IN p_accountId INTEGER,
+    IN p_establ' at line 13]
+
+2023-08-10 18:32:08.352447 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:32:08.712660 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE PROCEDURE InsertOrder(
+    IN p_accountId INTEGER,
+    IN p_establishment' at line 13]
+
+2023-08-10 18:36:20.025707 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:36:20.393318 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE PROCEDURE InsertOrder(
+    IN p_accountId INTEGER,
+    IN p_establishment' at line 13]
+
+2023-08-10 18:38:05.142604 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:38:05.571678 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE PROCEDURE InsertOrder(
+    IN p_accountId INTEGER,
+    IN p_establishment' at line 13]
+
+2023-08-10 18:39:55.506824 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:39:55.947779 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE PROCEDURE InsertOrder(
+    IN p_accountId INT,
+    IN p_establishmentId I' at line 13]
+
+2023-08-10 18:40:21.034006 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:40:21.359207 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE PROCEDURE InsertOrderProduct(
+    IN p_orderId INTEGER,
+    IN p_productI' at line 16]
+
+2023-08-10 18:40:29.402373 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:40:29.776391 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `orderId` = p_id;
+END' at line 12]
+
+2023-08-10 18:42:10.179181 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:42:10.535526 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `orderId` = p_id;
+END' at line 12]
+
+2023-08-10 18:43:01.270886 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:43:01.646338 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `orderId` = p_id;
+END' at line 12]
+
+2023-08-10 18:43:40.191657 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:43:40.601031 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `orderId` = p_id;
+END' at line 12]
+
+2023-08-10 18:43:56.654293 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:43:57.016441 [ALERT] Database has been inicialized.
+
+2023-08-10 18:44:04.519460 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 18:44:04.891270 [ALERT] Database has been inicialized.
+
+2023-08-10 19:12:49.568406 [ERROR] Could not create new order [1292 (22007): Incorrect datetime value: '12:25' for column 'p_pickupTime' at row 1]
+
+2023-08-10 19:15:12.189447 [ERROR] Could not create new order [1292 (22007): Incorrect datetime value: '1900-01-01 12:25:00' for column 'p_pickupTime' at row 1]
+
+2023-08-10 19:15:25.840675 [ERROR] Could not create new order [1292 (22007): Incorrect datetime value: '1900-01-01 12:25:00' for column 'p_pickupTime' at row 1]
+
+2023-08-10 19:15:35.527794 [ERROR] Could not create new order [1292 (22007): Incorrect datetime value: '1900-01-01 12:25:00' for column 'p_pickupTime' at row 1]
+
+2023-08-10 19:17:44.675437 [ERROR] Could not create new order ['quantity']
+
+2023-08-10 19:18:53.197307 [ERROR] Could not create new order ['quantity']
+
+2023-08-10 19:20:34.075922 [ERROR] Could not create new order [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'InsertOrderProducts('3', '2', '1', '35.99')' at line 1]
+
+2023-08-10 19:22:27.543707 [ERROR] Could not create new order [1305 (42000): PROCEDURE kOkenku.InsertOrderProducts does not exist]
+
+2023-08-10 19:22:42.393178 [ALERT] Created new order - orderId: 5
+
+2023-08-10 19:22:46.059389 [ALERT] Created new order - orderId: 6
+
+2023-08-10 19:24:26.558564 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 19:24:27.065804 [ALERT] Database has been inicialized.
+
+2023-08-10 19:24:29.785735 [ERROR] Could not create new order [list indices must be integers or slices, not str]
+
+2023-08-10 19:24:54.880500 [ALERT] Created new order - orderId: 2
+
+2023-08-10 19:26:57.040684 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 19:26:57.814994 [ALERT] Database has been inicialized.
+
+2023-08-10 19:27:07.272051 [ALERT] Created new order - orderId: 1
+
+2023-08-10 19:30:51.767260 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-08-10 19:43:08.917947 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 19:43:09.337180 [ALERT] Database has been inicialized.
+
+2023-08-10 21:30:55.801132 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 21:30:56.323433 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET `lastUpdate` =  CURRENT_TIMESTAMP
+    WHERE `orderId` = p_id;
+END' at line 13]
+
+2023-08-10 21:32:23.729245 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 21:32:24.103839 [ALERT] Database has been inicialized.
+
+2023-08-10 21:49:00.612911 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 21:49:01.045661 [ALERT] Database has been inicialized.
+
+2023-08-10 21:49:08.388838 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 21:49:08.834537 [ALERT] Database has been inicialized.
+
+2023-08-10 21:49:38.862655 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 21:49:39.316793 [ALERT] Database has been inicialized.
+
+2023-08-10 22:03:10.824636 [ERROR] Could not create new order [1054 (42S22): Unknown column 'lastUpdate' in 'field list']
+
+2023-08-10 22:03:24.723797 [ERROR] Could not create new order [1054 (42S22): Unknown column 'lastUpdate' in 'field list']
+
+2023-08-10 22:04:38.307376 [ERROR] Could not clear the database [1065 (42000): Query was empty]
+
+2023-08-10 22:04:38.641609 [ALERT] Database has been inicialized.
+
+2023-08-10 22:05:11.219081 [ERROR] Could not create new order [1054 (42S22): Unknown column 'lastUpdate' in 'field list']
+
+2023-08-10 22:05:51.493566 [ALERT] Database has been cleaned.
+
+2023-08-10 22:05:51.848854 [ALERT] Database has been inicialized.
+
+2023-08-10 22:06:00.166251 [ALERT] Created new order - orderId: 1
+
+2023-08-10 22:09:08.664964 [ERROR] Could not create new order [local variable 'db' referenced before assignment]
+
+2023-08-10 22:09:24.899848 [ERROR] Could not create order - establishment is closed - establishmentId: 1, accountId: 1
+
+2023-08-10 22:11:08.673742 [ERROR] Could not create new order ['>' not supported between instances of 'str' and 'datetime.time']
+
+2023-08-10 22:11:54.040152 [ERROR] Could not create new order [an integer is required (got type str)]
+
+2023-08-10 22:12:12.152457 [ERROR] Could not create new order [an integer is required (got type str)]
+
+2023-08-10 22:13:31.455983 [ALERT] Created new order - orderId: 2
+
+2023-08-10 22:17:50.359821 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-10 22:21:56.762808 [ALERT] Created new order - orderId: 3
+
+2023-08-10 22:22:59.070137 [ALERT] Created new order - orderId: 4
+
+2023-08-10 22:23:27.938502 [ERROR] Could not create new order ['productId']
+
+2023-08-10 22:23:48.621273 [ALERT] Created new order - orderId: 6
+
+2023-08-12 09:44:42.164035 [ALERT] Toggled account active status - accountId: 1
+
+2023-08-12 09:44:43.530253 [ALERT] Toggled account active status - accountId: 1
+
+2023-08-12 10:16:54.408002 [ALERT] Updated establishment - establishmentId: 1
+
+2023-08-12 10:17:22.380558 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-12 10:24:38.872717 [ALERT] Created new order - orderId: 7
+
+2023-08-12 10:24:51.248583 [ALERT] Created new order - orderId: 8
+
+2023-08-12 10:25:41.628456 [ALERT] Updated establishment - establishmentId: 1
+
+2023-08-12 10:25:50.310749 [ERROR] Could not create order - establishment is closed - establishmentId: 1, accountId: 1
+
+2023-08-12 10:26:12.281087 [ALERT] Updated establishment - establishmentId: 1
+
+2023-08-12 10:26:17.410481 [ALERT] Created new order - orderId: 9
+
+2023-08-12 10:26:47.248598 [ALERT] Created new order - orderId: 10
+
+2023-08-12 11:06:13.644800 [ALERT] Database has been cleaned.
+
+2023-08-12 11:06:13.775609 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 15]
+
+2023-08-12 11:06:50.125086 [ALERT] Database has been cleaned.
+
+2023-08-12 11:06:50.448533 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`token`, `hash`, `firstname`, `surname`, `dateOfBirth`, `role`)
+        VALUES (' at line 38]
+
+2023-08-12 11:09:46.647230 [ALERT] Database has been cleaned.
+
+2023-08-12 11:09:46.929009 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`token`, `hash`, `firstname`, `surname`, `dateOfBirth`, `role`)
+        VALUES (' at line 38]
+
+2023-08-12 11:10:39.479098 [ALERT] Database has been cleaned.
+
+2023-08-12 11:10:39.794774 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`token`, `hash`, `firstname`, `surname`, `dateOfBirth`, `role`)
+        VALUES (' at line 38]
+
+2023-08-12 11:11:13.956923 [ALERT] Database has been cleaned.
+
+2023-08-12 11:11:14.494006 [ALERT] Database has been inicialized.
+
+2023-08-12 11:12:44.613150 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-08-12 11:13:05.287167 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-12 11:14:04.016442 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-12 11:14:12.911071 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-12 11:19:07.227313 [ALERT] Database has been cleaned.
+
+2023-08-12 11:19:07.951329 [ALERT] Database has been inicialized.
+
+2023-08-12 11:19:24.683002 [ERROR] Could not create new user - Email: micek.robin@gmail.com [1292 (22007): Incorrect date value: 'None' for column 'p_dateOfBirth' at row 1]
+
+2023-08-12 11:19:40.138733 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-08-12 11:21:30.177403 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-08-12 11:21:41.956201 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-12 11:22:13.326055 [ERROR] Could not create new order ['bool' object is not subscriptable]
+
+2023-08-12 11:31:43.888783 [ALERT] Created new product - menuId: 1
+
+2023-08-12 11:32:08.510643 [ALERT] Updated menu's products - menuId: 1
+
+2023-08-12 11:33:50.023313 [ALERT] Created new product - menuId: 2
+
+2023-08-12 11:34:05.091088 [ALERT] Updated menu's products - menuId: 2
+
+2023-08-12 11:35:19.412452 [ALERT] Created new establishment - establishmentId: 1
+
+2023-08-12 11:37:07.714872 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-12 11:37:59.267603 [ERROR] Could not create new order [strptime() argument 1 must be str, not None]
+
+2023-08-12 11:40:23.866377 [ERROR] Could not create new order [strptime() argument 1 must be str, not None]
+
+2023-08-12 11:40:36.787371 [ERROR] Could not create new order [strptime() argument 1 must be str, not None]
+
+2023-08-12 11:41:12.571715 [ERROR] Could not create new order [strptime() argument 1 must be str, not None]
+
+2023-08-12 11:42:31.941554 [ERROR] Could not create order - establishment is closed - establishmentId: 1, accountId: 2
+
+2023-08-12 11:42:59.391735 [ALERT] Toggled establishment visibility - establishmentId: 1
+
+2023-08-12 11:43:06.924565 [ALERT] Created new order - orderId: 1
+
+2023-08-12 11:43:56.316707 [ALERT] Created new order - orderId: 2
+
+2023-08-12 16:04:13.893391 [ALERT] New user has been created - Email: robin.micek@seznam.cz
+
+2023-08-12 16:04:26.319716 [ALERT] Account token has been updated - Email: robin.micek@seznam.cz
+
+2023-08-12 16:05:34.182320 [ALERT] Created new order - orderId: 3
+
+2023-08-12 16:13:43.549247 [ALERT] Account token has been updated - Email: robin.micek@seznam.cz
+
+2023-08-12 16:14:43.385402 [ALERT] Created new order - orderId: 4
+
+2023-08-12 16:24:52.326738 [ALERT] Account token has been updated - Email: robin.micek@seznam.cz
+
+2023-08-14 19:13:52.997385 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-14 21:25:39.529861 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-14 21:27:07.649436 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-14 21:42:48.739550 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-14 21:44:08.913277 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 10:49:08.098873 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 10:53:20.874125 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 11:09:56.319215 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 11:36:55.970536 [ERROR] Could not create new user - Email: micek.robin@gmail.co.uk [1292 (22007): Incorrect date value: 'None' for column 'p_dateOfBirth' at row 1]
+
+2023-08-18 11:37:52.935437 [ERROR] Could not create new user - Email: micek.robin@gmail.co.uk [1292 (22007): Incorrect date value: 'None' for column 'p_dateOfBirth' at row 1]
+
+2023-08-18 11:39:45.902767 [ALERT] New user has been created - Email: registruji.se@gmail.com
+
+2023-08-18 11:40:01.873395 [ALERT] Account token has been updated - Email: registruji.se@gmail.com
+
+2023-08-18 11:48:48.769253 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 14:38:22.233205 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 15:03:41.115745 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 15:10:30.545482 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 15:11:33.579533 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 15:38:12.823043 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 15:38:14.752733 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 18:22:47.344566 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-18 18:23:23.534602 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-18 18:23:56.756968 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-18 18:24:29.085264 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-18 18:27:47.876748 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 18:29:30.301142 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-18 18:41:31.851525 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-19 21:36:41.012536 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-19 21:40:22.786723 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 10:09:22.064128 [ALERT] Updated product - productId: 6
+
+2023-08-20 10:09:37.044437 [ALERT] Updated product - productId: 8
+
+2023-08-20 10:10:43.455340 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 10:28:25.633508 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 11:29:24.164726 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 11:32:55.408526 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 12:09:47.030901 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 12:10:43.165105 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 12:44:22.286100 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 15:02:22.800202 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-20 15:03:42.559848 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-20 15:04:25.825529 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-20 15:08:18.294230 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 15:13:32.148705 [ALERT] Account token has been updated - Email: robin.micek@seznam.cz
+
+2023-08-20 15:37:31.277708 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 15:54:52.836134 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 16:16:47.589724 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-20 16:17:58.571514 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-20 16:21:30.924729 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 16:25:25.560026 [ALERT] New user has been created - Email: a@a.a
+
+2023-08-20 16:25:30.666367 [ALERT] Account token has been updated - Email: a@a.a
+
+2023-08-20 16:29:46.749633 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 16:35:33.869120 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-20 16:35:58.474591 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-20 16:44:12.621467 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 16:45:02.438708 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 16:47:11.568735 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 16:55:54.248438 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 16:56:56.975837 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 17:59:29.552007 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 18:01:30.995565 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 18:08:35.719500 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 18:09:08.287791 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 18:09:27.387522 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 18:09:39.040258 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 20:33:09.805145 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 20:33:35.405209 [ALERT] Account token has been updated - Email: a@a.a
+
+2023-08-20 21:57:28.683808 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 21:57:53.346538 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 21:59:08.642351 [ALERT] Account token has been updated - Email: a@a.a
+
+2023-08-20 21:59:23.434092 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 22:03:17.835972 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 22:05:39.264934 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-20 22:06:16.468747 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-08-21 14:44:24.513918 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 14:47:02.776397 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 14:59:23.745594 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 15:05:11.998938 [ALERT] Created new establishment - establishmentId: 2
+
+2023-08-21 15:05:25.665880 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-21 15:14:25.181732 [ALERT] Updated establishment - establishmentId: 2
+
+2023-08-21 15:14:54.900062 [ALERT] Updated establishment - establishmentId: 2
+
+2023-08-21 15:28:37.040597 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-21 15:28:38.045221 [ALERT] Toggled establishment visibility - establishmentId: 1
+
+2023-08-21 15:28:44.792086 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-21 15:28:45.639149 [ALERT] Toggled establishment visibility - establishmentId: 1
+
+2023-08-21 15:29:49.803020 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-21 15:34:50.070513 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 17:12:20.896102 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 17:16:17.304245 [ALERT] Updated menu - MenuId: 1
+
+2023-08-21 17:18:36.562158 [ALERT] Updated menu - MenuId: 1
+
+2023-08-21 17:27:00.234363 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 17:28:01.086623 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-08-21 17:28:12.124174 [ALERT] Updated establishment - establishmentId: 2
+
+2023-08-21 17:29:17.768012 [ALERT] Updated menu - MenuId: 1
+
+2023-08-21 17:33:28.880773 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 17:33:53.308793 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 17:34:23.787714 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-08-21 18:35:55.104564 [ALERT] Updated product - productId: 4
+
+2023-08-21 18:36:00.005508 [ALERT] Updated product - productId: 4
+
+2023-08-29 18:46:13.989219 [ALERT] Updated menu's products - menuId: 2
+
+2023-08-29 18:50:09.215944 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-01 16:11:11.081813 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-01 18:02:22.359566 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-01 18:12:03.309767 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-01 18:12:11.359156 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-01 18:14:10.943092 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-06 11:08:06.612313 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-06 18:51:18.751170 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-06 20:44:35.791296 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-06 20:45:41.684248 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-06 20:57:15.907088 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 17:37:19.794720 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-07 17:54:07.866122 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 17:55:35.145768 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 17:56:13.489515 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 17:57:09.999477 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:01:46.817157 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:02:17.586095 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:05:07.546909 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:06:57.435554 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:24:30.089962 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:29:09.004867 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:29:49.372785 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:30:17.882720 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-07 18:34:14.315583 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-09 14:28:07.870030 [ERROR] Could not create new order [time data '[object Undefined]' does not match format '%H:%M']
+
+2023-09-09 14:39:59.855666 [ERROR] Could not create new order [time data '[object Undefined]' does not match format '%H:%M']
+
+2023-09-09 14:42:03.610249 [ERROR] Could not create new order [time data '[object Undefined]' does not match format '%H:%M']
+
+2023-09-09 14:42:19.673905 [ERROR] Could not create new order [time data '[object Undefined]' does not match format '%H:%M']
+
+2023-09-09 14:42:34.387674 [ALERT] Created new order - orderId: 5
+
+2023-09-09 14:44:52.427706 [ALERT] Created new order - orderId: 6
+
+2023-09-09 14:51:22.843856 [ALERT] Created new order - orderId: 7
+
+2023-09-09 14:51:57.550372 [ALERT] Created new order - orderId: 8
+
+2023-09-09 14:52:41.696266 [ALERT] Created new order - orderId: 9
+
+2023-09-09 14:52:47.465149 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-09 14:54:50.420465 [ALERT] Created new order - orderId: 10
+
+2023-09-09 14:55:20.041435 [ALERT] Created new order - orderId: 11
+
+2023-09-09 15:12:11.957043 [ALERT] Created new order - orderId: 12
+
+2023-09-10 13:25:10.377360 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-10 13:36:15.645479 [ALERT] Updated establishment - establishmentId: 2
+
+2023-09-10 13:36:42.220834 [ALERT] Updated establishment - establishmentId: 2
+
+2023-09-10 13:39:54.385725 [ALERT] Created new order - orderId: 13
+
+2023-09-10 13:44:21.219668 [ALERT] Created new order - orderId: 14
+
+2023-09-10 15:27:32.753141 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.463860 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.481909 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.499217 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.498964 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.512229 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.525137 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.556580 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.650625 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.820445 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.837538 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.939593 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.954137 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:46.964938 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-10 15:29:55.643471 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-12 07:32:02.369002 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-12 07:33:56.047762 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-12 07:36:33.944571 [ALERT] Updated establishment - establishmentId: 2
+
+2023-09-12 07:36:59.482195 [ALERT] Created new order - orderId: 15
+
+2023-09-13 11:03:55.276381 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-13 11:46:13.043454 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-13 11:47:54.347205 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-13 11:48:21.086238 [ALERT] Created new order - orderId: 16
+
+2023-09-16 11:05:33.971270 [ALERT] Database has been cleaned.
+
+2023-09-16 11:05:34.598627 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'OUT p_insertedID INTEGER
+    )
+    BEGIN
+        INSERT INTO `establishments` (`' at line 14]
+
+2023-09-16 11:06:19.045050 [ALERT] Database has been cleaned.
+
+2023-09-16 11:06:19.594112 [ERROR] Could not inicialize the database [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'OUT p_insertedID INTEGER
+    )
+    BEGIN
+        INSERT INTO `establishments` (`' at line 14]
+
+2023-09-16 11:06:34.709604 [ALERT] Database has been cleaned.
+
+2023-09-16 11:06:35.600684 [ALERT] Database has been inicialized.
+
+2023-09-16 11:07:11.784289 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-09-16 11:12:49.818845 [ALERT] Database has been cleaned.
+
+2023-09-16 11:12:50.228878 [ERROR] Could not inicialize the database [1304 (42000): PROCEDURE AuthEstablishmentToken already exists]
+
+2023-09-16 11:13:03.000254 [ALERT] Database has been cleaned.
+
+2023-09-16 11:13:03.571013 [ALERT] Database has been inicialized.
+
+2023-09-16 11:13:35.157629 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-09-16 11:15:53.207306 [ALERT] Database has been cleaned.
+
+2023-09-16 11:15:53.620685 [ALERT] Database has been inicialized.
+
+2023-09-16 11:16:15.648178 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-09-16 11:18:15.075042 [ERROR] Could not create new establishment [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@insertedID)' at line 1]
+
+2023-09-16 11:24:22.373972 [ERROR] Could not create new establishment [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@insertedID)' at line 1]
+
+2023-09-16 11:30:15.160101 [ALERT] Created new establishment - establishmentId: 1
+
+2023-09-16 11:37:01.411445 [ALERT] Created new establishment - establishmentId: 2
+
+2023-09-16 11:39:56.452529 [ALERT] Created new establishment - establishmentId: 3
+
+2023-09-16 11:41:34.277073 [ALERT] Toggled establishment visibility - establishmentId: 3
+
+2023-09-16 11:42:10.426214 [ALERT] Created new establishment - establishmentId: 4
+
+2023-09-16 12:21:10.474018 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-16 12:21:15.238587 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-16 12:27:15.038295 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-16 12:27:24.371065 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-16 14:49:09.861770 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-16 14:49:29.366103 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-09-16 17:24:36.464665 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-09-17 19:27:43.532918 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-17 19:28:02.534848 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:28:17.950820 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-17 19:28:34.571448 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:30:11.837506 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:30:26.827551 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:31:54.742929 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:33:07.975872 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:42:59.072962 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:51:38.468733 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:53:29.958049 [ERROR] Could not create new order [Object of type datetime is not JSON serializable]
+
+2023-09-17 19:57:23.213047 [ALERT] Created new order - orderId: 10
+
+2023-09-17 19:59:24.129959 [ALERT] Created new order - orderId: 11
+
+2023-09-17 20:00:01.836974 [ALERT] Created new order - orderId: 12
+
+2023-09-17 23:22:57.101713 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-17 23:23:17.644465 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-17 23:24:08.743459 [ALERT] Created new order - orderId: 13
+
+2023-09-17 23:25:38.942752 [ALERT] Created new order - orderId: 14
+
+2023-09-17 23:26:27.171986 [ALERT] Created new order - orderId: 15
+
+2023-09-18 08:12:37.942214 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-18 08:13:46.150822 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-18 08:15:11.723201 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-18 08:15:45.650915 [ALERT] Created new order - orderId: 16
+
+2023-09-18 11:25:13.372196 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-18 11:26:51.594086 [ALERT] Created new order - orderId: 17
+
+2023-09-18 11:31:11.211480 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-18 18:42:22.305466 [ALERT] Database has been cleaned.
+
+2023-09-18 18:42:22.640716 [ALERT] Database has been inicialized.
+
+2023-09-18 18:44:17.368245 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-09-18 19:04:38.510970 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-18 19:04:47.422605 [ALERT] Created new order - orderId: 1
+
+2023-09-18 21:23:44.842018 [ALERT] Updated menu's products - menuId: 2
+
+2023-09-18 21:23:57.627981 [ALERT] Updated menu - MenuId: 2
+
+2023-09-18 21:24:17.110381 [ALERT] Updated menu - MenuId: 1
+
+2023-09-18 21:45:09.290970 [ALERT] Database has been cleaned.
+
+2023-09-18 21:45:09.668902 [ALERT] Database has been inicialized.
+
+2023-09-18 21:48:09.123772 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-09-18 21:48:55.935541 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-18 21:49:14.553081 [ALERT] Created new order - orderId: 1
+
+2023-09-20 21:15:17.628469 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-20 21:15:26.107272 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-20 21:15:41.371918 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-20 21:16:02.449778 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-09-20 21:23:05.049815 [ALERT] Created new order - orderId: 2
+
+2023-09-20 21:24:48.170551 [ALERT] Created new order - orderId: 3
+
+2023-09-20 21:29:59.219384 [ALERT] Created new order - orderId: 4
+
+2023-09-20 21:34:38.709340 [ALERT] Created new order - orderId: 5
+
+2023-09-20 21:35:38.667381 [ALERT] Created new order - orderId: 6
+
+2023-09-20 21:36:12.168362 [ALERT] Created new order - orderId: 7
+
+2023-09-20 21:36:36.997791 [ALERT] Created new order - orderId: 8
+
+2023-09-20 21:37:30.053472 [ALERT] Created new order - orderId: 9
+
+2023-09-20 21:42:19.028682 [ALERT] Created new order - orderId: 10
+
+2023-09-20 21:43:33.128247 [ALERT] Created new order - orderId: 11
+
+2023-09-20 21:44:30.861094 [ALERT] Created new order - orderId: 12
+
+2023-09-20 21:45:12.501372 [ALERT] Created new order - orderId: 13
+
+2023-09-20 21:46:48.797630 [ALERT] Created new order - orderId: 14
+
+2023-09-20 21:47:22.143095 [ALERT] Created new order - orderId: 15
+
+2023-09-20 21:50:12.073362 [ALERT] Created new order - orderId: 16
+
+2023-09-20 21:58:26.446821 [ALERT] Updated establishment - establishmentId: 1
+
+2023-09-20 21:58:34.826760 [ALERT] Created new order - orderId: 17
+
+2023-09-20 22:01:37.701239 [ALERT] Created new order - orderId: 18
+
+2023-09-20 22:05:28.311668 [ERROR] Could not create new order [emit() got an unexpected keyword argument 'broadcast']
+
+2023-09-20 22:12:43.392925 [ERROR] Could not create new order [emit() got an unexpected keyword argument 'broadcast']
+
+2023-09-20 22:13:35.393126 [ALERT] Created new order - orderId: 21
+
+2023-09-20 22:16:45.208964 [ALERT] Created new order - orderId: 22
+
+2023-09-20 22:21:50.691829 [ALERT] Created new order - orderId: 23
+
+2023-09-20 22:22:35.420041 [ALERT] Created new order - orderId: 24
+
+2023-09-20 22:24:07.468546 [ALERT] Created new order - orderId: 25
+
+2023-09-20 22:24:42.291612 [ALERT] Created new order - orderId: 26
+
+2023-09-20 22:25:27.690291 [ALERT] Created new order - orderId: 27
+
+2023-09-20 22:25:49.223327 [ALERT] Created new order - orderId: 28
+
+2023-09-20 22:26:18.243718 [ALERT] Created new order - orderId: 29
+
+2023-09-20 22:26:52.242941 [ALERT] Created new order - orderId: 30
+
+2023-09-20 22:27:09.236764 [ALERT] Created new order - orderId: 31
+
+2023-09-20 22:28:31.656854 [ALERT] Created new order - orderId: 32
+
+2023-09-20 22:29:23.995300 [ALERT] Created new order - orderId: 33
+
+2023-09-20 22:29:54.123621 [ALERT] Created new order - orderId: 34
+
+2023-09-20 22:37:30.093946 [ALERT] Created new order - orderId: 35
+
+2023-09-20 22:38:05.327115 [ALERT] Created new order - orderId: 36
+
+2023-09-20 22:39:24.728275 [ALERT] Created new order - orderId: 37
+
+2023-09-20 22:40:01.107300 [ALERT] Created new order - orderId: 38
+
+2023-09-20 22:40:56.698551 [ALERT] Created new order - orderId: 39
+
+2023-09-20 22:41:36.480713 [ALERT] Created new order - orderId: 40
+
+2023-09-20 22:42:36.419302 [ALERT] Created new order - orderId: 41
+
+2023-09-20 22:43:07.407431 [ALERT] Created new order - orderId: 42
+
+2023-09-20 22:44:23.323773 [ALERT] Created new order - orderId: 43
+
+2023-09-20 22:44:55.806751 [ALERT] Created new order - orderId: 44
+
+2023-09-20 22:45:45.630998 [ALERT] Created new order - orderId: 45
+
+2023-09-20 22:48:04.636993 [ALERT] Created new order - orderId: 46
+
+2023-09-20 22:53:51.685605 [ALERT] Created new order - orderId: 47
+
+2023-09-20 22:57:59.576504 [ALERT] Created new order - orderId: 48
+
+2023-09-20 22:58:40.137418 [ALERT] Created new order - orderId: 49
+
+2023-09-20 23:00:02.064734 [ALERT] Created new order - orderId: 50
+
+2023-09-20 23:02:01.919852 [ALERT] Created new order - orderId: 51
+
+2023-09-20 23:02:25.282177 [ALERT] Created new order - orderId: 52
+
+2023-09-20 23:02:53.216329 [ALERT] Created new order - orderId: 53
+
+2023-09-20 23:07:57.565008 [ALERT] Created new order - orderId: 54
+
+2023-09-22 16:45:21.317708 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-22 17:02:54.013729 [ALERT] Database has been cleaned.
+
+2023-09-22 17:02:54.351101 [ALERT] Database has been inicialized.
+
+2023-09-22 17:03:21.641543 [ALERT] New user has been created - Email: micek.robin@gmail.com
+
+2023-09-22 17:04:38.928553 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-22 17:05:28.098188 [ALERT] Created new order - orderId: 1
+
+2023-09-22 17:05:28.126498 [ALERT] Could not send new order through socket - orderId: 1 [list indices must be integers or slices, not str]
+
+2023-09-22 17:06:59.317115 [ALERT] Created new order - orderId: 2
+
+2023-09-22 17:06:59.351094 [ALERT] Could not send new order through socket - orderId: 2 [list indices must be integers or slices, not str]
+
+2023-09-22 17:09:14.755612 [ALERT] Created new order - orderId: 3
+
+2023-09-22 17:09:14.787675 [ALERT] Could not send new order through socket - orderId: 3 [Object of type datetime is not JSON serializable]
+
+2023-09-22 17:22:41.299411 [ALERT] Created new order - orderId: 4
+
+2023-09-22 17:22:41.312906 [ALERT] Could not send new order through socket - orderId: 4 [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'accounts.firstname,
+                    accounts.surname,
+                    ac' at line 4]
+
+2023-09-22 17:24:45.595610 [ALERT] Created new order - orderId: 5
+
+2023-09-22 17:24:45.609874 [ALERT] Could not send new order through socket - orderId: 5 [1054 (42S22): Unknown column 'products.preparationTime' in 'field list']
+
+2023-09-22 17:26:06.318719 [ALERT] Created new order - orderId: 6
+
+2023-09-22 17:26:06.362209 [ALERT] Could not send new order through socket - orderId: 6 [1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SocketSentOrder(6)' at line 1]
+
+2023-09-22 17:31:09.808551 [ALERT] Created new order - orderId: 7
+
+2023-09-22 17:31:09.848429 [ALERT] Sent new order through socketio - orderId: 7
+
+2023-09-22 17:34:02.662699 [ALERT] Created new order - orderId: 8
+
+2023-09-22 17:34:02.704514 [ALERT] Sent new order through socketio - orderId: 8
+
+2023-09-22 17:35:20.117472 [ALERT] Created new order - orderId: 9
+
+2023-09-22 17:35:20.161330 [ALERT] Sent new order through socketio - orderId: 9
+
+2023-09-22 18:13:19.967607 [ALERT] Created new order - orderId: 10
+
+2023-09-22 18:13:20.016180 [ALERT] Sent new order through socketio - orderId: 10
+
+2023-09-22 18:18:51.361412 [ALERT] Created new order - orderId: 11
+
+2023-09-22 18:18:51.393932 [ALERT] Sent new order through socketio - orderId: 11
+
+2023-09-22 18:19:39.961099 [ALERT] Created new order - orderId: 12
+
+2023-09-22 18:19:39.996185 [ALERT] Sent new order through socketio - orderId: 12
+
+2023-09-22 18:20:48.510904 [ALERT] Created new order - orderId: 13
+
+2023-09-22 18:20:48.547920 [ALERT] Sent new order through socketio - orderId: 13
+
+2023-09-22 18:25:23.146630 [ALERT] Created new order - orderId: 14
+
+2023-09-22 18:25:23.189121 [ALERT] Sent new order through socketio - orderId: 14
+
+2023-09-22 18:43:39.767968 [ALERT] Could not send info about canceled order through socket - orderId: 13 [0]
+
+2023-09-22 18:44:45.526483 [ALERT] Could not send info about canceled order through socket - orderId: 2 [0]
+
+2023-09-22 18:45:38.056762 [ALERT] Sent info about canceled order through socketio - orderId: 14
+
+2023-09-22 18:46:34.696380 [ALERT] Sent info about canceled order through socketio - orderId: 12
+
+2023-09-22 18:47:23.073161 [ALERT] Sent info about canceled order through socketio - orderId: 11
+
+2023-09-22 18:47:36.513568 [ALERT] Sent info about canceled order through socketio - orderId: 9
+
+2023-09-22 19:01:46.843115 [ALERT] Created new order - orderId: 15
+
+2023-09-22 19:01:46.878807 [ALERT] Sent new order through socketio - orderId: 15
+
+2023-09-22 19:07:36.099287 [ERROR] Updated order status [orderId: 15, newStatus: DONE]
+
+2023-09-23 11:38:46.912859 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-23 11:39:22.816162 [ALERT] Created new order - orderId: 16
+
+2023-09-23 11:39:22.849730 [ALERT] Sent new order through socketio - orderId: 16
+
+2023-09-23 12:02:55.045126 [ALERT] Created new order - orderId: 17
+
+2023-09-23 12:02:55.085396 [ALERT] Sent new order through socketio - orderId: 17
+
+2023-09-23 12:22:34.488124 [ALERT] Sent info about canceled order through socketio - orderId: 16
+
+2023-09-23 12:22:58.386639 [ALERT] Sent info about canceled order through socketio - orderId: 17
+
+2023-09-23 12:28:49.650501 [ALERT] Sent info about canceled order through socketio - orderId: 4
+
+2023-09-24 10:45:19.046491 [ALERT] Sent info about canceled order through socketio - orderId: 5
+
+2023-09-24 13:10:28.994989 [ALERT] Sent info about canceled order through socketio - orderId: 7
+
+2023-09-24 13:19:37.226260 [ALERT] Sent info about canceled order through socketio - orderId: 1
+
+2023-09-24 13:28:47.764643 [ALERT] Sent info about canceled order through socketio - orderId: 3
+
+2023-09-24 13:31:10.247803 [ALERT] Sent info about canceled order through socketio - orderId: 6
+
+2023-09-24 13:36:39.155221 [ALERT] Sent info about canceled order through socketio - orderId: 10
+
+2023-09-24 13:39:08.084678 [ALERT] Sent info about canceled order through socketio - orderId: 8
+
+2023-09-24 13:40:57.807536 [ALERT] Sent info about canceled order through socketio - orderId: 15
+
+2023-09-24 13:42:45.029122 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-09-24 13:42:55.313889 [ALERT] Created new order - orderId: 18
+
+2023-09-24 13:42:55.345813 [ALERT] Sent new order through socketio - orderId: 18
+
+2023-09-24 13:43:55.194971 [ALERT] Sent info about canceled order through socketio - orderId: 18
+
+2023-09-24 14:22:30.102641 [ALERT] Created new order - orderId: 19
+
+2023-09-24 14:22:30.145377 [ALERT] Sent new order through socketio - orderId: 19
+
+2023-09-24 14:31:01.739896 [ALERT] Created new order - orderId: 20
+
+2023-09-24 14:31:01.764110 [ALERT] Sent new order through socketio - orderId: 20
+
+2023-09-24 15:11:23.351179 [ALERT] Created new order - orderId: 21
+
+2023-09-24 15:11:23.396611 [ALERT] Sent new order through socketio - orderId: 21
+
+2023-09-24 15:14:10.782394 [ALERT] Created new order - orderId: 22
+
+2023-09-24 15:14:10.823259 [ALERT] Sent new order through socketio - orderId: 22
+
+2023-09-24 15:15:38.840227 [ALERT] Sent info about canceled order through socketio - orderId: 22
+
+2023-09-24 15:15:45.522553 [ALERT] Sent info about canceled order through socketio - orderId: 19
+
+2023-09-24 15:16:53.072157 [ALERT] Created new order - orderId: 23
+
+2023-09-24 15:16:53.120022 [ALERT] Sent new order through socketio - orderId: 23
+
+2023-09-24 15:22:36.972196 [ALERT] Sent info about canceled order through socketio - orderId: 23
+
+2023-09-24 15:23:28.361077 [ALERT] Sent info about canceled order through socketio - orderId: 21
+
+2023-09-24 15:45:07.548780 [ALERT] Created new order - orderId: 24
+
+2023-09-24 15:45:07.592375 [ALERT] Sent new order through socketio - orderId: 24
+
+2023-09-24 16:05:30.604408 [ALERT] Created new order - orderId: 25
+
+2023-09-24 16:05:30.651510 [ALERT] Sent new order through socketio - orderId: 25
+
+2023-09-24 16:05:56.722654 [ALERT] Sent info about canceled order through socketio - orderId: 25
+
+2023-09-24 17:04:56.311891 [ALERT] Created new order - orderId: 26
+
+2023-09-24 17:04:56.355907 [ALERT] Sent new order through socketio - orderId: 26
+
+2023-09-24 17:16:16.437631 [ALERT] Updated order status [orderId: 19, newStatus: DONE]
+
+2023-09-24 17:17:16.355468 [ALERT] Updated order status [orderId: 5, newStatus: CREATED]
+
+2023-09-24 17:17:40.105961 [ALERT] Updated order status [orderId: 22, newStatus: READY]
+
+2023-09-24 17:17:47.096661 [ALERT] Sent info about canceled order through socketio - orderId: 22
+
+2023-09-24 17:18:43.478899 [ALERT] Sent info about canceled order through socketio - orderId: 22
+
+2023-09-24 17:40:23.031267 [ALERT] Updated order status [orderId: 24, newStatus: DONE]
+
+2023-09-24 17:40:23.126186 [ALERT] Updated order status [orderId: 21, newStatus: DONE]
+
+2023-10-04 21:23:48.020345 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-04 21:25:13.833360 [ALERT] Created new order - orderId: 27
+
+2023-10-04 21:25:13.868239 [ERROR] Could not send new order through socket - orderId: 27 [Object of type datetime is not JSON serializable]
+
+2023-10-04 21:27:50.902078 [ALERT] Created new order - orderId: 28
+
+2023-10-04 21:27:50.946091 [ERROR] Could not send new order through socket - orderId: 28 [Object of type datetime is not JSON serializable]
+
+2023-10-04 21:33:18.333324 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-04 21:35:04.973224 [ALERT] Created new order - orderId: 29
+
+2023-10-04 21:35:05.012265 [ERROR] Could not send new order through socket - orderId: 29 [Object of type datetime is not JSON serializable]
+
+2023-10-04 21:36:19.571030 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-04 21:36:33.889436 [ALERT] Created new order - orderId: 30
+
+2023-10-04 21:36:33.919581 [ERROR] Could not send new order through socket - orderId: 30 [Object of type datetime is not JSON serializable]
+
+2023-10-04 21:39:22.044772 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-04 21:39:29.680061 [ALERT] Created new order - orderId: 31
+
+2023-10-04 21:39:29.726193 [ALERT] Sent new order through socketio - orderId: 31
+
+2023-10-04 21:45:33.853879 [ALERT] Created new order - orderId: 32
+
+2023-10-04 21:45:33.902111 [ALERT] Sent new order through socketio - orderId: 32
+
+2023-10-04 21:45:52.131787 [ALERT] Created new order - orderId: 33
+
+2023-10-04 21:45:52.196552 [ALERT] Sent new order through socketio - orderId: 33
+
+2023-10-04 21:51:08.444482 [ALERT] Created new order - orderId: 34
+
+2023-10-04 21:51:08.501005 [ALERT] Sent new order through socketio - orderId: 34
+
+2023-10-04 22:31:43.053050 [ALERT] Created new order - orderId: 35
+
+2023-10-04 22:31:43.106678 [ALERT] Sent new order through socketio - orderId: 35
+
+2023-10-04 23:12:27.828781 [ALERT] Created new order - orderId: 36
+
+2023-10-04 23:12:27.880258 [ALERT] Sent new order through socketio - orderId: 36
+
+2023-10-04 23:12:43.538835 [ALERT] Created new order - orderId: 37
+
+2023-10-04 23:12:43.590803 [ALERT] Sent new order through socketio - orderId: 37
+
+2023-10-04 23:20:37.103127 [ALERT] Created new order - orderId: 38
+
+2023-10-04 23:20:37.148894 [ALERT] Sent new order through socketio - orderId: 38
+
+2023-10-06 16:05:43.570012 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-10-06 16:05:56.368477 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-10-06 16:07:00.163718 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-06 16:08:21.913583 [ALERT] Created new order - orderId: 39
+
+2023-10-06 16:08:21.973959 [ALERT] Sent new order through socketio - orderId: 39
+
+2023-10-06 16:12:08.094019 [ALERT] Updated order status [orderId: 18, newStatus: DONE]
+
+2023-10-06 16:12:08.151040 [ALERT] Updated order status [orderId: 12, newStatus: DONE]
+
+2023-10-06 16:12:08.199574 [ALERT] Updated order status [orderId: 10, newStatus: READY]
+
+2023-10-06 16:12:08.249116 [ALERT] Updated order status [orderId: 9, newStatus: READY]
+
+2023-10-06 16:12:10.734474 [ALERT] Updated order status [orderId: 6, newStatus: DONE]
+
+2023-10-06 16:12:10.783434 [ALERT] Updated order status [orderId: 4, newStatus: DONE]
+
+2023-10-06 16:12:10.832423 [ALERT] Updated order status [orderId: 39, newStatus: DONE]
+
+2023-10-09 19:50:12.326156 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-10-09 19:50:33.845934 [ALERT] Updated establishment - establishmentId: 2
+
+2023-10-09 20:31:14.907701 [ALERT] Database has been cleaned.
+
+2023-10-09 20:31:15.227918 [ERROR] Could not inicialize the database [1304 (42000): PROCEDURE SocketSentOrder already exists]
+
+2023-10-09 20:32:50.537780 [ALERT] Database has been cleaned.
+
+2023-10-09 20:32:50.851500 [ALERT] Database has been inicialized.
+
+2023-10-09 20:33:07.294621 [ALERT] Database has been cleaned.
+
+2023-10-09 20:33:07.637367 [ALERT] Database has been inicialized.
+
+2023-10-09 20:36:26.330644 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-09 20:36:34.466549 [ERROR] Could not create new order [string indices must be integers]
+
+2023-10-09 20:36:55.332495 [ERROR] Could not create new order [string indices must be integers]
+
+2023-10-09 20:39:19.402601 [ERROR] Could not create new order [string indices must be integers]
+
+2023-10-09 20:42:02.328394 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-09 20:42:12.998763 [ALERT] Created new order - orderId: 1
+
+2023-10-09 20:42:13.020973 [ALERT] Sent new order through socketio - orderId: 1
+
+2023-10-09 20:49:20.860945 [ALERT] Sent info about canceled order through socketio - orderId: 1
+
+2023-10-09 20:53:38.909396 [ALERT] Created new order - orderId: 2
+
+2023-10-09 20:53:38.939932 [ALERT] Sent new order through socketio - orderId: 2
+
+2023-10-09 20:59:51.638598 [ALERT] Updated order status [orderId: 2, newStatus: DONE]
+
+2023-10-09 21:03:08.500058 [ALERT] Created new order - orderId: 3
+
+2023-10-09 21:03:08.553127 [ALERT] Sent new order through socketio - orderId: 3
+
+2023-10-09 21:04:07.916802 [ALERT] Updated order status [orderId: 3, newStatus: PROCESSING]
+
+2023-10-09 21:04:20.752250 [ALERT] Updated order status [orderId: 3, newStatus: READY]
+
+2023-10-09 21:04:27.997564 [ALERT] Updated order status [orderId: 3, newStatus: DONE]
+
+2023-10-09 21:04:42.980426 [ALERT] Created new order - orderId: 4
+
+2023-10-09 21:04:43.043865 [ALERT] Sent new order through socketio - orderId: 4
+
+2023-10-09 21:04:51.115968 [ALERT] Updated order status [orderId: 4, newStatus: PROCESSING]
+
+2023-10-09 21:06:52.258480 [ALERT] Updated order status [orderId: 4, newStatus: READY]
+
+2023-10-09 21:07:05.197329 [ALERT] Updated order status [orderId: 4, newStatus: DONE]
+
+2023-10-09 21:08:54.573483 [ALERT] Created new order - orderId: 5
+
+2023-10-09 21:08:54.605123 [ALERT] Sent new order through socketio - orderId: 5
+
+2023-10-09 21:09:07.895905 [ALERT] Updated order status [orderId: 5, newStatus: PROCESSING]
+
+2023-10-09 21:09:15.290131 [ALERT] Updated order status [orderId: 5, newStatus: READY]
+
+2023-10-09 21:09:42.468740 [ALERT] Updated order status [orderId: 5, newStatus: DONE]
+
+2023-10-09 21:11:22.697749 [ALERT] Toggled account active status - accountId: 1
+
+2023-10-09 21:11:24.147163 [ALERT] Toggled account active status - accountId: 1
+
+2023-10-10 09:35:26.194139 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-10-10 09:35:38.459050 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-10 09:39:31.737949 [ALERT] Sent info about canceled order through socketio - orderId: 5
+
+2023-10-10 13:04:50.986483 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-10 13:08:34.382211 [ALERT] Sent info about canceled order through socketio - orderId: 3
+
+2023-10-11 19:07:14.490107 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-11 19:45:37.738761 [ALERT] Created new order - orderId: 6
+
+2023-10-11 19:45:37.777301 [ALERT] Sent new order through socketio - orderId: 6
+
+2023-10-11 19:46:01.365313 [ALERT] Sent info about canceled order through socketio - orderId: 6
+
+2023-10-11 20:49:11.390543 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-11 21:25:06.414714 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-11 21:26:02.944679 [ALERT] Created new order - orderId: 7
+
+2023-10-11 21:26:03.006872 [ALERT] Sent new order through socketio - orderId: 7
+
+2023-10-11 21:26:19.003892 [ALERT] Updated order status [orderId: 7, newStatus: PROCESSING]
+
+2023-10-11 21:26:23.646837 [ALERT] Updated order status [orderId: 7, newStatus: READY]
+
+2023-10-11 21:26:37.601144 [ALERT] Updated order status [orderId: 7, newStatus: DONE]
+
+2023-10-11 21:28:18.243267 [ALERT] Created new order - orderId: 8
+
+2023-10-11 21:28:18.316759 [ALERT] Sent new order through socketio - orderId: 8
+
+2023-10-11 21:28:33.971812 [ALERT] Updated order status [orderId: 8, newStatus: PROCESSING]
+
+2023-10-11 21:28:38.894287 [ALERT] Updated order status [orderId: 8, newStatus: READY]
+
+2023-10-11 21:28:44.396702 [ALERT] Updated order status [orderId: 8, newStatus: DONE]
+
+2023-10-11 21:35:08.303387 [ALERT] Created new order - orderId: 9
+
+2023-10-11 21:35:08.379300 [ALERT] Sent new order through socketio - orderId: 9
+
+2023-10-11 21:40:07.190739 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-11 21:42:01.188366 [ALERT] Created new order - orderId: 10
+
+2023-10-11 21:42:01.239521 [ALERT] Sent new order through socketio - orderId: 10
+
+2023-10-11 21:42:52.484501 [ALERT] Updated order status [orderId: 10, newStatus: PROCESSING]
+
+2023-10-11 21:43:01.167228 [ALERT] Updated order status [orderId: 10, newStatus: READY]
+
+2023-10-11 21:43:34.773586 [ALERT] Updated order status [orderId: 10, newStatus: DONE]
+
+2023-10-11 21:45:30.651576 [ALERT] Updated order status [orderId: 9, newStatus: READY]
+
+2023-10-11 21:45:35.502961 [ALERT] Updated order status [orderId: 9, newStatus: DONE]
+
+2023-10-11 21:45:45.483198 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-11 21:46:15.212484 [ALERT] Created new order - orderId: 11
+
+2023-10-11 21:46:15.259282 [ALERT] Sent new order through socketio - orderId: 11
+
+2023-10-11 21:46:46.358661 [ALERT] Updated order status [orderId: 11, newStatus: PROCESSING]
+
+2023-10-11 21:46:51.423401 [ALERT] Updated order status [orderId: 11, newStatus: READY]
+
+2023-10-11 21:46:56.262030 [ALERT] Updated order status [orderId: 11, newStatus: DONE]
+
+2023-10-11 21:54:08.621555 [ALERT] Created new order - orderId: 12
+
+2023-10-11 21:54:08.662535 [ALERT] Sent new order through socketio - orderId: 12
+
+2023-10-11 21:54:22.118282 [ALERT] Updated order status [orderId: 12, newStatus: PROCESSING]
+
+2023-10-11 21:54:27.027396 [ALERT] Updated order status [orderId: 12, newStatus: READY]
+
+2023-10-11 21:54:32.065448 [ALERT] Updated order status [orderId: 12, newStatus: DONE]
+
+2023-10-11 21:56:00.165128 [ALERT] Updated establishment - establishmentId: 2
+
+2023-10-11 21:56:15.483629 [ALERT] Created new order - orderId: 13
+
+2023-10-11 21:56:15.532930 [ALERT] Sent new order through socketio - orderId: 13
+
+2023-10-11 21:58:56.716946 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-11 22:34:56.695739 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-11 22:55:04.077169 [ALERT] Updated order status [orderId: 13, newStatus: PROCESSING]
+
+2023-10-11 22:55:07.895674 [ALERT] Updated order status [orderId: 13, newStatus: READY]
+
+2023-10-11 22:55:12.698483 [ALERT] Updated order status [orderId: 13, newStatus: DONE]
+
+2023-10-11 23:06:59.123085 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-11 23:08:26.652924 [ALERT] Created new order - orderId: 14
+
+2023-10-11 23:08:26.674709 [ALERT] Sent new order through socketio - orderId: 14
+
+2023-10-11 23:08:35.823897 [ALERT] Updated order status [orderId: 14, newStatus: PROCESSING]
+
+2023-10-11 23:08:56.651909 [ALERT] Updated order status [orderId: 14, newStatus: READY]
+
+2023-10-11 23:09:01.120045 [ALERT] Updated order status [orderId: 14, newStatus: DONE]
+
+2023-10-12 19:28:53.572995 [ALERT] Account token has been updated - Email: micek.robin@gmail.com
+
+2023-10-12 19:30:01.441492 [ALERT] Created new order - orderId: 15
+
+2023-10-12 19:30:01.475003 [ALERT] Sent new order through socketio - orderId: 15
+
+2023-10-12 19:30:10.115028 [ALERT] Updated order status [orderId: 15, newStatus: PROCESSING]
+
+2023-10-12 19:30:14.453696 [ALERT] Updated order status [orderId: 15, newStatus: READY]
+
+2023-10-12 19:30:23.618850 [ALERT] Updated order status [orderId: 15, newStatus: DONE]
+
+2023-10-12 19:31:34.654405 [ALERT] Created new order - orderId: 16
+
+2023-10-12 19:31:34.691464 [ALERT] Sent new order through socketio - orderId: 16
+
+2023-10-12 19:31:55.751945 [ALERT] Created new order - orderId: 17
+
+2023-10-12 19:31:55.783270 [ALERT] Sent new order through socketio - orderId: 17
+
+2023-10-12 19:32:10.950637 [ALERT] Created new order - orderId: 18
+
+2023-10-12 19:32:10.974599 [ALERT] Sent new order through socketio - orderId: 18
+
+2023-10-12 19:32:19.772161 [ALERT] Updated order status [orderId: 16, newStatus: PROCESSING]
+
+2023-10-12 19:32:24.591481 [ALERT] Updated order status [orderId: 18, newStatus: PROCESSING]
+
+2023-10-12 19:32:54.792162 [ALERT] Updated order status [orderId: 16, newStatus: READY]
+
+2023-10-12 19:32:54.835395 [ALERT] Updated order status [orderId: 16, newStatus: READY]
+
+2023-10-12 19:32:54.930629 [ALERT] Updated order status [orderId: 18, newStatus: READY]
+
+2023-10-12 19:32:58.868535 [ALERT] Updated order status [orderId: 16, newStatus: DONE]
+
+2023-10-12 19:32:59.565366 [ALERT] Updated order status [orderId: 18, newStatus: DONE]
+
+2023-10-12 19:33:03.442214 [ALERT] Updated order status [orderId: 17, newStatus: PROCESSING]
+
+2023-10-12 19:33:07.875451 [ALERT] Updated order status [orderId: 17, newStatus: READY]
+
+2023-10-12 19:33:12.383552 [ALERT] Updated order status [orderId: 17, newStatus: DONE]
+
+2023-10-12 19:34:04.635731 [ALERT] Updated establishment - establishmentId: 1
+
+2023-10-17 01:07:07.614866 [ALERT] Toggled establishment visibility - establishmentId: 2
+
+2023-10-17 22:37:45.629867 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-10-17 22:54:35.298792 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-10-17 22:54:38.539160 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-10-19 13:17:52.915355 [ALERT] Updated order status [orderId: 13, newStatus: PROCESSING]
+
+2023-10-19 13:18:00.862056 [ALERT] Updated order status [orderId: 13, newStatus: READY]
+
+2023-10-19 13:18:09.053895 [ALERT] Updated order status [orderId: 13, newStatus: DONE]
+
+2023-10-23 09:18:07.253834 [ALERT] Updated order status [orderId: 14, newStatus: PROCESSING]
+
+2023-10-23 09:19:13.341626 [ALERT] Updated order status [orderId: 14, newStatus: READY]
+
+2023-10-23 11:07:09.072670 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-10-23 11:15:43.583825 [ERROR] Could not connect the database [2003: Can't connect to MySQL server on 'localhost:3306' (111 Connection refused)]
+
+2023-10-23 11:23:29.768312 [ALERT] Updated order status [orderId: 16, newStatus: READY]
+
+2023-10-25 21:31:56.195342 [ERROR] Could not create new establishment [1054 (42S22): Unknown column 'roomName' in 'field list']
+
+2023-10-25 21:34:10.112971 [ALERT] Database has been cleaned.
+
+2023-10-25 21:34:10.411127 [ALERT] Database has been inicialized.
+
+2023-10-25 21:37:16.250455 [ALERT] Created new establishment - establishmentId: 3
+
+2023-10-25 21:38:28.850617 [ALERT] Toggled establishment visibility - establishmentId: 3
+

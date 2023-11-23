@@ -1,0 +1,14 @@
+[Unit]
+Description=K Okénku | Backend & Admin Panel
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=python3 -m gunicorn -k gevent -w 1 --bind 0.0.0.0:8000 --chdir ./home/micek/admin/app/web app:app
+User=micek
+Restart=always
+RestartSec=3
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,86 @@
+<!-- Usage 
+with screenName=""
+    include 'topbar.html'
+endwith -->
+
+<div class="absolute top-0 left-0 z-10 p-3 bg-secondary w-full">
+
+    <div class="grid grid-cols-5 w-full">  
+
+        <div class="col-span-2">
+            <div class="flex justify-start items-center">
+                
+                <a href="/">
+                    <i class="las la-home text-white text-4xl"></i>
+                </a>
+
+                <h1 class="ml-2 text-2xl font-medium">{{ config.establishmentName }}</h1>
+            </div>
+        </div>
+        
+        <div class="col-span-1 text-center">
+            <h1 id="currentTime" class="text-4xl font-bold"></h1>
+        </div>
+
+        <div class="col-span-2 ">    
+            <div class="flex justify-end items-center">
+                {% if screenName != "" %}
+                    <h1 class="text-lg xl:text-2xl font-bold mr-10 uppercase">{{ screenName }}</h1>   
+
+                    <button id="reload-orders" class="mr-5">
+                        <i class="las la-redo-alt text-white text-4xl"></i>
+                    </button>
+                    <script>                        
+                        const reloadOrdersButton = document.getElementById("reload-orders")
+
+                        reloadOrdersButton.addEventListener("click", function () {
+                            fetch("/func/get-orders")
+                                .then(response => {
+                                    if (response.ok) {
+                                        location.reload()
+                                    }
+                                    else {
+                                        alert("Nepodařilo se stáhnout objednávky!")
+                                    }
+                                })
+                        })
+                    </script>
+
+                    <a href="/logout">
+                        <i class="las la-door-open text-white text-4xl"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+<!-- Spacing for vertical screens -->
+<div class="mb-32 md:mb-0"></div>
+
+<script>
+
+    function getCurrentTime() {
+        const timeContainer = document.getElementById("currentTime");
+        const updateTime = () => {
+            const time = new Date();
+            timeContainer.innerText = `${time.getHours().toString().padStart(2, '0')}:${time.getMinutes().toString().padStart(2, '0')}:${time.getSeconds().toString().padStart(2, '0')}`;
+        };
+
+        // Clear the previous interval if it exists
+        if (typeof getCurrentTime.intervalId !== 'undefined') {
+            clearInterval(getCurrentTime.intervalId);
+        }
+
+        // Set a new interval
+        getCurrentTime.intervalId = setInterval(updateTime, 1000);
+
+        // Initial call to update the time
+        updateTime();
+    }
+
+    getCurrentTime(); // Call the function to start the timer
+
+
+</script>

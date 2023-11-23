@@ -1,0 +1,24 @@
+{
+    "app": {
+      "dateTime": {
+        "day": "numeric",
+        "hour": "numeric",
+        "minute": "numeric",
+        "month": "numeric",
+        "second": "numeric",
+        "timezone": "cs-CZ",
+        "weekday": "short",
+        "year": "numeric"
+      }
+    },
+    "companyInfo": {
+      "address": "",
+      "companyName": "",
+      "email": "",
+      "phone": ""
+    },
+    "orders": {
+      "defaultOrderWait": 300,
+      "ignorePreparationTimes": false
+    }
+  }

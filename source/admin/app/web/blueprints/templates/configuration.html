@@ -1,0 +1,124 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="m-5">
+    <div class="flex text-left">
+        <div>
+            <h1 class='text-4xl font-bold'>Konfigurace</h1>
+            <p class="mt-3 mb-1">Konfigurace je nastavení základných proměných. Jednotlivé proměnné ovlivňují zobrazení a funkcionalitu různých komponent celého ekosystému.</p>
+        </div>
+        <div class="flex-grow text-right mt-5">
+            {% with text="Obnovit Výchozí", type="button", icon="las la-undo-alt", button="", id="restoreButton" %}
+                {% include "/components/form/button.html" %}
+            {% endwith %}      
+        </div>
+    </div>
+</div>
+
+<div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.10.2/jsoneditor.min.js" integrity="sha512-jhDajNRbXZ4gJ8SVzcuWTHbgSX66Dh98CwmAkhBHWVuEYVgY8G35rbZuRlQwrOcwEB6z5aYzxUptsSjgTGlCbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <div class="m-5">
+        <div id="jsoneditor" style="height: 70vh;" class="w-full"></div>
+
+        <div class="mt-5 flex justify-center">
+            {% with text="Uložit", type="button", icon="las la-save", button="", id="submitButton" %}
+                {% include "/components/form/button.html" %}
+            {% endwith %}
+        </div>
+    </div>
+
+    <form action="/configure" method="POST" id="form">
+        <textarea name="configurationJSON" id="configurationJSON" class="hidden"></textarea>
+    </form>
+
+    <script>
+        // Get elements
+        const buttonRestore = document.getElementById("restoreButton");
+        const buttonSubmit = document.getElementById("submitButton");
+        const form = document.getElementById("form");
+        const textarea = document.getElementById("configurationJSON")
+        const container = document.getElementById("jsoneditor");
+
+        // Create the editor        
+        const options = {
+            mode: 'form',
+            modes: ['form', "code", "preview"] // allowed modes
+        
+        };
+        const editor = new JSONEditor(container, options);
+
+        // Set json
+        const initialJson = {{ oldConfigurationJSON | tojson }}
+
+        editor.set(initialJson);
+        editor.expandAll();
+        
+
+        function restoreDefaultJSON () {
+            if (confirm("Chcete obnovit výchozí konfiguraci?") == true) {
+
+                defaultConfig = {
+                    companyInfo: {
+                        companyName: "",
+                        email: "",
+                        phone: "",
+                        address: ""
+                    },
+                    orders: {                
+                        ignorePreparationTimes: false,
+                        defaultOrderWait: 300
+                    },
+                    app: {
+                        dateTime: {
+                            timezone: "cs-CZ",
+                            weekday: "short",
+                            year: "numeric",
+                            month: "numeric",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "numeric",
+                            second: "numeric"
+                        }
+                    }
+                };
+
+
+                editor.set(defaultConfig);
+                editor.expandAll();
+
+            }
+        };
+
+        function submitForm () {
+            textarea.innerText = JSON.stringify(editor.get());
+            form.submit();
+        };
+
+        buttonRestore.addEventListener("click", restoreDefaultJSON)
+        buttonSubmit.addEventListener("click", submitForm)
+    </script>
+</div>
+
+
+{% endblock %}

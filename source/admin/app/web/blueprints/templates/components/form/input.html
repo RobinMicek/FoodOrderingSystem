@@ -1,0 +1,118 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+<!--
+    How to use:
+        with text="", type="", sec="true/false" - for time, name="" required="true/false", value="", maxlength="", disabled="true"
+            include "/components/form/input.html"
+        endwith
+-->
+
+
+{% if type=="checkbox" %}
+    <div class="w-full mt-5">
+        <div class="flex items-center mb-4">
+            <input id="{{ name }}" name="{{ name }}" type="checkbox" value="{{ value }}" {% if value == 1 %} checked {% endif %} 
+            class="w-4 h-4 text-secondary bg-primary border-secondary rounded checked text-primary checked:shadow-md checked:bg-secondary">
+            <label for="{{ name }}" class="ml-2 text-sm font-bold text-secondary">{{ text }}</label>
+        </div>
+    </div>
+
+    <script>
+        // Send checkbox in the form even if it is not checked
+        document.addEventListener('submit', (event) => {
+            const form = event.target;
+            const checkbox{{ name }} = document.getElementById('{{ name }}');
+        
+            if (checkbox{{ name }}.checked) {
+                checkbox{{ name }}.value = '1';
+            } else {
+                checkbox{{ name }}.checked = true;
+                checkbox{{ name }}.value = '0';
+            }
+        });
+    </script>
+{% elif type=="time" and sec=="true" %}
+    <div class="w-full mt-5">
+        <label for="{{ name }}">
+            <p class="text-left font-bold text-secondary">{{ text }}</p>
+        </label>
+        <input type="{{ type }}" placeholder="{{ text }}" name="{{ name }}" id="{{ name }}" {% if required == 'true' %} required {% endif %} style="width: 100%;" min="00:00" max="23:59" step="1" value="{{ value }}" {% if disabled == 'true' %} disabled {% endif %}
+        class="appearance-none block bg-primary w-full text-text border border-secondary focus:shadow-md rounded py-3 px-4">
+    </div>
+{% elif type=="time" %}
+    <div class="w-full mt-5">
+        <label for="{{ name }}">
+            <p class="text-left font-bold text-secondary">{{ text }}</p>
+        </label>
+        <input type="{{ type }}" placeholder="{{ text }}" name="{{ name }}" id="{{ name }}" {% if required == 'true' %} required {% endif %} style="width: 100%;" min="00:00" max="23:59" step="60" value="{{ value }}" {% if disabled == 'true' %} disabled {% endif %}
+        class="appearance-none block bg-primary w-full text-text border border-secondary focus:shadow-md rounded py-3 px-4">
+    </div>
+{% elif type=="number" %}
+    <div class="w-full mt-5">
+        <label for="{{ name }}">
+            <p class="text-left font-bold text-secondary">{{ text }}</p>
+        </label>
+        <input type="{{ type }}" placeholder="{{ text }}" name="{{ name }}" id="{{ name }}" {% if required == 'true' %} required {% endif %} style="width: 100%;" min="0" step="0.01" value="{{ value }}" {% if disabled == 'true' %} disabled {% endif %}
+        class="appearance-none block bg-primary w-full text-text border border-secondary focus:shadow-md rounded py-3 px-4">
+    </div>
+{% elif type=="file" %}
+    <div class="w-full mt-5">
+        <label for="{{ name }}">
+            <p class="text-left font-bold text-secondary">{{ text }}</p>
+        </label>
+        <input type="{{ type }}" placeholder="{{ text }}" name="{{ name }}" id="{{ name }}" {% if required == 'true' %} required {% endif %} style="width: 100%;" accept=".png, .jpg, .jpeg" 
+        class="appearance-none block bg-primary w-full text-text border border-secondary focus:shadow-md rounded py-3 px-4">
+    </div>
+{% elif type=="textarea" %}
+    <div class="w-full mt-5">
+        <label for="{{ name }}">
+            <p class="text-left font-bold text-secondary">{{ text }}</p>
+        </label>
+        <textarea rows="5" id="{{ name }}" name="{{ name }}" maxlength="{{ maxlength }}" {% if required == 'true' %} required {% endif %} oninput="updateCharacterCount()" {% if disabled == 'true' %} disabled {% endif %}
+        class="appearance-none block bg-primary w-full text-text border border-secondary focus:shadow-md rounded py-3 px-4">{{ value }}</textarea>
+        
+        <div class="text-right mt-1 mr-2 text-sm">
+            <span id="charCount"></span>
+        </div>
+
+        <script>
+            function updateCharacterCount() {
+                const textarea = document.getElementById('{{ name }}');
+                const charCountSpan = document.getElementById('charCount');
+
+                const maxLength = parseInt(textarea.getAttribute('maxlength'));
+                const currentLength = textarea.value.length;
+                const remainingChars = maxLength - currentLength;
+
+                charCountSpan.textContent = remainingChars + ' / ' + parseInt(textarea.getAttribute('maxlength'));
+            }
+            
+            updateCharacterCount()
+        </script>
+    </div>
+{% else %}
+    <div class="w-full mt-5">
+        <label for="{{ name }}">
+            <p class="text-left font-bold text-secondary">{{ text }}</p>
+        </label>
+        <input type="{{ type }}" placeholder="{{ text }}" name="{{ name }}" id="{{ name }}" value="{{ value }}" {% if required == 'true' %} required {% endif %} style="width: 100%;" {% if disabled == 'true' %} disabled {% endif %}
+        class="appearance-none block bg-primary w-full text-text border border-secondary rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:shadow-md focus:border-gray-500">
+    </div>
+{% endif %}

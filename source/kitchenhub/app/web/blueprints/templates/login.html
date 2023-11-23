@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="flex flex-cold items-center justify-center h-screen w-screen">
+    <form action="/login" method="POST">
+        <div class="relative w-96">
+            <input type="text" name="pin" id="preview" class="bg-white text-primary p-5 text-4xl text-center w-full h-20 rounded-tr-lg rounded-tl-lg"></input>
+            <button type="button" onClick="handleDelete()" class="absolute right-5 pt-5">
+                <i class="las la-backspace text-primary text-4xl"></i>
+            </button>            
+        </div>
+
+        <div id="pinpad" class="grid grid-cols-3">
+            
+        </div>
+
+        <div class="w-96">
+            <button type="submit" class="bg-secondary text-white p-5 w-full rounded-br-lg rounded-bl-lg">
+                <h1 class="text-2xl">Přihlásit Se</h1>
+            </button>
+        <div>
+    </form>
+</div>
+
+
+<script>
+    function createPinpad () {
+
+        const pinpad = document.getElementById("pinpad")
+        let buttons = ""
+
+        for (let x = 1; x < 10; x++) {
+
+            buttons += `
+                <div class="col-span-1 w-32 ">
+                    
+                    <button type="button" onClick="handleClick(${x})" class="bg-white text-primary p-5 w-full">
+                        <h1 class="text-4xl">${x}</h1>                        
+                    </button>
+                
+                </div>
+            `
+        }
+
+        pinpad.innerHTML = buttons
+    }
+
+
+    function handleClick (number) {
+        const preview = document.getElementById("preview")
+        const currentText = preview.value
+
+        // Edit preview text
+        if (currentText.length < 10) {
+            preview.value = `${currentText}${number}`
+        }
+    }
+
+    
+    function handleDelete () {
+        const preview = document.getElementById("preview")
+        const currentText = preview.value
+
+        // Edit preview text
+        preview.value = currentText.slice(0, -1)
+    }
+
+    createPinpad()
+</script>
+{% endblock %}

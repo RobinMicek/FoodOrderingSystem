@@ -1,0 +1,109 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K Okénku | Admin</title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/files/media/favicon-white.png" />
+    
+
+    <!-- CSS Imports -->
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+
+    <!-- Line Icons -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+
+    <!-- Tailwindcss CDN and Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+                colors: {
+                    primary: "#FFFCF7",
+                    secondary: "#008550",
+                    secondary_dark: "#005C37",
+                    white: "#FFFFFF",
+                    text: "282828"
+                },
+                fontFamily: {
+                    'main': ['M PLUS Rounded 1c', 'sans-serif']
+                }
+            }
+          }
+        }
+    </script>
+
+</head>
+<body 
+    class="bg-secondary flex justify-center items-center h-screen">
+
+    <style>
+        body {
+        /* Set the background image */
+        background-image: url("/files/media/background.jpg");
+        
+        /* Adjust background properties */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+        background-size: cover; /* Scale the image to cover the entire page */
+        background-position: center center; /* Center the image horizontally and vertically */
+        /* Optional: You can set a background color if the image is transparent or fails to load */
+        }
+    </style>
+
+    <div class="text-center">
+        <!-- Login Form -->
+        <div class="p-16 px-8 pb-24 w-96 shadow-lg rounded-md bg-primary">
+            <div>
+                <h1 class="text-4xl mb-11 text-text font-bold">Přihlásit Se</h1>
+                <form method="POST" action="/login">                    
+                    {% with text="Emailová Adresa", type="text", name="email", required="true" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Heslo", type="password", name="password", required="true" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    <div class="mt-5">
+                        {% with text="Přihlásit Se", type="submit", icon="las la-sign-in-alt", button="" %}
+                            {% include "/components/form/button.html" %}
+                        {% endwith %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-0 right-0 text-white m-3">Vytvořil <span class="text-secondary">Robin Míček</span></div>
+</body>

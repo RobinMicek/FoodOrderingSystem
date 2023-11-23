@@ -1,0 +1,110 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="m-5">
+    <div class="flex text-left">
+        <div>
+            <h1 class='text-4xl font-bold'>Objednávky</h1>
+            <p class="mt-3 mb-1">Objednávky, které zákazníci provedli.</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Table -->
+<div class="m-5">
+    {% with text="Hledat", type="text", name="search" %}
+        {% include "/components/form/input.html" %}
+    {% endwith %}
+</div>
+
+<div id="datatable" class="m-5">
+    
+    <table style="width: 100%;" class="text-center rounded-md shadow-md bg-secondary">
+        <thead class="text-white uppercase">
+            <tr id="thead">
+                <th class="px-6 py-4 text-md font-bold text-left">Číslo</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Účet</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Provozovna</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Vytvořeno</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Cena</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Stav</th>
+                <th class="px-6 py-4 text-md font-bold text-left"></th>
+            </tr>
+        </thead>
+        <tbody class="bg-white" id="tbody">            
+            {% for order in orders %}
+                <tr>
+                    <td class="px-6 py-4 text-md border-secondary text-left">#{{ order.orderId }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ order.firstname }} {{ order.surname }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ order.name }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ order.createdTime }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ order.totalPrice }} Kč</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">
+                        {% if order.status == "CREATED" %}
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>                                
+                                Vytvořená
+                            </span>                          
+                        {% elif order.status == "PROCESSING" %}
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                Připravuje Se
+                            </span>                          
+                        {% elif order.status == "READY" %}
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                Připravena
+                            </span>                          
+                        {% elif order.status == "DONE" %}
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                Vydaná
+                            </span>                          
+                        {% elif order.status == "CANCELED" %}
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                <span class="h-2 w-2 rounded-full bg-red-500 mr-1"></span>
+                                Zrušená
+                            </span>                          
+                        {% else %}
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                <span class="h-2 w-2 rounded-full bg-gray-200 mr-1"></span>
+                                Neznámé
+                            </span>                            
+                        {% endif %}
+                    </td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">
+                        <a href="/orders/view?id={{ order.orderId }}">
+                            {% with text="", type="button", icon="las la-info-circle", button="table" %}
+                                {% include "/components/form/button.html" %}
+                            {% endwith %}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="/files/js/createDataTable.js"></script>
+
+{% endblock %}

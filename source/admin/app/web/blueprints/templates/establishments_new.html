@@ -1,0 +1,219 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="m-5">
+    <p class="text-md mb-3">
+        <a href="/establishments" class="hover:text-secondary"><i class="las la-angle-left"></i>Zpět</a>
+    </p>
+
+    <h1 class='text-4xl font-bold'><span class="text-secondary">Nová</span> Provozovna</h1>
+
+    <form action="/establishments/new" method="POST" enctype="multipart/form-data">
+
+        <!-- Opening Hours Modal -->
+        <div id="modal" class="hidden m-5 p-10 bg-white shadow-md fixed inset-0 z-10 rounded-lg">
+
+            
+            <div class="flex">
+                <div class="text-left font-bold text-2xl">
+                    <h1><span class="text-secondary">Otevírací</span> Doba</h1>
+
+                </div>
+                <!-- Close modal-->    
+                <div class="flex-grow text-right">
+                    {% with text="", type="button", icon="las la-times", button="table", id="close_modal" %}
+                        {% include "/components/form/button.html" %}
+                    {% endwith %}
+                </div>
+            </div>
+
+            <script>
+                const buttonClose = document.getElementById("close_modal")
+                const modalOpen = document.getElementById("modal")
+
+                buttonClose.addEventListener("click", (event => {
+                    modalOpen.classList.add("hidden")
+                }))
+            </script>
+            
+            {% set opening_days = [
+                {
+                    "text": "Pondělí",
+                    "day": "1"
+                },
+                {
+                    "text": "Úterý",
+                    "day": "2"
+                },
+                {
+                    "text": "Středa",
+                    "day": "3"
+                },
+                {
+                    "text": "Čtvrtek",
+                    "day": "4"
+                },
+                {
+                    "text": "Pátek",
+                    "day": "5"
+                },
+                {
+                    "text": "Sobota",
+                    "day": "6"
+                },
+                {
+                    "text": "Neděle",
+                    "day": "7"
+                }
+            ] %}                    
+
+                {% for day in opening_days %}
+                    <div class="static md:grid md:grid-cols-7">
+                        <div class="md:col-span-1 m-1 pt-8">                            
+                            <div class="text-center mt-5">
+                                <h1 class="text-xl">{{ day.text }}</h1>    
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 mr-5 m-1">
+                            {% with text="Otevření", type="time", name="open_day_"+day.day, required="true", value="00:00" %}
+                                {% include "/components/form/input.html" %}
+                            {% endwith %}
+                        </div>
+                        <div class="md:col-span-3 m-1">
+                            {% with text="Zavření", type="time", name="close_day_"+day.day, required="true", value="00:00" %}
+                                {% include "/components/form/input.html" %}
+                            {% endwith %}
+                        </div>                        
+                    </div>
+                {% endfor %}                
+        </div>
+        
+        <div class="static md:grid md:grid-cols-2">
+    
+            <div class="md:col-span-1">
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Obecné</span> Nastavení</h1>
+                    <hr>
+                    
+                    {% with text="Název Provozovny", type="text", name="name", required="true", value="" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Adresa", type="text", name="address", required="true", value="" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Obrázek", type="file", name="image" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+
+                    <!-- Modal -->
+                    <div class="mt-10">
+                        <!-- Open modal-->    
+                        {% with text="Otevírací Doba", type="button", icon="las la-clock", button="table", id="open_modal" %}
+                            {% include "/components/form/button.html" %}
+                        {% endwith %}
+
+                        <script>
+                            const buttonOpen = document.getElementById("open_modal")
+                            const modalClose = document.getElementById("modal")
+
+                            buttonOpen.addEventListener("click", (event => {
+                                modalClose.classList.remove("hidden")
+                            }))
+                        </script>
+                    </div>
+        
+                </div>
+
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Vlastnosti</span> Provozovny</h1>
+                    <p class="mt-1">Vyberte, jakými vlastnostmi daná provozovna disponuje.</p>                    
+                    <hr>
+                    
+                    {% with text="Wifi", type="checkbox", name="wifi", required="true", value="false" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Stravování na místě", type="checkbox", name="dineIn", required="true", value="false" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Zahrádka", type="checkbox", name="yard", required="true", value="false" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Dětské hřiště", type="checkbox", name="playground", required="true", value="false" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Parkování", type="checkbox", name="parking", required="true", value="false" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Nabíječka na elektromobily", type="checkbox", name="eCharger", required="true", value="false" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                </div>
+                
+            </div>  
+         
+        
+            <div class="md:col-span-1">
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Dostupná</span> Menu</h1>
+                    <p class="mt-1">Vyberte menu, která budou na provozovně dostupná k objednání.</p>
+                    <hr>
+                    
+                    <div class="mt-5">
+                        <select name="menus" multiple class=" p-1 w-full h-96 bg-primary rounded ring-2 ring-secondary ring-offset-white">                        
+                            {% for menu in all_menus %}
+                                <option value="{{ menu.menuId }}" class="hover:bg-secondary hover:text-primary m-1 p-2 rounded">
+                                    {{ menu.name }} | {{ menu.note }}
+                                </option>
+                            {% endfor %}                                
+                        </select>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        
+
+        <!-- Submit Button -->
+        <div class="m-5 flex justify-center">
+            {% with text="Vytvořit", type="Submit", icon="las la-plus", button="" %}
+                {% include "/components/form/button.html" %}
+            {% endwith %}
+        </div>
+
+
+    </form>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+/* Tailwind Init */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts */
+@font-face {
+    font-family: 'Exo';
+    src: url('@/assets/fonts/Exo-VariableFont_wght.ttf') format('truetype');
+}
+ 
+body {
+    font-family: 'Exo', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+
+    overscroll-behavior: none; /* Disable "Bounce Scrolling" on iOS */
+}
+
+
+/* Remove the blue outline on focus/hover */
+.page-link, .page-link:visited, .page-link:hover, .page-link:active, .page-link:focus {
+    outline: 0 none !important;
+    border: 0;
+}
+
+router-link:focus, router-link:hover, a:focus, a:hover, button:focus, button:hover {
+    outline: none;
+}

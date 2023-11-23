@@ -1,0 +1,40 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+
+<div class="bg-secondary_dark p-1">
+
+    <div class="text-white text-right pr-5 flex justify-left">        
+        <h1 class="text-xl p-2" id="companyName">{{ company_name }}</h1>
+
+        <h1 class="text-xl p-2 flex-grow mr-5">
+            <i class="las la-user"></i>
+            {{ account }}
+        </h1>
+
+        <div>
+            <a href="/logout">
+                {% with text="", type="button", icon="las la-door-open", button="nav-top" %}
+                    {% include "/components/form/button.html" %}
+                {% endwith %}
+            </a>
+        </div>
+    </div>
+
+</div>

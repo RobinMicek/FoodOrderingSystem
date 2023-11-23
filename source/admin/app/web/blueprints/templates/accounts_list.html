@@ -1,0 +1,85 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="m-5">
+    <div class="flex text-left">
+        <div>
+            <h1 class='text-4xl font-bold'>Zákaznické Účty</h1>
+            <p class="mt-3 mb-1">Účty všech zákazníků, pomocí kterých se přihlašují do objednávací aplikace.</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Table -->
+<div class="m-5">
+    {% with text="Hledat", type="text", name="search" %}
+        {% include "/components/form/input.html" %}
+    {% endwith %}
+</div>
+
+<div id="datatable" class="m-5">
+    <table style="width: 100%;" class="text-center rounded-md shadow-md bg-secondary">
+        <thead class="text-white uppercase">
+            <tr id="thead">
+                <th class="px-6 py-4 text-md font-bold text-left">Jméno a Příjmení</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Email</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Telefon</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Pozice</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Aktivní</th>
+                <!-- <th class="px-6 py-4 text-md font-bold text-left"></th> -->
+            </tr>
+        </thead>
+        <tbody class="bg-white" id="tbody">            
+            {% for acc in accounts %}
+                <tr>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ acc.firstname }} {{ acc.surname }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ acc.email }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ acc.phone }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ acc.role }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">
+                        {% if acc.active == 1 %}
+                            <a href="/accounts/toggle-active?id={{ acc.accountId }}">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 hover:bg-primary hover:ring-2 hover:ring-secondary text-primary hover:text-secondary">
+                                    <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                    Aktivní
+                                </span>
+                            </a>
+                        {% else %}
+                            <a href="/accounts/toggle-active?id={{ acc.accountId }}">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 hover:bg-primary hover:ring-2 hover:ring-secondary text-primary hover:text-secondary">
+                                    <span class="h-2 w-2 rounded-full bg-red-600 mr-1"></span>
+                                    Neaktivní
+                                </span>
+                            </a>
+                        {% endif %}
+                    </td>                  
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="/files/js/createDataTable.js"></script>
+
+{% endblock %}

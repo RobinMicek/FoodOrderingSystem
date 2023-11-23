@@ -1,0 +1,82 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+
+<div class="bg-secondary shadow-xl w-1/6 h-screen text-white fixed top-0 bottom-0">
+
+    <div class="text-center text-primary font-bold text-4xl pt-5 pb-10">
+        <h1>K Okénku</h1>
+    </div>
+
+    <div>
+        <!-- List of pages -->
+        {% set pages = [
+            {
+                "name": "Domů",
+                "url": "/",
+                "icon": "las la-chart-pie"
+            },
+            {
+                "name": "Objednávky",
+                "url": "/orders",
+                "icon": "las la-shopping-bag"
+            },
+            {
+                "name": "Produkty",
+                "url": "/products",
+                "icon": "las la-utensils"
+            },
+            {
+                "name": "Menu",
+                "url": "/menus",
+                "icon": "las la-layer-group"
+            },
+            {
+                "name": "Provozovny",
+                "url": "/establishments",
+                "icon": "las la-home"
+            },
+            {
+                "name": "Zákaznické Účty",
+                "url": "/accounts",
+                "icon": "las la-user"
+            },
+            {
+                "name": "Obchodní Podmínky",
+                "url": "/terms",
+                "icon": "las la-scroll"
+            },
+            {
+                "name": "Konfigurace",
+                "url": "/configure",
+                "icon": "las la-sliders-h"
+            }
+        ] %}
+
+        {% for page in pages %}
+            <div class="my-1">
+                <a href="{{ page.url }}">
+                    {% with text=page.name, type="button", icon=page.icon, button="nav" %}
+                        {% include "/components/form/button.html" %}
+                    {% endwith %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

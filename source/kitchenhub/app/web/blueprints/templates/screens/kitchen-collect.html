@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Top Bar -->
+{% with screenName="Kuchyně s Vyzvednutím" %}
+    {% include 'topbar.html' %}
+{% endwith %}
+
+
+<div class="grid grid-cols-3 pt-20 h-screen">
+
+    <!-- CREATED -->
+    <div class="col-span-1 h-full overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+        <div class="text-center">
+            <div>
+                <h1 class="text-2xl xl:text-4xl font-bold uppercase">Přijaté</h1>
+            </div>
+
+            <div id="ordersCreated" class="">
+                
+                <!-- Show loading -->
+                <div class="absolute top-0 left-0 bg-opacity-50 z-10 w-full h-full">
+                    <div class="flex justify-center w-full h-full items-center rounded-lg">
+                        <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                            <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Načítání...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PROCESSING -->
+    <div class="col-span-1 h-full overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+        <div class="text-center">
+            <div>
+                <h1 class="text-2xl xl:text-4xl font-bold uppercase">Připravujeme</h1>
+            </div>
+
+            <div id="ordersProcessing" class=""></div>
+        </div>
+    </div>
+
+
+    <!-- READY -->
+    <div class="col-span-1 h-full overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+        <div class="text-center">
+            <div>
+                <h1 class="text-2xl xl:text-4xl font-bold uppercase">K Vyzvednutí</h1>
+            </div>
+
+            <div id="ordersReady" class=""></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    async function toggleStatus (orderId) {
+        const orderDiv = document.getElementById(`order-${orderId}`)
+        orderDiv.innerHTML += `
+            <div class="absolute top-0 left-0 bg-secondary bg-opacity-50 z-10 w-full h-full">
+                <div class="flex justify-center w-full h-full items-center rounded-lg">
+                    <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        `
+
+        const response = await fetch("/func/toggle-status?orderId=" + orderId)
+    }
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    const host = window.location.host
+    
+    var protocol = `ws://`
+    if (window.location.protocol === "https:") {
+        protocol = `wss://`
+    }
+
+    const socket = io(`${protocol}${host}?pin={{ config.pin }}`)
+    
+    // Listen for messages from the server
+    socket.on('allOrders', (message) => {
+        handleOrders(message)
+    })
+
+    socket.on('connect_error', (error) => {
+        console.error('Socket.io connection error:', error)
+    })
+
+
+    function handleOrders(message) {
+        allOrders = JSON.parse(message.data)
+
+        const ordersCreated = document.getElementById("ordersCreated")
+        const ordersProcessing = document.getElementById("ordersProcessing")
+        const ordersReady = document.getElementById("ordersReady")
+
+        ordersCreated.innerHTML = ""
+        ordersProcessing.innerHTML = ""
+        ordersReady.innerHTML = ""
+
+        // Sort the orders by pickupTime
+        allOrders.sort((a, b) => {
+            const pickupTimeA = new Date(a.pickupTime)
+            const pickupTimeB = new Date(b.pickupTime)
+            return pickupTimeA - pickupTimeB
+        })
+
+        const currentTime = new Date()
+
+        for (let i = 0; i < allOrders.length; i++) {
+            const order = allOrders[i]
+
+            if (order.status !== "CREATED" && order.status !== "PROCESSING" && order.status !== "READY") {
+                continue
+            }
+
+            if (order.status !== "READY") {
+                var orderProductsDiv = ``
+                for (let j = 0; j < order.products.length; j++) {
+                    orderProductsDiv += `
+                        <p class="text-sm xl:text-lg"><span class="font-medium">${order.products[j].quantity}x</span> ${order.products[j].name}</p>
+                    `
+                }
+
+
+                const orderDiv = `
+                    <div class="bg-white shadow-lg rounded-lg p-5 m-5 w-auto h-auto relative" id="order-${order.orderId}">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i class="las la-hashtag text-secondary text-lg xl:text-2xl mt-1"></i>
+                                <h1 class="text-primary font-bold text-lg xl:text-2xl">${order.tag}</h1>
+                            </div>
+                    
+                            <div class="flex items-center gap-y-2">                        
+                                <h1 class="text-primary font-bold text-lg xl:text-2xl" id="pickupTime-${order.orderId}">${order.pickupTime}</h1>                
+                                <i class="las la-clock text-secondary text-lg xl:text-2xl ml-2"></i>
+                            </div>
+                        </div>
+
+                        <div class="border-t-gray-700 border-t-2 pt-2">
+                            <div class="text-primary text-left text-lg m-3">
+                                ${orderProductsDiv}
+                            </div>
+
+                            <div class="">
+                                <button onclick="toggleStatus('${JSON.stringify(order.orderId)}')" type="button" class="p-2 w-full rounded-md shadow-md text-white bg-secondary font-medium">Připravit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+
+                if (order.status === "CREATED") {
+                    ordersCreated.innerHTML += orderDiv;
+                } else if (order.status === "PROCESSING") {
+                    ordersProcessing.innerHTML += orderDiv;
+                }
+
+            } else {
+                const orderDiv = `
+                    <div class="bg-white shadow-lg rounded-lg p-5 m-5 w-auto h-auto relative" id="order-${order.orderId}">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i class="las la-hashtag text-secondary text-lg xl:text-2xl mt-1"></i>
+                                <h1 class="text-primary font-bold text-lg xl:text-2xl">${order.tag}</h1>
+                            </div>
+                    
+                            <div class=" gap-y-2">                        
+                                <h1 class="text-primary font-bold text-lg xl:text-2xl" id="pickupTime-${order.orderId}">${order.pickupTime}</h1>                                            
+                            </div>
+                        </div>
+
+                        <div class="border-t-gray-700 border-t-2 pt-2">
+                            <div class="text-primary text-left text-lg m-3">
+                                <div class="flex items-center">
+                                    <i class="las la-hashtag text-secondary text-sm xl:text-lg mr-2"></i>
+                                    <h1 class="text-primary text-sm xl:text-lg">${order.orderId}</h1>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="las la-user text-secondary text-sm xl:text-lg mr-2"></i>
+                                    <h1 class="text-primary text-sm xl:text-lg">${order.firstname} ${order.surname}</h1>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="las la-phone text-secondary text-sm xl:text-lg mr-2"></i>
+                                    <h1 class="text-primary text-sm xl:text-lg">${order.phone}</h1>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="las la-coins text-secondary text-sm xl:text-lg mr-2"></i>
+                                    <h1 class="text-primary text-sm xl:text-lg">${order.totalPrice} Kč</h1>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <button onclick="toggleStatus('${JSON.stringify(order.orderId)}')" type="button" class="p-2 w-full rounded-md shadow-md text-white bg-secondary font-medium">Vyzvednuto</button>
+                            </div>
+
+                        </div>
+                    </div>
+                `
+                ordersReady.innerHTML += orderDiv
+            }
+
+           
+        }
+
+        // Update pickup times initially
+        updatePickupTimes()
+    }
+
+    function updatePickupTimes() {
+        const currentTime = new Date()
+
+        // Filter only "CREATED" and "PROCESSING" orders
+        const processingOrders = allOrders.filter(order => order.status === "PROCESSING" || order.status === "CREATED" || order.status === "READY")
+
+        processingOrders.forEach(order => {
+            const pickupTimeDiv = document.getElementById(`pickupTime-${order.orderId}`)
+            
+            const remainingTime = new Date(order.pickupTime)
+            const timeDifference = remainingTime - currentTime
+            const remainingHours = Math.floor(Math.abs(timeDifference) / 3600000)
+            const remainingMinutes = Math.floor((Math.abs(timeDifference) % 3600000) / 60000)
+            const remainingSeconds = Math.floor((Math.abs(timeDifference) % 60000) / 1000)
+
+            const sign = timeDifference < 0 ? '-' : ''
+            
+            var formattedRemainingTime = `${sign}${remainingHours}h ${String(remainingMinutes)}m ${String(remainingSeconds)}s`
+
+            if (remainingHours === 0) {
+                formattedRemainingTime = `${sign}${remainingMinutes}m ${remainingSeconds}s`
+            }
+
+            pickupTimeDiv.innerText = formattedRemainingTime
+        });
+
+        
+        // Clear the previous interval if it exists
+        if (typeof updatePickupTimes.intervalId !== 'undefined') {
+            clearInterval(updatePickupTimes.intervalId);
+        }
+
+        // Set a new interval
+        updatePickupTimes.intervalId = setInterval(updatePickupTimes, 1000)
+    }
+
+
+
+
+</script>
+
+{% endblock %}
