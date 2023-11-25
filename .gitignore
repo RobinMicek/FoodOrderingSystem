@@ -154,6 +154,7 @@ sketches/TODO.txt
 
 # Node & CapacitorJS
 source/mobile_app/kOkenku/node_modules
+source/mobile_app/kOkenku/dist
 source/mobile_app/kOkenku/icons
 source/mobile_app/kOkenku/ios
 source/mobile_app/kOkenku/android
