@@ -13,6 +13,9 @@ find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 # Replace
 C:\Develop\FoodOrderingSystem\source\admin\app\web\blueprints\b_socketio.py 
 from __main__ import socketio -> from app import socketio
+```bash
+sed -i 's/from __main__ import socketio/from app import socketio/g' ./app/web/blueprints/b_socketio.py
+```
 
 # Run the aplication
 
