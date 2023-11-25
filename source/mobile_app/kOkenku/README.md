@@ -8,3 +8,9 @@ npm run build
 npx capacitor-assets generate
 npx cap sync
 npx cap open android/ios
+
+# Change app display name (iOS - XCode)
+K Okénku/App/info -> Bundle Display Name
+
+
+

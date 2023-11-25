@@ -13,7 +13,7 @@
         
         <div class="mt-5">
           <button type="submit"
-            class="bg-secondary text-white w-full p-3vh text-2xl rounded-lgring-secondary font-medium">
+            class="bg-secondary text-white w-full p-3vh text-2xl rounded-lg ring-secondary font-medium">
             Přihlásit Se
           </button>
         </div>

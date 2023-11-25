@@ -1,6 +1,6 @@
 <template>
     
-    <TopBar backLink="/" text="K Okénku"/>
+    <TopBar backLink="/" :text="appName"/>
 
     <div class="h-full flex flex-col items-center gap-y-3vh mx-5vw my-5vh">
 
@@ -31,10 +31,12 @@ import TopBar from "@/components/TopBar.vue"
 // Import JS
 
 // Import Variables
+import { appName } from "@/variables.js"
 
 export default {
   data() {
     return {
+        appName,
         buttons: [
             {
                 "text": "Moje Objednávky",
@@ -59,6 +61,11 @@ export default {
             {
                 "text": "Odhlásit Se",
                 "link": "/logout",
+                "icon": "log-out"
+            },
+            {
+                "text": "Test",
+                "link": "/test",
                 "icon": "log-out"
             }
         ]

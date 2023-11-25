@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    ul, ol {
+      list-style: revert;
+    }
+}
+
 /* Fonts */
 @font-face {
     font-family: 'Exo';

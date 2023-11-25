@@ -5,8 +5,7 @@
     <div class="h-full flex flex-col items-center mx-5vw my-5vh">
 
         <div v-if="terms && terms.length != 0">
-            {{ terms }}
-            <div v-html="terms" class="text-white" raw></div>
+            <div v-html="terms" class="text-white list-inside leading-8"></div>
         </div>
         
         <div v-else>

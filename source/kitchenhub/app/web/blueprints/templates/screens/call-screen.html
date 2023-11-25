@@ -70,7 +70,6 @@
     
     // Listen for messages from the server
     socket.on('allOrders', (message) => {
-        console.log(message)
         handleOrders(message)
     })
 

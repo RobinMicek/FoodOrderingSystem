@@ -1,28 +1,34 @@
 <template>
     <div v-if="type == 'home'">
-        <div class="top-0 h-7vh pt-2 px-2vw w-screen flex items-center bg-primary">
-            <div class="absolute left-0 m-1">
+        <div class="top-0 pt-2 px-2 w-screen bg-primary">
+
+            <div class="pt-3">
                 <router-link to="/navbar">
                     <vue-feather type="menu" size="36" class="pt-1 text-white"/>
-                </router-link>            
+                </router-link>  
             </div>
+
         </div>
     </div>
     
 
-    <div v-else>        
-        <div class="top-0 pt-2 px-2vw w-screen flex justify-start items-center bg-secondary">
-            <div>
-                <router-link :to="backLink" class="">
-                    <a class="page-link">
-                        <vue-feather type="arrow-left" size="36" class="pt-1 text-white"/>
-                    </a>
-                </router-link>
+    <div v-else>      
+        <div class="top-0 pt-2 px-2 w-screen bg-secondary">
+            <div class="pt-3 flex items-center justify-start">
+
+                <div class="">
+                    <router-link :to="backLink" class="">
+                        <a class="page-link">
+                            <vue-feather type="arrow-left" size="36" class="pt-1 text-white"/>
+                        </a>
+                    </router-link> 
+                </div>
+
+                <div class="pl-2">
+                    <h1 class="text-white text-xl font-medium">{{ text }}</h1>
+                </div>
             </div>
 
-            <div class="flex w-screen items-center justify-center text-center">
-                <h1 class="text-white text-xl font-medium">{{ text }}</h1>
-            </div>
         </div>
     </div>
 </template>

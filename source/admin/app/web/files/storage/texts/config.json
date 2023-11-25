@@ -19,6 +19,7 @@
     },
     "orders": {
       "defaultOrderWait": 300,
-      "ignorePreparationTimes": false
+      "ignorePreparationTimes": false,
+      "showLocalNotifications": false
     }
   }

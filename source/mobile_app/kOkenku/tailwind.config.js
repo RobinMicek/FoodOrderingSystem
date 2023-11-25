@@ -25,6 +25,7 @@ export default {
         '20vh': '20vh',
         '25vh': '25vh',
         '30vh': '30vh',
+        '50vh': '50vh',
 
   
         '2vw': '2vw',

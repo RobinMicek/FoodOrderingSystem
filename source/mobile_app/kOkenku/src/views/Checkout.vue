@@ -133,6 +133,7 @@ import axios from 'axios'
 import { getObject, removeObject } from "@/utils/storage.js"
 import { CartObject } from "@/utils/cart.js"
 import { checkForPickupTimeWindow } from "@/utils/pickupTime.js"
+import { scheduleNotification  } from "@/utils/localNotifications"
 
 // Import Variables
 import { serverUrl, getConfiguration } from "@/variables.js"
@@ -273,6 +274,18 @@ export default {
 
             if (response && response.status === 200) {
                 await this.cartObject.cleanCart()
+
+                // Schedule local notification
+                if (this.configuration.orders.showLocalNotifications === true) {
+
+                    // Make date object out of pickupTime
+                    const notifyDate = new Date()
+                    const [hours, minutes] = this.pickupTime.split(':').map(Number)
+                    notifyDate.setHours(hours, minutes, 0, 0)
+
+                    // Create notification
+                    const notification = await scheduleNotification(notifyDate)
+                }
 
                 location.replace("/order?orderId=" + response.data.data.orderId)
             }

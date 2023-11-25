@@ -31,7 +31,7 @@ export async function checkForPickupTimeWindow (establishmentId) {
             const configuration = await getConfiguration()
 
             if (establishmentOpeningHours && establishmentOpeningHours.isOpen == true && products && products.length != 0) {
-                if (configuration.orders.ignorePreparationTimes == "false") {
+                if (configuration.orders.ignorePreparationTimes === false) {
 
                     // Find the highest product preparation time                    
                     var maxPreparationTime = null
@@ -78,7 +78,6 @@ export async function checkForPickupTimeWindow (establishmentId) {
                         "latestPickupTime": format(latestPickupTime, 'HH:mm')
                     }
                 } else {
-                    console.log(earliestPickupTime.getHours(), earliestPickupTime.getMinutes())
                     return false
                 }
                 
@@ -90,7 +89,6 @@ export async function checkForPickupTimeWindow (establishmentId) {
         }
 
     } catch (error) {
-        console.log(error)
         await removeObject("token")
         return false
     } 
