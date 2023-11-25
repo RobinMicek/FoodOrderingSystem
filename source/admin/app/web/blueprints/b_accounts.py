@@ -31,6 +31,7 @@ sys.path.append(root_folder)
 
 from classes.auth_wrappers import auth_require_admin
 from classes.accounts import Account
+from classes.orders import Order
 
 from web.render_extended_template import render_extended_template
 
@@ -51,6 +52,18 @@ def page_accounts():
 
     return render_extended_template("accounts_list.html",
         accounts=Account().all_accounts())
+
+@b_accounts.route("/view")
+@auth_require_admin
+def page_accounts_view():
+    id = request.args.get("id", None)
+    
+    account = Account().user_info_from_id(accountId=id)
+    orders = Order().all_account_orders(accountId=id)
+
+    return render_extended_template("accounts_view.html",
+        account_info=account,
+        orders=orders)
 
 
 @b_accounts.route("/toggle-active")

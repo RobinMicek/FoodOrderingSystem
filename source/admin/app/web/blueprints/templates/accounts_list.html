@@ -45,9 +45,9 @@
                 <th class="px-6 py-4 text-md font-bold text-left">Jméno a Příjmení</th>
                 <th class="px-6 py-4 text-md font-bold text-left">Email</th>
                 <th class="px-6 py-4 text-md font-bold text-left">Telefon</th>
-                <th class="px-6 py-4 text-md font-bold text-left">Pozice</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Role</th>
                 <th class="px-6 py-4 text-md font-bold text-left">Aktivní</th>
-                <!-- <th class="px-6 py-4 text-md font-bold text-left"></th> -->
+                <th class="px-6 py-4 text-md font-bold text-left"></th>
             </tr>
         </thead>
         <tbody class="bg-white" id="tbody">            
@@ -74,7 +74,13 @@
                             </a>
                         {% endif %}
                     </td>                  
-                    
+                    <td class="px-6 py-4 text-md border-secondary text-left">
+                        <a href="/accounts/view?id={{ acc.accountId }}">
+                            {% with text="", type="button", icon="las la-info-circle", button="table" %}
+                                {% include "/components/form/button.html" %}
+                            {% endwith %}
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

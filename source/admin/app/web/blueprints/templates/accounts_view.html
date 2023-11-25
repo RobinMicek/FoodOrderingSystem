@@ -1,0 +1,244 @@
+<!--
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="m-5">
+    <p class="text-md mb-3">
+        <a href="/accounts" class="hover:text-secondary"><i class="las la-angle-left"></i>Zpět</a>
+    </p>
+
+    <h1 class='text-4xl font-bold'><span class="text-secondary">Uživatelský</span> Účet</h1>
+        
+    <div class="static md:grid md:grid-cols-2">
+
+        <div class="md:col-span-1">
+            <div class="bg-white p-5 m-5 rounded-md shadow-md">
+                <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Základní</span> Informace</h1>
+                <hr>        
+
+                {% with text="Jméno a Příjmení", type="text", disabled="true", value=account_info.firstname + " " + account_info.surname %}
+                    {% include "/components/form/input.html" %}
+                {% endwith %}
+
+                {% with text="Email", type="email", disabled="true", value=account_info.email %}
+                    {% include "/components/form/input.html" %}
+                {% endwith %}
+
+                {% with text="Telefonní Číslo", type="phone", disabled="true", value=account_info.phone %}
+                    {% include "/components/form/input.html" %}
+                {% endwith %}
+
+                {% with text="Role", type="text", disabled="true", value=account_info.role %}
+                    {% include "/components/form/input.html" %}
+                {% endwith %}
+
+                {% with text="Založení Účtu", type="text", disabled="true", value=account_info.since %}
+                    {% include "/components/form/input.html" %}
+                {% endwith %}
+
+                {% with text="Poslední Příhlášení", type="text", disabled="true", value=account_info.lastInteraction %}
+                    {% include "/components/form/input.html" %}
+                {% endwith %}
+            </div>
+        </div>  
+        
+    
+        <div class="md:col-span-1">
+
+            <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+                <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Statistiky</span> Objendávek</h1>
+                <hr>
+
+                <div class="md:grid md:grid-cols-2 gap-5 mt-5">
+
+                    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                        <h1 id="ordersTotal" class="text-4xl font-bold whitespace-nowrap"></h1>
+                        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Objendávky</span> | Celkem</h1>
+                    </div>
+                
+                    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                        <h1 id="spentTotal" class="text-4xl font-bold whitespace-nowrap"></h1>
+                        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Utraceno</span> | Celkem</h1>
+                    </div>
+                
+                    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                        <h1 id="averagePrice" class="text-4xl font-bold whitespace-nowrap"></h1>
+                        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Cena Objednávky</span> | Průměr</h1>
+                    </div>
+
+                    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                        <h1 id="ordersCanceled" class="text-4xl font-bold whitespace-nowrap"></h1>
+                        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Zrušené</span> | Objendávky</h1>
+                    </div>
+                
+                </div>
+
+                <div class="mt-5">
+                    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+                        <h1 id="mostVisitedEstablishment" class="text-lg font-bold"></h1>
+                        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Nejnavštěvovanější</span> | Provozovna</h1>
+                    </div>  
+                </div>
+                
+                {% if orders|length > 0%}
+                    <script>
+                        function analyzeOrders(jsonInput) {
+                            // Initialize variables to store the required values
+                            let totalSpent = 0;
+                            let establishmentCount = {};
+                            let canceledOrdersCount = 0;
+
+                            // Loop through each order in the JSON input
+                            jsonInput.forEach(order => {
+                                // Increment totalSpent with the totalPrice of each order
+                                totalSpent += order.totalPrice;
+
+                                // Track the count of each establishment based on its name
+                                const establishmentName = order.name;
+                                if (establishmentCount[establishmentName]) {
+                                establishmentCount[establishmentName]++;
+                                } else {
+                                establishmentCount[establishmentName] = 1;
+                                }
+
+                                // Check if the order is canceled and increment canceledOrdersCount
+                                if (order.status === 'CANCELED') {
+                                canceledOrdersCount++;
+                                }
+                            });
+
+                            // Find the establishment with the highest count
+                            const mostVisitedEstablishment = Object.keys(establishmentCount).reduce((a, b) =>
+                                establishmentCount[a] > establishmentCount[b] ? a : b
+                            );
+
+                            // Calculate the average price of an order
+                            const averagePrice = jsonInput.length > 0 ? totalSpent / jsonInput.length : 0;
+
+                            // Create the result JSON
+                            const result = {
+                                totalSpent: Math.round(totalSpent),
+                                mostVisitedEstablishment: mostVisitedEstablishment,
+                                canceledOrders: canceledOrdersCount,
+                                averagePrice: Math.round(averagePrice)
+                            };
+
+                            // Convert the result to a JSON string and return it
+                            return JSON.stringify(result);
+                        }
+
+                            
+                        const ordersStats = JSON.parse(analyzeOrders({{ orders | tojson}}))
+
+                        document.getElementById("ordersTotal").innerText = {{ orders | tojson}}.length
+                        document.getElementById("spentTotal").innerText = ordersStats.totalSpent + " Kč"
+                        document.getElementById("averagePrice").innerText = ordersStats.averagePrice + " Kč"
+                        document.getElementById("ordersCanceled").innerText = ordersStats.canceledOrders
+                        document.getElementById("mostVisitedEstablishment").innerText = ordersStats.mostVisitedEstablishment
+                    </script>
+                {% endif %}
+            </div>
+
+        </div>
+    
+    </div>
+
+    <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+        <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Poslední</span> Objednávky</h1>                 
+        <hr>
+
+        <div class="mt-5">
+            <table style="width: 100%;" class="text-center rounded-md shadow-md bg-secondary">
+                <thead class="text-white uppercase">
+                    <tr id="thead">
+                        <th class="px-6 py-4 text-md font-bold text-left">Číslo</th>
+                        <th class="px-6 py-4 text-md font-bold text-left">Provozovna</th>
+                        <th class="px-6 py-4 text-md font-bold text-left">Vytvořeno</th>
+                        <th class="px-6 py-4 text-md font-bold text-left">Cena</th>
+                        <th class="px-6 py-4 text-md font-bold text-left">Stav</th>
+                        <th class="px-6 py-4 text-md font-bold text-left"></th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white" id="tbody">
+                    {% if orders|length > 0%}            
+                        {% for x in range(6) %}
+                            <tr>
+                                <td class="px-6 py-4 text-md border-secondary text-left">#{{ orders[x].orderId }}</td>
+                                <td class="px-6 py-4 text-md border-secondary text-left">{{ orders[x].name }}</td>
+                                <td class="px-6 py-4 text-md border-secondary text-left">{{ orders[x].createdTime }}</td>
+                                <td class="px-6 py-4 text-md border-secondary text-left whitespace-nowrap">{{ orders[x].totalPrice }} Kč</td>
+                                <td class="px-6 py-4 text-md border-secondary text-left">
+                                    {% if orders[x].status == "CREATED" %}
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                            <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>                                
+                                            Vytvořená
+                                        </span>                          
+                                    {% elif orders[x].status == "PROCESSING" %}
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                            <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                            Připravuje Se
+                                        </span>                          
+                                    {% elif orders[x].status == "READY" %}
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                            <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                            Připravena
+                                        </span>                          
+                                    {% elif orders[x].status == "DONE" %}
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                            <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                            Vydaná
+                                        </span>                          
+                                    {% elif orders[x].status == "CANCELED" %}
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                            <span class="h-2 w-2 rounded-full bg-red-500 mr-1"></span>
+                                            Zrušená
+                                        </span>                          
+                                    {% else %}
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                            <span class="h-2 w-2 rounded-full bg-gray-200 mr-1"></span>
+                                            Neznámé
+                                        </span>                            
+                                    {% endif %}
+                                </td>
+                                <td class="px-6 py-4 text-md border-secondary text-left">
+                                    <a href="/orders/view?id={{ orders[x].orderId }}">
+                                        {% with text="", type="button", icon="las la-info-circle", button="table" %}
+                                            {% include "/components/form/button.html" %}
+                                        {% endwith %}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

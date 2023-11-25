@@ -39,7 +39,6 @@ from random_string import random_string
 from variables import HASH_SALT
 
 
-
 class Account:
 
     def __init__(self):
@@ -69,6 +68,23 @@ class Account:
             SELECT *
             FROM accounts
             WHERE email = "{email}"
+        """)
+        query = db.cursor.fetchall()
+        
+        db.close()
+
+        return query[0] if len(query) != 0 else None
+    
+
+    def user_info_from_id(self, accountId=None):
+
+        db = Database()
+        db.connect()
+
+        db.cursor.execute(f"""
+            SELECT *
+            FROM accounts
+            WHERE accountId = "{accountId}"
         """)
         query = db.cursor.fetchall()
         
