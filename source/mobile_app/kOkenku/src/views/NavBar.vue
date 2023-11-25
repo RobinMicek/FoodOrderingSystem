@@ -62,11 +62,6 @@ export default {
                 "text": "Odhlásit Se",
                 "link": "/logout",
                 "icon": "log-out"
-            },
-            {
-                "text": "Test",
-                "link": "/test",
-                "icon": "log-out"
             }
         ]
     }
