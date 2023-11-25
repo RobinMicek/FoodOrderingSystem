@@ -10,7 +10,7 @@ npx cap sync
 npx cap open android/ios
 
 # Change app display name (iOS - XCode)
-K Okénku/App/info -> Bundle Display Name
+App/App/info -> Bundle Display Name
 
 
 
