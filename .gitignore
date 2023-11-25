@@ -151,3 +151,9 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 sketches/TODO.txt
+
+# Node & CapacitorJS
+source/mobile_app/kOkenku/node_modules
+source/mobile_app/kOkenku/icons
+source/mobile_app/kOkenku/ios
+source/mobile_app/kOkenku/android
