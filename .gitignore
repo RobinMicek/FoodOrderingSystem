@@ -163,3 +163,5 @@ source/mobile_app/kOkenku/src/manifest.webmanifest
 # Logs
 source/admin/app/logs.txt
 source/kitchenHub/app/logs.txt
+
+.DS_Store

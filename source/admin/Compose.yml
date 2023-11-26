@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  mysql:
+    image: "mysql:latest"
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_USER=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=kOkenku
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+
+  kokenku-admin:
+    build: .
+    environment:
+      - KO_DB_HOST=mysql
+      - KO_DB_NAME=kOkenku
+      - KO_DB_USER=
+      - KO_DB_PASSWORD=
+      - KO_DB_SSL_CA=
+    ports:
+      - "8000:8000"
+    command: python3 -m gunicorn -k gevent -w 1 --bind 0.0.0.0:8000 --chdir ./app/web app:app
+    volumes:
+      - ./app/web/files/storage:/admin/app/web/files/storage
+    depends_on:
+      mysql:
+        condition: service_healthy

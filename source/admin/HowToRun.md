@@ -1,60 +1,118 @@
-# Startup 
+# Jak spustit K Okénku | Backend & Admin Panel 
 
-# Change folder ownership to the user that will run the service
-```bash
-sudo chmod -R a+rwx folderName
-```
+## Docker
+Nejjednodušší cestou jak spustit __K Okénku Admin__ je jako kontejner pomocí Dockeru.
 
-# Remove __pycache__ folders and .pyc files
-```bash
-find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
-```
+Tento způsob rovnou spouští i kontejner s MySQL databází. Pokud jí nechcete, je potřeba z _./Compose.yml_ souboru odstranit _mysql_ service a _depends-on_ u _kokenku-admin_ service.
 
-# Replace
-C:\Develop\FoodOrderingSystem\source\admin\app\web\blueprints\b_socketio.py 
-from __main__ import socketio -> from app import socketio
-```bash
-sed -i 's/from __main__ import socketio/from app import socketio/g' ./app/web/blueprints/b_socketio.py
-```
+1. Je potřeba mít nainstalovaný __Docker__ a __Docker Compose__
+    ```bash
+    sudo apt install docker.io docker-compose
+    ``` 
 
-# Run the aplication
+2. Upravte __Environment Variables__ v _./Compose.yml_
+    - Nastavte:
+        - __MYSQL_ROOT_PASSWORD__ - Heslo pro _root_ uživatele
+        - __MYSQL_USER__ & __MYSQL_PASSWORD__ a __KO_DB_USER__ & __KO_DB_USER__ - Účet v databázi pro __K Okénku Admina__ (MYSQL_USER musí být stejné jako KO_DB_USER, s heslem je to stejné)
 
-0. Init database
-```bash
-docker run -d -p 3306:3306 --name KOkenkuDB -e MYSQL_ROOT_PASSWORD=root mysql:latest
-```
+3. Spušťte kontejnery
+    ```bash
+    docker compose up -d
+    ```
 
-```sql
-CREATE DATABASE kOkenku
-```
+4. Připojte se k terminálu "kokenku-admin" kontejneru
+    - Zjistěte ID kontejneru
+        ```bash
+        docker ps
+        ```
 
-1. Install requirements: 
-```bash
-pip3 install -r sources/admin/app/requirements.txt
-```
-2. Set enviroment variables
+    - Připojte se k terminálu
+        ```bash
+        docker exec -it <id-kontejneru> bash
+        ```
 
-3. Init DB: 
-```bash
-python3 sources/admin/database/handle_database.py
-```
+5. Inicializujte databázi
+    ```bash
+    python3 ./app/database/handle_database.py
+    ```
 
-4. Create new user with admin privileges: 
-```bash
-python3 sources/admin/classes/accounts.py
-```
+6. Vytvořte administrátorský účet
+    ```bash
+    python3 ./app/classes/accounts.py
+    ```
 
-5. Run the server using gunicorn (for long-term deployment create a service):
-```bash
-gunicorn --bind ip-address:port --chdir /sources/admin/app/web app:app
-```
-
-
-python3 -m gunicorn -k gevent -w "<number of workers>" --bind 0.0.0.0:8000 app:app
+7. Admin Web UI by nyní mělo být přístupné na _localhost:8000_
 
 
 
-1. Přepsat main, upravit variables
-2. ./install.sh script
-3. init databáze
-4. vytvořit nového uživatele
+## Manuálně
+
+1. Nahradťe __ __main__ __ za app v ./app/web/blueprints/b_socketio.py 
+    ```bash
+    sed -i 's/from __main__ import socketio/from app import socketio/g' ./app/web/blueprints/b_socketio.py
+    ```
+
+2. Vytvořte datábazi na vašem MySQL serveru
+    ```sql
+    CREATE DATABASE kOkenku
+    ```
+
+3. Uložte přihlašovací údaje k MySQL databázi jako _environment variables_
+    ```bash
+    export \
+        KO_DB_HOST= \
+        KO_DB_NAME=kOkenku \
+        KO_DB_USER= \
+        KO_DB_PASSWORD= \
+    ```
+
+4. Nainstalujte Python a potřebné knihovky
+    ```bash
+    sudo apt update && sudo apt upgrade
+    ```
+
+    ```bash 
+    sudo apt install python3 python3-pip
+    ```
+
+    ```bash
+    pip3 install -r ./app/requirements.txt
+    ```
+
+5. Inicializujte databázi 
+    ```bash
+    python3 ./app/database/handle_database.py
+    ```
+
+6. Vytvořte administrátorský účet
+    ```bash
+    python3 ./app/classes/accounts.py
+    ```
+
+7. Přidejte Systemd service
+    - Upravte kokenku-admin.service
+        - User - Název uživatele, na kterém služba poběží (musít být vlastníkem souborů v ./app a mít veškerá editační oprávnění)
+            ```bash
+            chmod -R a+rwx <cesta ke složce>
+            ```
+        - ExecStart --chdir - Upravte tak, aby cesta odpovídala
+        - Environment variables - Stejně jako v bod č.3
+    
+    - Zkopírujte tento soubor do /etc/systemd/system/
+        ```bash
+        cp ./kokenku-admin.service /etc/systemd/system/
+        ```
+
+        ```bash
+        sudo systemctl daemon-reload
+        ```
+        
+        ```bash
+        sudo systemctl start kokenku-admin.service
+        ```
+
+7. Admin Web UI by nyní mělo být přístupné na _localhost:8000_
+
+- Pro část těchto kroků lze využít ./install.sh skript
+        
+
