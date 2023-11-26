@@ -4,7 +4,7 @@
 import axios from 'axios'
 
 
-export const serverUrl = "https://robinmicek.tech" // Must be HTTPS && without '/'
+export const serverUrl = "" // Url Address of the Admin Server - Must be HTTPS && without '/'
 
 export const appName = "K Okénku"
 
