@@ -12,7 +12,21 @@
                                 <h1 class="text-sm text-center">Vyvolávací Kód</h1>
                             </div>
 
-                            <div class="mt-5 text-2xl text-white">                    
+                            <div v-if="configuration.app.generateQRCodes" class="flex w-full items-center justify-center">
+                                <vue-qrcode class=""
+                                    :value="qrCodeText" 
+                                    :options="{ 
+                                        width: 200,
+                                        color: {
+                                            dark: '#008550',
+                                            light: '212121'
+                                        }
+                                    }"></vue-qrcode>
+                            </div>
+
+                            <div v-else class="mb-5"></div> <!-- Spacing between items (Disabled when QR code is shown)-->
+
+                            <div class="text-2xl text-white">                    
                                 <div>
                                     <h1 class="text-center font-medium uppercase">
                                         <p v-if="order.status == 'CANCELED'" class="text-red-500">Zrušená</p>    
@@ -99,7 +113,8 @@ export default {
   data() {
     return {
         order: null,
-        configuration: null
+        configuration: null,
+        qrCodeText: null
     }
   },
   
@@ -133,6 +148,10 @@ export default {
 
             if (response && response.status === 200) {
                 this.order = response.data.data
+                this.qrCodeText = JSON.stringify({
+                    id: this.order.orderId,
+                    tag: this.order.tag
+                })
             }
             
         } catch (error) {
@@ -145,7 +164,7 @@ export default {
         await Haptics.impact()
 
         this.order = null
-        await this.getOrder()   
+        await this.getOrder()
     },
   }
 

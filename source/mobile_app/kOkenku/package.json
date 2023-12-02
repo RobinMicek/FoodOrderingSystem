@@ -23,9 +23,11 @@
     "@capacitor/ios": "^5.5.1",
     "@capacitor/local-notifications": "^5.0.6",
     "@capacitor/preferences": "^5.0.6",
+    "@chenfengyuan/vue-qrcode": "^2.0.0",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "feather-icons": "^4.29.0",
+    "qrcode": "^1.5.3",
     "vue": "^3.2.31",
     "vue-feather": "^2.0.0",
     "vue-router": "^4.0.11"

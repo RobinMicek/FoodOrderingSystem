@@ -276,7 +276,7 @@ export default {
                 await this.cartObject.cleanCart()
 
                 // Schedule local notification
-                if (this.configuration.orders.showLocalNotifications === true) {
+                if (this.configuration.app.showLocalNotifications === true) {
 
                     // Make date object out of pickupTime
                     const notifyDate = new Date()
