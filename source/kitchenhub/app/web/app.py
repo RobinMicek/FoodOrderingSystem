@@ -27,6 +27,9 @@ from flask import Flask, Blueprint, request, current_app
 from flask_cors import CORS
 from flask_socketio import SocketIO
 
+from gevent import pywsgi
+from geventwebsocket.handler import WebSocketHandler
+
 # IMPORTS FROM OTHER FILES
 # Fix
 root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -100,5 +103,8 @@ sioServer = create_sioServer(app)
 # RUN THE FLASK TEST SERVER
 if __name__ == "__main__":
     start_socketio_server(sioServer)
-    sioServer.run(app, port=8080, host="0.0.0.0", debug=False, allow_unsafe_werkzeug=True) # The port needs to stay the 8080, check /app/classes/orders Order.store_orders_from_socket for info
 
+    # The port needs to stay the 8080, check /app/classes/orders Order.store_orders_from_socket for info
+    server = pywsgi.WSGIServer(('0.0.0.0', 8080), app, handler_class=WebSocketHandler)
+    
+    server.serve_forever()
