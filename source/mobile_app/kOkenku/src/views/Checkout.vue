@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 
-                <div class="mt-10 p-2 m-3vw">
+                <div v-if="!orderCompleted" class="mt-10 p-2 m-3vw">
                     <button @click="togglePayAndOrder"
                         class="flex items-center justify-center gap-3 p-2 w-full bg-secondary rounded-md text-white text-lg font-medium">
                         <vue-feather type="credit-card" size="24"/>
@@ -154,7 +154,8 @@ export default {
         configuration: null,    
 
         payAndOrder: false,
-        deleteItemsFromCart: true
+        deleteItemsFromCart: true,
+        orderCompleted: false
     }
   },
   
@@ -254,41 +255,49 @@ export default {
 
     async completeOrder() {
         try {
-            const token = await getObject("token")
+            if (this.orderCompleted === false) {
+                this.orderCompleted = true
 
-            const headers = {
-                'Content-Type': 'application/json',
-                'Authorization': token
-            }
+                const token = await getObject("token")
 
-            const data = {
-                "establishmentId": parseInt(this.establishmentId),
-                "pickupTime": this.pickupTime,
-                "products": this.products
-            }
-            
-            const response = await axios.post(serverUrl + "/api/create-order",            
-                data,
-                { headers }
-            );
-
-            if (response && response.status === 200) {
-                await this.cartObject.cleanCart()
-
-                // Schedule local notification
-                if (this.configuration.app.showLocalNotifications === true) {
-
-                    // Make date object out of pickupTime
-                    const notifyDate = new Date()
-                    const [hours, minutes] = this.pickupTime.split(':').map(Number)
-                    notifyDate.setHours(hours, minutes, 0, 0)
-
-                    // Create notification
-                    const notification = await scheduleNotification(notifyDate)
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
                 }
 
-                location.replace("/order?orderId=" + response.data.data.orderId)
+                const data = {
+                    "establishmentId": parseInt(this.establishmentId),
+                    "pickupTime": this.pickupTime,
+                    "products": this.products
+                }
+                
+                const response = await axios.post(serverUrl + "/api/create-order",            
+                    data,
+                    { headers }
+                );
+
+                if (response && response.status === 200) {
+                    await this.cartObject.cleanCart()
+
+                    // Schedule local notification
+                    if (this.configuration.app.showLocalNotifications === true) {
+
+                        // Make date object out of pickupTime
+                        const notifyDate = new Date()
+                        const [hours, minutes] = this.pickupTime.split(':').map(Number)
+                        notifyDate.setHours(hours, minutes, 0, 0)
+
+                        // Create notification
+                        const notification = await scheduleNotification(notifyDate)
+                    }
+
+                    location.replace("/order?orderId=" + response.data.data.orderId)
+                }
+            } else {
+                alert("Něco se pokazilo! Prosím zkuste opakovat objednávku znovu později.")
+                location.replace("/")
             }
+            
             
         } catch (error) {
             // await removeObject("token")
