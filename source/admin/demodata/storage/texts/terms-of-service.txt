@@ -1,0 +1,17 @@
+<p><strong>1. Úvod</strong><br>Děkujeme vám, že používáte naši mobilní aplikaci na objednávání jídla. Následující obchodní podmínky platí pro veškeré transakce a interakce prováděné v rámci naší aplikace a upravují práva a povinnosti mezi vámi a Moje Franšíza, s.r.o., provozovatelem této aplikace.<br><strong><br></strong><strong>2. Objednávky jídla</strong></p><p><strong>2.1 Proces objednávky</strong></p><ul>
+<li>Objednání jídla můžete provádět prostřednictvím naší mobilní aplikace.</li>
+<li>Objednávka bude považována za platnou poté, co obdržíme vaši platbu za objednané jídlo.</li>
+<li>Po provedení objednávky vám zašleme potvrzení objednávky na váš účet v aplikaci.</li>
+</ul><p>
+
+
+<strong>2.2 Stav objednávky</strong><br>
+</p><ul>
+<li>Během zpracování vaší objednávky vám budeme průběžně informovat o jejím stavu prostřednictvím aplikace.</li>
+<li>V případě problémů s objednávkou se obrate k naší zákaznické podpoře uvedené v aplikaci.</li></ul><p><strong>3. Zrušení objednávky</strong><br>
+</p><ul>
+<li>Po odeslání objednávky již nelze zrušit. V případě nutnosti se obraťte na zákaznickou podporu pro další instrukce.</li></ul><p><strong>4. Platební metody</strong></p><ul>
+<li>V&nbsp;<em>mock&nbsp;</em>verzi aplikace se platební transakce neprovádějí. Objednávka je automaticky přijata bez provedení platby.</li></ul><p><strong>5. Ochrana osobních údajů</strong></p><ul>
+<li>Ochrana vašich osobních údajů je pro nás důležitá. Prodáváme je jen věrohodným firmám.</li>
+<li>Pro více informací kontaktujte Marka Zuckerberga</li></ul><p><strong>6. Kontakt</strong></p><ul>
+<li>Pro jakékoliv dotazy nebo problémy nás kontaktujte prostřednictvím kontaktních údajů uvedených v aplikaci.</li></ul><p><br>Děkujeme za používání naší mobilní aplikace na objednávání jídla a přejeme vám dobrý apetit!</p><p><br></p><p>Obchodní podmínky zprostředkoval&nbsp;<strong>ChatGPT</strong>. Byly schváleny bez přítomnosti státního dozoru a notáře :)</p>
