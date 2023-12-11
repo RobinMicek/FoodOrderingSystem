@@ -63,6 +63,7 @@ Projekt __K Okénku__ byl vytvářen s úmyslem, že ten, kdo ho chce využívat
     - _./resouces/splash.png_ (2732x2732px)
     - _./resouces/splash-dark.png_ 
 - Barvy se upravují v _./tailwind.config.js_
+    -    Je potřeba upravit barvy QR kódu v ./src/views/Orders.vue
 - Název se upraví v _./src/variables.js_
 
 Tyto úpravy je nutné udělat před tím, než začnete sestavovat aplikaci!

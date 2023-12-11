@@ -7,7 +7,11 @@ Tento způsob rovnou spouští i kontejner s MySQL databází. Pokud jí nechcet
 
 1. Je potřeba mít nainstalovaný __Docker__ a __Docker Compose__
     ```bash
-    sudo apt install docker.io docker-compose
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    ``` 
+    
+    ```bash
+    sh get-docker.sh
     ``` 
 
 2. Upravte __Environment Variables__ v _./Compose.yml_
