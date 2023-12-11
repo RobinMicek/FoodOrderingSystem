@@ -20,10 +20,12 @@
 # PACKAGES IMPORTS
 import os
 import sys
+import re
 
 # IMPORTS FROM PACKAGES
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, request
 from flask_cors import CORS
+from werkzeug.datastructures import MultiDict
 
 # IMPORTS FROM OTHER FILES
 # Fix
@@ -44,6 +46,24 @@ app = Flask(
     )
 app.secret_key = FLASK_SECRET_KEY
 CORS(app)
+
+
+# Remove banned characters on form data
+def remove_characters_from_form_data():
+    pattern = r"[`'\"\\]"
+
+    form_data = request.form.to_dict(flat=False)
+    modified_data = MultiDict()
+
+    for key in form_data:
+        if isinstance(form_data[key], list):
+            modified_data.setlist(key, [re.sub(pattern, '', item) for item in form_data[key]])
+        else:
+            modified_data[key] = re.sub(pattern, '', form_data[key])
+
+    request.form = modified_data
+
+app.before_request(remove_characters_from_form_data)
 
 
 # IMPORT BLUEPRINTS
