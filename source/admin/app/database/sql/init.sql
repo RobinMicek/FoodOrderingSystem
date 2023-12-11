@@ -86,7 +86,7 @@ CREATE TABLE `menus` (
   `note` TEXT,
   `description` TEXT,
   `imagePath` VARCHAR(255),
-  `show` TINYINT DEFAULT 1
+  `show` TINYINT DEFAULT 0
 );
 
 
@@ -132,14 +132,4 @@ CREATE TABLE `establishments_openinghours` (
   `dayOfTheWeek` INTEGER,
   `openingTime` TIME,
   `closingTime` TIME
-);
-
-
-
--- Table newsletters: Stores information about newsletters
-CREATE TABLE `newsletters` (
-  `newsletterId` INTEGER PRIMARY KEY AUTO_INCREMENT,
-  `imagePath` VARCHAR(255),
-  `heading` VARCHAR(255),
-  `body` VARCHAR(255)
 )

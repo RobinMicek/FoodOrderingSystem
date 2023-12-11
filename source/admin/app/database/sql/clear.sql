@@ -28,7 +28,6 @@ DROP TABLE IF EXISTS `products`;
 DROP TABLE IF EXISTS `orders_products`;
 DROP TABLE IF EXISTS `orders`;
 DROP TABLE IF EXISTS `accounts`;
-DROP TABLE IF EXISTS `newsletters`;
 
 
 -- Delete statements for procedures
