@@ -29,9 +29,9 @@
 <script>
 export default {
   props: {
-    price: Number,
-    numberOfProducts: Number,
-    establishmentId: String
+    price: {required: true},
+    numberOfProducts: {required: true},
+    establishmentId: {required: true}
   }
 }
 </script>
