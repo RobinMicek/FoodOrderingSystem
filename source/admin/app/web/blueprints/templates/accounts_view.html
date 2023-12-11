@@ -181,54 +181,58 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tbody">
-                    {% if orders|length > 0%}            
+                    {% if orders|length > 0 %}      
                         {% for x in range(6) %}
-                            <tr>
-                                <td class="px-6 py-4 text-md border-secondary text-left">#{{ orders[x].orderId }}</td>
-                                <td class="px-6 py-4 text-md border-secondary text-left">{{ orders[x].name }}</td>
-                                <td class="px-6 py-4 text-md border-secondary text-left">{{ orders[x].createdTime }}</td>
-                                <td class="px-6 py-4 text-md border-secondary text-left whitespace-nowrap">{{ orders[x].totalPrice }} Kč</td>
-                                <td class="px-6 py-4 text-md border-secondary text-left">
-                                    {% if orders[x].status == "CREATED" %}
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
-                                            <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>                                
-                                            Vytvořená
-                                        </span>                          
-                                    {% elif orders[x].status == "PROCESSING" %}
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
-                                            <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
-                                            Připravuje Se
-                                        </span>                          
-                                    {% elif orders[x].status == "READY" %}
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
-                                            <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
-                                            Připravena
-                                        </span>                          
-                                    {% elif orders[x].status == "DONE" %}
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
-                                            <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
-                                            Vydaná
-                                        </span>                          
-                                    {% elif orders[x].status == "CANCELED" %}
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
-                                            <span class="h-2 w-2 rounded-full bg-red-500 mr-1"></span>
-                                            Zrušená
-                                        </span>                          
-                                    {% else %}
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
-                                            <span class="h-2 w-2 rounded-full bg-gray-200 mr-1"></span>
-                                            Neznámé
-                                        </span>                            
-                                    {% endif %}
-                                </td>
-                                <td class="px-6 py-4 text-md border-secondary text-left">
-                                    <a href="/orders/view?id={{ orders[x].orderId }}">
-                                        {% with text="", type="button", icon="las la-info-circle", button="table" %}
-                                            {% include "/components/form/button.html" %}
-                                        {% endwith %}
-                                    </a>
-                                </td>
-                            </tr>
+                            {% if x < orders|length %}
+                
+                                <tr>
+                                    <td class="px-6 py-4 text-md border-secondary text-left">#{{ orders[x].orderId }}</td>
+                                    <td class="px-6 py-4 text-md border-secondary text-left">{{ orders[x].name }}</td>
+                                    <td class="px-6 py-4 text-md border-secondary text-left">{{ orders[x].createdTime }}</td>
+                                    <td class="px-6 py-4 text-md border-secondary text-left whitespace-nowrap">{{ orders[x].totalPrice }} Kč</td>
+                                    <td class="px-6 py-4 text-md border-secondary text-left">
+                                        {% if orders[x].status == "CREATED" %}
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                                <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>                                
+                                                Vytvořená
+                                            </span>                          
+                                        {% elif orders[x].status == "PROCESSING" %}
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                                <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                                Připravuje Se
+                                            </span>                          
+                                        {% elif orders[x].status == "READY" %}
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                                <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                                Připravena
+                                            </span>                          
+                                        {% elif orders[x].status == "DONE" %}
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                                <span class="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                                                Vydaná
+                                            </span>                          
+                                        {% elif orders[x].status == "CANCELED" %}
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                                <span class="h-2 w-2 rounded-full bg-red-500 mr-1"></span>
+                                                Zrušená
+                                            </span>                          
+                                        {% else %}
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-primary">
+                                                <span class="h-2 w-2 rounded-full bg-gray-200 mr-1"></span>
+                                                Neznámé
+                                            </span>                            
+                                        {% endif %}
+                                    </td>
+                                    <td class="px-6 py-4 text-md border-secondary text-left">
+                                        <a href="/orders/view?id={{ orders[x].orderId }}">
+                                            {% with text="", type="button", icon="las la-info-circle", button="table" %}
+                                                {% include "/components/form/button.html" %}
+                                            {% endwith %}
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 </tbody>
