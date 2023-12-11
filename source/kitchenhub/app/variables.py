@@ -28,6 +28,8 @@ import sys
 root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(root_folder)
 
+from random_string import random_string
+
 
 # FLASK
-FLASK_SECRET_KEY = "fjlkjslkjlkfš5678"
+FLASK_SECRET_KEY = random_string(length=32)
