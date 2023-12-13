@@ -2,7 +2,6 @@ import { LocalNotifications } from '@capacitor/local-notifications'
 
 export async function scheduleNotification (notifyDate) {
     try {
-        console.log(notifyDate)
         // Schedule a notification 
         const permission = await LocalNotifications.requestPermissions() // Request permission
 
