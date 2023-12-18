@@ -85,6 +85,24 @@
             {% endfor %}
         </tbody>
     </table>
+    
+
+    <div class="w-full flex justify-end items-center gap-1 p-5">
+        <div>
+            {% with id="pageBack", type="button", icon="las la-angle-left" %}
+                {% include "/components/form/button.html" %}
+            {% endwith %}
+        </div>
+
+        <div id="pageIndicator" class="py-2 px-4 bg-secondary text-white text-xl rounded-md">1/1</div>
+
+        <div>
+            {% with id="pageNext", type="button", icon="las la-angle-right" %}
+                {% include "/components/form/button.html" %}
+            {% endwith %}
+        </div>
+    </div>
+
 </div>
 <script src="/files/js/createDataTable.js"></script>
 
