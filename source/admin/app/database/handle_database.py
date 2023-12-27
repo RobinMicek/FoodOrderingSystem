@@ -83,6 +83,8 @@ class Database():
                 self.cursor.execute(x)
             for x in self.handle_sql_file(filename="procedures.sql"):
                 self.cursor.execute(x)
+            for x in self.handle_sql_file(filename="triggers.sql"):
+                self.cursor.execute(x)
 
             create_log(type="ALERT", message="Database has been inicialized.")
             print("[ALERT] Database has been inicialized.")
@@ -128,7 +130,7 @@ class Database():
                 for x in script:
                     x.replace(";", "")
 
-            elif filename == "procedures.sql":
+            elif filename == "procedures.sql" or filename == "triggers.sql":
                 script = script.split("//")
                 for x in script:
                     x.replace("//", "")

@@ -94,7 +94,7 @@ class Order():
                     db = Database()
                     db.connect()
                     db.cursor.execute(f"""
-                        CALL InsertOrder('{data["accountId"]}', '{data["establishmentId"]}', '{random_string_without_numbers(length=4)}', '{data["pickupTime"]}', @insertedID);
+                        CALL InsertOrder('{data["accountId"]}', '{data["establishmentId"]}', '{data["pickupTime"]}', @insertedID);
                     """)
                     db.cursor.execute("""
                         SELECT @insertedID;

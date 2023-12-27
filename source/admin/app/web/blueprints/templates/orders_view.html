@@ -35,6 +35,10 @@
                 <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Informace</span> Objednávky</h1>
                 <hr>        
 
+                {% with text="Vyvolávací Číslo", type="text", disabled="true", value="%03d"|format(order.tag) %}
+                    {% include "/components/form/input.html" %}
+                {% endwith %}
+
                 {% with text="Místo Vyzvednutí", type="text", disabled="true", value=order.name %}
                     {% include "/components/form/input.html" %}
                 {% endwith %}
@@ -70,10 +74,10 @@
                     </span>
 
                     <div class="mt-5 text-lg">
-                        <div class="mb-1">
+                        <div class="">
                             Vytvoření: <span class="font-bold">{{ order.createdTime }}</span>
                         </div>
-                        <div class="mb-1">
+                        <div class="">
                             Vyzvednutí: <span class="font-bold">{{ order.pickupTime }}</span>
                         </div>
                         <div>

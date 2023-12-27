@@ -41,7 +41,7 @@ CREATE TABLE `orders` (
   `orderId` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `accountId` INTEGER,
   `establishmentId` INTEGER,
-  `tag` VARCHAR(255),
+  `tag` INT DEFAULT NULL,
   `createdTime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `pickupTime` TIMESTAMP,
   `lastUpdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

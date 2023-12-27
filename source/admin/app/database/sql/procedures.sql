@@ -292,13 +292,12 @@ END //
 CREATE PROCEDURE InsertOrder(
     IN p_accountId INTEGER,
     IN p_establishmentId INTEGER,
-    IN p_tag VARCHAR(255),
     IN p_pickupTime TIMESTAMP,
     OUT p_insertedID INTEGER
 )
 BEGIN
-    INSERT INTO `orders` (`accountId`, `establishmentId`, `tag`, `pickupTime`)
-    VALUES (p_accountId, p_establishmentId, p_tag, p_pickupTime);
+    INSERT INTO `orders` (`accountId`, `establishmentId`, `pickupTime`)
+    VALUES (p_accountId, p_establishmentId, p_pickupTime);
 
     SET p_insertedID = (LAST_INSERT_ID());
 END //
