@@ -8,7 +8,7 @@
                     <div>
                         <div v-if="order.tag" class="border-b-2 text-white p-5">
                             <div>
-                                <h1 class="text-4xl text-center font-medium">{{ order.tag }}</h1>
+                                <h1 class="text-4xl text-center font-medium">{{ String(order.tag).padStart(3, '0') }}</h1>
                                 <h1 class="text-sm text-center">Vyvolávací Kód</h1>
                             </div>
 

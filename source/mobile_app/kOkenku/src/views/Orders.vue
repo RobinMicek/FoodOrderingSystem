@@ -14,7 +14,7 @@
                             
                             <div class="col-span-1">
                                 <div v-if="order.tag">
-                                    <h1 class="text-lg font-medium">{{ order.tag }}</h1>
+                                    <h1 class="text-lg font-medium">{{ String(order.tag).padStart(3, '0') }}</h1>
                                 </div>
                                 
                                 <p class="mt-1 text-sm">{{ order.name }}</p>
