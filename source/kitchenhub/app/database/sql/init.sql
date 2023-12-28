@@ -56,7 +56,7 @@ CREATE TABLE `app_configuration` (
   establishmentToken TEXT,
   establishmentSlug TEXT,
   establishmentName TEXT,
-  pin INTEGER,
+  pin TEXT,
   lastSync TIME,
   socketClientConnected INTEGER DEFAULT 0
 )
