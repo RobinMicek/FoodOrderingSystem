@@ -5,7 +5,7 @@ services:
     container_name: kOkenku-Mysql
     image: "mysql:latest"
     environment:
-      - MYSQL_ROOT_PASSWORD=gg
+      - MYSQL_ROOT_PASSWORD=
       - MYSQL_DATABASE=kOkenku
       - TZ=Europe/Prague
       - MYSQL_INITDB_SKIP_TZINFO=no
@@ -21,9 +21,9 @@ services:
       - KO_DB_HOST=mysql
       - KO_DB_NAME=kOkenku
       - KO_DB_USER=root
-      - KO_DB_PASSWORD=gg
+      - KO_DB_PASSWORD=
       - KO_DB_SSL_CA=
-      - KO_HASH_SALT=97
+      - KO_HASH_SALT=
     ports:
       - "8000:8000"
     command: python3 -m gunicorn -k gevent -w 1 --bind 0.0.0.0:8000 --chdir ./app/web app:app
