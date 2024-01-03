@@ -16,8 +16,8 @@ Tento způsob rovnou spouští i kontejner s MySQL databází. Pokud jí nechcet
 
 2. Upravte __Environment Variables__ v _./Compose.yml_
     - Nastavte:
-        - __MYSQL_ROOT_PASSWORD__ - Heslo pro _root_ uživatele
-        - __MYSQL_USER__ & __MYSQL_PASSWORD__ a __KO_DB_USER__ & __KO_DB_USER__ - Účet v databázi pro __K Okénku Admina__ (MYSQL_USER musí být stejné jako KO_DB_USER, s heslem je to stejné)
+        - __MYSQL_ROOT_PASSWORD__ - Musí být stejné jako  __KO_DB_PASSWORD__
+        -  __KO_HASH_SALT__ - Náhodný řetezec, který se přidává do hashovaní hesel uživatel 
 
 3. Spušťte kontejnery
     ```bash
@@ -68,6 +68,7 @@ Tento způsob rovnou spouští i kontejner s MySQL databází. Pokud jí nechcet
         KO_DB_NAME=kOkenku \
         KO_DB_USER= \
         KO_DB_PASSWORD= \
+        KO_DB_HASH_SALT=
     ```
 
 4. Nainstalujte Python a potřebné knihovky

@@ -40,7 +40,7 @@ with open(f"{root_folder}/app/web/files/storage/texts/config.json", "r+") as fil
 
 
 # HASHING
-HASH_SALT = "MyHashingSalt"
+HASH_SALT = str(os.environ.get("KO_HASH_SALT", None))
 
 
 # FLASK

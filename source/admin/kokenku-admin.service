@@ -13,6 +13,7 @@ Environment="KO_DB_HOST="
 Environment="KO_DB_NAME="
 Environment="KO_DB_USER="
 Environment="KO_DB_PASSWORD="
+Environment="KO_DB_HASH_SALT="
 
 [Install]
 WantedBy=multi-user.target
