@@ -5,14 +5,21 @@ services:
     container_name: kOkenku-Mysql
     image: "mysql:latest"
     environment:
-      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ROOT_PASSWORD= # Set password for the root user
       - MYSQL_DATABASE=kOkenku
+      - MYSQL_USER=kOkenkuBackEnd
+      - MYSQL_PASSWORD= # Set password for the kOkenkuBackEnd user
       - TZ=Europe/Prague
       - MYSQL_INITDB_SKIP_TZINFO=no
+      - MYSQL_LOG_BIN=1
     ports:
       - "3306:3306"
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      timeout: 10s
+      retries: 5
 
   kokenku-admin:
     container_name: kOkenku-Admin
@@ -20,10 +27,10 @@ services:
     environment:
       - KO_DB_HOST=mysql
       - KO_DB_NAME=kOkenku
-      - KO_DB_USER=root
-      - KO_DB_PASSWORD=
+      - KO_DB_USER=kOkenkuBackEnd
+      - KO_DB_PASSWORD= # Same as MYSQL_PASSWORD
       - KO_DB_SSL_CA=
-      - KO_HASH_SALT=
+      - KO_HASH_SALT= # Set password hashing salt
     ports:
       - "8000:8000"
     command: python3 -m gunicorn -k gevent -w 1 --bind 0.0.0.0:8000 --chdir ./app/web app:app
