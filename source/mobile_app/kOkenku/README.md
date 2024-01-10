@@ -56,7 +56,7 @@ Projekt __K Okénku__ byl vytvářen s úmyslem, že ten, kdo ho chce využívat
 
 - Pro whitelabelling mobilní aplikace je potřeba nahradit tuto grafiku:
     - _./src/assets/favicon.png_
-    - _./src/assets/images/favicon.png_
+    - _./src/assets/images/logo.png_
     - _./resources/icon-only.png_ (1024x1024px)
     - _./resouces/icon-foreground.png_
     - _./resouces/icon-background.png_
