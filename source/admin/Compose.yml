@@ -1,9 +1,11 @@
 version: '3'
 
 services:
+
   mysql:
     container_name: kOkenku-Mysql
-    image: "mysql:latest"
+    image: mysql:latest
+    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD= # Set password for the root user
       - MYSQL_DATABASE=kOkenku
@@ -15,15 +17,36 @@ services:
     ports:
       - "3306:3306"
     volumes:
+      - mysql-data:/var/lib/mysql
       - ./initdb:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
       timeout: 10s
       retries: 5
 
+  mysql-backup:
+    container_name: kOkenku-Mysql-Backup
+    image: fradelg/mysql-cron-backup:latest
+    restart: always
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASS= # Same as MYSQL_ROOT_PASSWORD
+      - MAX_BACKUPS=15
+      - INIT_BACKUP=1
+      - CRON_TIME= # Set cron schedule for creating backups of the database; Preferable to run while all establishments are closed - The backup process can affect writeability to the database
+      - GZIP_LEVEL=9
+      - TZ=Europe/Prague
+    volumes:
+      - ./db_backup:/backup
+    depends_on:
+      mysql:
+        condition: service_healthy
+
   kokenku-admin:
     container_name: kOkenku-Admin
     build: .
+    restart: always
     environment:
       - KO_DB_HOST=mysql
       - KO_DB_NAME=kOkenku
@@ -39,3 +62,6 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+
+volumes:
+  mysql-data:
