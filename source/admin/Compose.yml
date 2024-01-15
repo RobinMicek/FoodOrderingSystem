@@ -43,6 +43,16 @@ services:
       mysql:
         condition: service_healthy
 
+  adminer:
+    container_name: kOkenku-Adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8001:8080
+    depends_on:
+      mysql:
+        condition: service_healthy
+
   kokenku-admin:
     container_name: kOkenku-Admin
     build: .

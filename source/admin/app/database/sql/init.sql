@@ -74,7 +74,7 @@ CREATE TABLE `accounts` (
   `dateOfBirth` DATE,
   `active` TINYINT DEFAULT 1,
   `role` VARCHAR(255),
-  `lastInteraction` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  `lastTokenRefresh` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 

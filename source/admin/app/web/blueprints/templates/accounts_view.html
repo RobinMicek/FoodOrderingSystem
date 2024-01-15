@@ -55,7 +55,7 @@
                     {% include "/components/form/input.html" %}
                 {% endwith %}
 
-                {% with text="Poslední Příhlášení", type="text", disabled="true", value=account_info.lastInteraction %}
+                {% with text="Poslední Příhlášení", type="text", disabled="true", value=account_info.lastTokenRefresh %}
                     {% include "/components/form/input.html" %}
                 {% endwith %}
             </div>

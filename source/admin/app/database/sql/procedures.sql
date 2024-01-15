@@ -73,7 +73,7 @@ CREATE PROCEDURE AuthUserToken(
         SET p_email = (SELECT email FROM `accounts` WHERE `token` = p_token);
 
         UPDATE `accounts`
-        SET `lastInteraction` = CURRENT_TIMESTAMP
+        SET `lastTokenRefresh` = CURRENT_TIMESTAMP
         WHERE `token` = p_token;
     END //
 

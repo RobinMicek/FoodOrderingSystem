@@ -226,13 +226,19 @@ class Account:
 
 # Create new admin user if the file is called directly
 if __name__ == "__main__":
-    account = Account()
-    account.create_new_account(
-        email=input("Email: "), 
-        firstname=input("Jméno: "), 
-        surname=input("Příjmení: "),
-        phone=input("Telefonní číslo: "),    
-        dateOfBirth=input("Datum narození (YYYY-MM-DD): "), 
-        password=input("Heslo: "), 
-        role="admin" 
-    )
+    try:
+        account = Account()
+        account.create_new_account(
+            email=input("Email: "), 
+            firstname=input("Jméno: "), 
+            surname=input("Příjmení: "),
+            phone=input("Telefonní číslo: "),    
+            dateOfBirth=input("Datum narození (YYYY-MM-DD): "), 
+            password=input("Heslo: "), 
+            role="admin" 
+        )
+
+        print("[ALERT] New admin user has been created")
+
+    except Exception as e:
+        print(f"[ERROR] Could not create new user [{e}]")
