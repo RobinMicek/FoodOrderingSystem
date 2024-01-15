@@ -13,7 +13,7 @@
         <div class="col-span-1">
             <h1 class="text-4xl mb-5">Informace</h1>
 
-            <h1 class="text-xl"><span class="font-medium">Adresa Serveru:</span> {{ config.serverUrl }}</h1>
+            <h1 class="text-xl"><span class="font-medium">Adresa Serveru:</span> {{ (config.serverUrl).split("//")[1] }}</h1>
             <h1 class="text-xl"><span class="font-medium">Název Provozovny:</span> {{ config.establishmentName }}</h1>
             <h1 class="text-xl"><span class="font-medium">Poslední Aktualizace přes API:</span> {{ config.lastSync }}</h1>
 
@@ -31,7 +31,6 @@
             <h1 class="text-xl"><span class="font-medium">Přijaté:</span> {{ orders.created }}</h1>
             <h1 class="text-xl"><span class="font-medium">Připravované:</span> {{ orders.processing }}</h1>
             <h1 class="text-xl"><span class="font-medium">K Vyzvednutí:</span> {{ orders.ready }}</h1>
-            <h1 class="text-xl"><span class="font-medium">Vyřízené:</span> {{ orders.done }}</h1>
             <h1 class="text-xl"><span class="font-medium">Zrušené:</span> {{ orders.canceled }}</h1>
             <br>
             <h1 class="text-xl"><span class="font-medium">Nesynchronizované:</span> {{ orders.notSynced }}</h1>
