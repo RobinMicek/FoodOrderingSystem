@@ -155,3 +155,110 @@ class Product():
 
         except Exception as e:
             create_log(type="ERROR", message=f"Could not toggle product visibility [{e}]")
+
+
+    def number_of_purchases(self, productId = None, timeWindow = "today"): # timeWindow = today, week, month, year, allTime
+
+        timeWindow = str(timeWindow).upper() if timeWindow != "today" else "DATE"
+
+        db = Database()
+        db.connect()
+
+        if timeWindow != "ALLTIME":
+            db.cursor.execute(f"""
+                SELECT 
+                    SUM(orders_products.quantity) AS purchases
+                FROM
+                    orders_products 
+                LEFT JOIN 
+                    products
+                    ON orders_products.productId = products.productId 
+                LEFT JOIN
+                    orders
+                    ON orders_products.orderId = orders.orderId 
+                WHERE
+                    products.productId = { productId } AND
+                    { timeWindow }(orders.createdTime) = { timeWindow }(CURDATE()) AND
+                    orders.status != "CANCELED" 
+                GROUP BY 
+                    products.productId
+            """)
+            query = db.cursor.fetchall()
+
+        else: 
+            db.cursor.execute(f"""
+                SELECT 
+                    SUM(orders_products.quantity) AS purchases
+                FROM
+                    orders_products 
+                LEFT JOIN 
+                    products
+                    ON orders_products.productId = products.productId 
+                LEFT JOIN
+                    orders
+                    ON orders_products.orderId = orders.orderId 
+                WHERE
+                    products.productId = { productId } AND
+                    orders.status != "CANCELED" 
+                GROUP BY 
+                    products.productId
+            """)
+            query = db.cursor.fetchall()
+        
+        db.close()
+
+        return query[0]["purchases"] if len(query) != 0 else None
+
+
+
+    def revenue(self, productId = None, timeWindow = "today"): # timeWindow = today, week, month, year, allTime
+
+        timeWindow = str(timeWindow).upper() if timeWindow != "today" else "DATE"
+
+        db = Database()
+        db.connect()
+
+        if timeWindow != "ALLTIME":
+            db.cursor.execute(f"""
+                SELECT 
+                    ROUND(SUM(orders_products.price * orders_products.quantity), 2) AS revenue
+                FROM
+                    orders_products 
+                LEFT JOIN 
+                    products
+                    ON orders_products.productId = products.productId 
+                LEFT JOIN
+                    orders
+                    ON orders_products.orderId = orders.orderId 
+                WHERE
+                    products.productId = { productId } AND
+                    { timeWindow }(orders.createdTime) = { timeWindow }(CURDATE()) AND
+                    orders.status != "CANCELED" 
+                GROUP BY 
+                    products.productId
+            """)
+            query = db.cursor.fetchall()
+
+        else: 
+            db.cursor.execute(f"""
+                SELECT 
+                    ROUND(SUM(orders_products.price * orders_products.quantity), 2) AS revenue
+                FROM
+                    orders_products 
+                LEFT JOIN 
+                    products
+                    ON orders_products.productId = products.productId 
+                LEFT JOIN
+                    orders
+                    ON orders_products.orderId = orders.orderId 
+                WHERE
+                    products.productId = { productId } AND
+                    orders.status != "CANCELED" 
+                GROUP BY 
+                    products.productId
+            """)
+            query = db.cursor.fetchall()
+        
+        db.close()
+
+        return query[0]["revenue"] if len(query) != 0 else None

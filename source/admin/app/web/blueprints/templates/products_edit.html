@@ -29,6 +29,50 @@
 
     <h1 class='text-4xl font-bold'><span class="text-secondary">Upravit</span> Produkt</h1>
 
+    <div class="mt-10 md:grid md:grid-cols-4 m-5 gap-5">
+                
+        <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.today == None %} 0 {% else %} {{ stats.revenue.today }} {% endif %} Kč</h1>
+            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | Tržby</h1>
+        </div>
+    
+        <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.month == None %} 0 {% else %} {{ stats.revenue.month }} {% endif %} Kč</h1>
+            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | Tržby</h1>
+        </div>
+
+        <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.year == None %} 0 {% else %} {{ stats.revenue.year }} {% endif %} Kč</h1>
+            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento Rok</span> | Tržby</h1>
+        </div>
+    
+        <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.allTime == None %} 0 {% else %} {{ stats.revenue.allTime }} {% endif %} Kč</h1>
+            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Celkově</span> | Tržby</h1>
+        </div>
+
+
+        <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.purchases.today == None %} 0 {% else %} {{ stats.purchases.today }} {% endif %}</h1>
+            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | Zakoupeno</h1>
+        </div>
+    
+        <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.purchases.month == None %} 0 {% else %} {{ stats.purchases.month }} {% endif %}</h1>
+            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | Zakoupeno</h1>
+        </div>
+
+        <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.purchases.year == None %} 0 {% else %} {{ stats.purchases.year }} {% endif %}</h1>
+            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento Rok</span> | Zakoupeno</h1>
+        </div>
+    
+        <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.purchases.allTime == None %} 0 {% else %} {{ stats.purchases.allTime }} {% endif %}</h1>
+            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Celkově</span> | Zakoupeno</h1>
+        </div>
+    </div>
+
     <form action="/products/edit" method="POST" enctype="multipart/form-data">
 
         <!-- Product Id -->

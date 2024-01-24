@@ -431,7 +431,7 @@ class Establishment():
             SELECT
                 DATE_FORMAT(DATE(orders.createdTime), '%d. %m. %y') AS orderDate,
                 DATE_FORMAT(DATE(orders.createdTime), '%Y-%m-%d') AS sortableDate,
-                SUM(products.price * orders_products.quantity) AS totalRevenue
+                SUM(orders_products.price * orders_products.quantity) AS totalRevenue
             FROM
                 orders
             JOIN
