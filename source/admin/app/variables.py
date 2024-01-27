@@ -35,8 +35,8 @@ from random_string import random_string
 
 # CONFIG FILE
 CONFIG = ""
-with open(f"{root_folder}/app/web/files/storage/texts/config.json", "r+") as file:
-    CONFIG = json.loads(file.read())
+with open(f"{root_folder}/app/web/files/storage/texts/config.json", "r") as file:
+    CONFIG = json.load(file)
 
 
 # HASHING
