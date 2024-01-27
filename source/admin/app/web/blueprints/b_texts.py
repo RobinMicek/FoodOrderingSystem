@@ -53,21 +53,21 @@ b_texts = Blueprint(
 def page_configuration():
 
     if request.method != "POST":
-
-        oldConfigurationJSON = ""
-        with open(f"{root_folder}/files/storage/texts/config.json", "r+") as file:
-                oldConfigurationJSON = json.loads(file.read())
+        
+        oldConfigurationJSON = {}
+        with open(f"{root_folder}/files/storage/texts/config.json", "r") as file:
+            oldConfigurationJSON = json.load(file)
 
         return render_extended_template("configuration.html",
             oldConfigurationJSON = oldConfigurationJSON)
         
     else:        
-        configurationJSON = request.form.get("configurationJSON", None)
+        configurationJSON = (request.data).decode("utf-8")
 
         if configurationJSON != None:
-            with open(f"{root_folder}/files/storage/texts/config.json", "w+") as file:                
+            with open(f"{root_folder}/files/storage/texts/config.json", "w+") as file:
                 file.write(configurationJSON)
-
+        
         return redirect(f"/configure")
 
 

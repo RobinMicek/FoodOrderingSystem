@@ -48,17 +48,11 @@
         </div>
     </div>
 
-    <form action="/configure" method="POST" id="form">
-        <textarea name="configurationJSON" id="configurationJSON" class="hidden"></textarea>
-    </form>
-
     <script>
         // Get elements
-        const buttonRestore = document.getElementById("restoreButton");
-        const buttonSubmit = document.getElementById("submitButton");
-        const form = document.getElementById("form");
-        const textarea = document.getElementById("configurationJSON")
-        const container = document.getElementById("jsoneditor");
+        const buttonRestore = document.getElementById("restoreButton")
+        const buttonSubmit = document.getElementById("submitButton")
+        const container = document.getElementById("jsoneditor")
 
         // Create the editor        
         const options = {
@@ -66,56 +60,62 @@
             modes: ['form', "code", "preview"] // allowed modes
         
         };
-        const editor = new JSONEditor(container, options);
+        const editor = new JSONEditor(container, options)
 
         // Set json
         const initialJson = {{ oldConfigurationJSON | tojson }}
-
-        editor.set(initialJson);
-        editor.expandAll();
+        
+        editor.set(initialJson)
+        editor.expandAll()
         
 
         function restoreDefaultJSON () {
             if (confirm("Chcete obnovit výchozí konfiguraci?") == true) {
 
                 defaultConfig = {
-                    companyInfo: {
-                        companyName: "",
-                        email: "",
-                        phone: "",
-                        address: ""
+                    "companyInfo": {
+                        "companyName": "",
+                        "email": "",
+                        "phone": "",
+                        "address": ""
                     },
-                    orders: {                
-                        ignorePreparationTimes: false,
-                        defaultOrderWait: 300
+                    "orders": {                
+                        "ignorePreparationTimes": false,
+                        "defaultOrderWait": 300
                     },
-                    app: {
-                        dateTime: {
-                            timezone: "cs-CZ",
-                            weekday: "short",
-                            year: "numeric",
-                            month: "numeric",
-                            day: "numeric",
-                            hour: "numeric",
-                            minute: "numeric",
-                            second: "numeric"
+                    "app": {
+                        "dateTime": {
+                            "timezone": "cs-CZ",
+                            "weekday": "short",
+                            "year": "numeric",
+                            "month": "numeric",
+                            "day": "numeric",
+                            "hour": "numeric",
+                            "minute": "numeric",
+                            "second": "numeric"
                         },
-                        showLocalNotifications: false,
-                        generateQRCodes: false
+                        "showLocalNotifications": false,
+                        "generateQRCodes": false
                     }
-                };
+                }
 
 
-                editor.set(defaultConfig);
-                editor.expandAll();
-
+                editor.set(defaultConfig)
+                editor.expandAll()
             }
         };
 
-        function submitForm () {
-            textarea.innerText = JSON.stringify(editor.get());
-            form.submit();
-        };
+        async function submitForm () {
+            const response = await fetch('/configure', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: editor.getText()
+                })
+
+            window.location.reload()
+        }
 
         buttonRestore.addEventListener("click", restoreDefaultJSON)
         buttonSubmit.addEventListener("click", submitForm)
