@@ -227,18 +227,33 @@ class Account:
 # Create new admin user if the file is called directly
 if __name__ == "__main__":
     try:
-        account = Account()
-        account.create_new_account(
-            email=input("Email: "), 
-            firstname=input("Jméno: "), 
-            surname=input("Příjmení: "),
-            phone=input("Telefonní číslo: "),    
-            dateOfBirth=input("Datum narození (YYYY-MM-DD): "), 
-            password=input("Heslo: "), 
-            role="admin" 
-        )
+        accountTypes = ["admin", "user", "api"]
+        accountType = input(f"Typ účtu | Možnosti: {', '.join(accountTypes)} (U API účtů se v Admin Dashboardu zobrazuje Token): ")
+        while accountType not in accountTypes: accountType = input(f"Zadejte správný typ účtu ({', '.join(accountTypes)}): ")
 
-        print("[ALERT] New admin user has been created")
+        account = Account()
+        if accountType == "api":
+            account.create_new_account(
+                email=input("Emailová adresa (společně s heslem slouží k získání tokenu, nemusí být reálná): "), 
+                firstname=input("Název účtu: "), 
+                surname="",
+                phone="",    
+                dateOfBirth="1989-03-12", 
+                password=input("Heslo: "), 
+                role="api" 
+            )
+        else:
+            account.create_new_account(
+                email=input("Emailová adresa: "), 
+                firstname=input("Jméno: "), 
+                surname=input("Příjmení: "),
+                phone=input("Telefonní číslo: "),    
+                dateOfBirth=input("Datum Narození: "), 
+                password=input("Heslo: "), 
+                role=accountType 
+            )
+
+        print("[ALERT] New user has been created")
 
     except Exception as e:
         print(f"[ERROR] Could not create new user [{e}]")

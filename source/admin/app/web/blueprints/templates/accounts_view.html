@@ -35,29 +35,65 @@
                 <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Základní</span> Informace</h1>
                 <hr>        
 
-                {% with text="Jméno a Příjmení", type="text", disabled="true", value=account_info.firstname + " " + account_info.surname %}
-                    {% include "/components/form/input.html" %}
-                {% endwith %}
+                {% if account_info.role != "api" %}
 
-                {% with text="Email", type="email", disabled="true", value=account_info.email %}
-                    {% include "/components/form/input.html" %}
-                {% endwith %}
+                    {% with text="Jméno a Příjmení", type="text", disabled="true", value=account_info.firstname + " " + account_info.surname %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
 
-                {% with text="Telefonní Číslo", type="phone", disabled="true", value=account_info.phone %}
-                    {% include "/components/form/input.html" %}
-                {% endwith %}
+                    {% with text="Email", type="email", disabled="true", value=account_info.email %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
 
-                {% with text="Role", type="text", disabled="true", value=account_info.role %}
-                    {% include "/components/form/input.html" %}
-                {% endwith %}
+                    {% with text="Telefonní Číslo", type="phone", disabled="true", value=account_info.phone %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
 
-                {% with text="Založení Účtu", type="text", disabled="true", value=account_info.since %}
-                    {% include "/components/form/input.html" %}
-                {% endwith %}
+                    {% with text="Role", type="text", disabled="true", value=account_info.role %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
 
-                {% with text="Poslední Příhlášení", type="text", disabled="true", value=account_info.lastTokenRefresh %}
-                    {% include "/components/form/input.html" %}
-                {% endwith %}
+                    {% with text="Datum Narození", type="text", disabled="true", value=account_info.dateOfBirth %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Založení Účtu", type="text", disabled="true", value=account_info.since %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Poslední Příhlášení", type="text", disabled="true", value=account_info.lastTokenRefresh %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                {% else %}
+
+                    {% with text="Název", type="text", disabled="true", value=account_info.firstname %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                    
+                    {% with text="Email", type="email", disabled="true", value=account_info.email %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Role", type="text", disabled="true", value=account_info.role %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Založení Účtu", type="text", disabled="true", value=account_info.since %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Poslední Aktualizace Tokenu", type="text", disabled="true", value=account_info.lastTokenRefresh %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    <div class="blur-sm hover:blur-none cursor-pointer">
+                        {% with text="API Token", type="text", disabled="true", value=account_info.token %}
+                            {% include "/components/form/input.html" %}
+                        {% endwith %}
+                    </div>
+
+                {% endif %}
             </div>
         </div>  
         
@@ -148,9 +184,9 @@
                         }
 
                             
-                        const ordersStats = JSON.parse(analyzeOrders({{ orders | tojson}}))
+                        const ordersStats = JSON.parse(analyzeOrders({{ orders | tojson }}))
 
-                        document.getElementById("ordersTotal").innerText = {{ orders | tojson}}.length
+                        document.getElementById("ordersTotal").innerText = {{ orders | tojson }}.length
                         document.getElementById("spentTotal").innerText = ordersStats.totalSpent + " Kč"
                         document.getElementById("averagePrice").innerText = ordersStats.averagePrice + " Kč"
                         document.getElementById("ordersCanceled").innerText = ordersStats.canceledOrders
