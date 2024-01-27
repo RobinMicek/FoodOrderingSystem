@@ -30,7 +30,7 @@ INSERT INTO kOkenku.products (productId, name, description, price, preparationTi
 INSERT INTO kOkenku.products (productId, name, description, price, preparationTime, imagePath, `show`) VALUES(9, 'Natura Neperlivá 0,5L', 'Čistá voda z horského pramene.', 55.9, '00:00:30', '/files/storage/images/products/VRlBNdSjnh.png', 1);
 INSERT INTO kOkenku.products (productId, name, description, price, preparationTime, imagePath, `show`) VALUES(10, 'Citronový Čaj Lipton', 'Čerstvě uvařený čaj s citronem a medem.', 39.9, '00:03:30', '/files/storage/images/products/jSZLvCNo9L.png', 1);
 INSERT INTO kOkenku.products (productId, name, description, price, preparationTime, imagePath, `show`) VALUES(11, 'Jahodový Cheesecake', 'Lahodný cheesecake s vrstvou čerstvých jahodových plátků.', 79.9, '00:08:00', '/files/storage/images/products/3x2X6QLMOD.png', 1);
-INSERT INTO kOkenku.products (productId, name, description, price, preparationTime, imagePath, `show`) VALUES(12, 'Belgický Waffle s Čokoládou', 'Křehké belgické waffle s horkou tekutou čokoládou a šlehačkou.', 89.9, '00:10:00', '/files/storage/images/products/pyBjC8C9a5.png', 1);
+INSERT INTO kOkenku.products (productId, name, description, price, preparationTime, imagePath, `show`) VALUES(12, 'Belgické Waffle s Čokoládou', 'Křehké belgické waffle s horkou tekutou čokoládou a šlehačkou.', 89.9, '00:10:00', '/files/storage/images/products/pyBjC8C9a5.png', 1);
 INSERT INTO kOkenku.products (productId, name, description, price, preparationTime, imagePath, `show`) VALUES(13, 'Cappuccino', 'Italský nápoj z espressa, horkého mléka a mléčné pěny, spojených do harmonického blendu s bohatou kávovou chutí a jemnou texturou.', 45.9, '00:03:00', '/files/storage/images/products/dt77fA60Qb.png', 1);
 INSERT INTO kOkenku.products (productId, name, description, price, preparationTime, imagePath, `show`) VALUES(14, 'Smažené Cibulové Kroužky', 'Křupavé smažené kroužky cibule, podávané s pikantní omáčkou.', 49.9, '00:08:00', '/files/storage/images/products/U8Ggyvi5dB.png', 1);
 INSERT INTO kOkenku.products (productId, name, description, price, preparationTime, imagePath, `show`) VALUES(15, 'Domácí Hranolky', 'Křupavé domácí hranolky s kečupem.', 49.9, '00:06:00', '/files/storage/images/products/LLfeIWxrOZ.png', 1);
@@ -55,6 +55,7 @@ INSERT INTO kOkenku.menus_products (menuId, productId) VALUES(4, 12);
 INSERT INTO kOkenku.menus_products (menuId, productId) VALUES(4, 11);
 INSERT INTO kOkenku.menus_products (menuId, productId) VALUES(5, 15);
 INSERT INTO kOkenku.menus_products (menuId, productId) VALUES(5, 14);
+INSERT INTO kOkenku.menus_products (menuId, productId) VALUES(6, 16);
 INSERT INTO kOkenku.menus_products (menuId, productId) VALUES(6, 18);
 INSERT INTO kOkenku.menus_products (menuId, productId) VALUES(6, 17);
 
