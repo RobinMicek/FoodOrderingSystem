@@ -35,9 +35,11 @@
                 <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Informace</span> Objednávky</h1>
                 <hr>        
 
-                {% with text="Vyvolávací Číslo", type="text", disabled="true", value="%03d"|format(order.tag) %}
-                    {% include "/components/form/input.html" %}
-                {% endwith %}
+                {% if order.tag %}
+                    {% with text="Vyvolávací Číslo", type="text", disabled="true", value="%03d"|format(order.tag) %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+                {% endif %}
 
                 {% with text="Místo Vyzvednutí", type="text", disabled="true", value=order.name %}
                     {% include "/components/form/input.html" %}

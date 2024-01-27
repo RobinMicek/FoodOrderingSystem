@@ -162,9 +162,7 @@ def api_createOrder():
     new_order = Order().create_order(data=data)
     if new_order != False:
         return jsonify({
-            "data": {
-                "orderId": new_order
-            }
+            "data": new_order
         }), 200 
 
     return jsonify({

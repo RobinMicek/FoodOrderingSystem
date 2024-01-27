@@ -129,9 +129,9 @@ class Order():
                     create_log(type="ALERT", message=f"Created new order - orderId: {orderId}")                    
 
                     # Send information about the order to KitchenHub through socket
-                    self.send_through_socket(orderId=orderId)
+                    orderTag = self.send_through_socket(orderId=orderId)
 
-                    return orderId
+                    return {"orderId": orderId, "tag": orderTag}
                 
                 else:
                     create_log(type="ERROR", message=f"""Could not create order - establishment is closed - establishmentId: {data["establishmentId"]}, accountId: {data["accountId"]}""")
@@ -430,7 +430,8 @@ class Order():
 
             create_log(type="ALERT", message=f"Sent new order through socketio - orderId: {orderId}")   
 
-                             
+
+            return query["tag"] # Sent as a response to the createOrder request                             
 
         except Exception as e:
             create_log(type="ERROR", message=f"Could not send new order through socket - orderId: {orderId} [{e}]")                    
