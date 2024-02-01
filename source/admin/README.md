@@ -68,7 +68,7 @@ Tento způsob rovnou spouští i kontejner s MySQL databází. Pokud jí nechcet
         KO_DB_NAME=kOkenku \
         KO_DB_USER= \
         KO_DB_PASSWORD= \
-        KO_DB_HASH_SALT=
+        KO_HASH_SALT= \
     ```
 
 4. Nainstalujte Python a potřebné knihovky
@@ -95,29 +95,6 @@ Tento způsob rovnou spouští i kontejner s MySQL databází. Pokud jí nechcet
     ```
 
 7. Přidejte Systemd service
-    - Upravte kokenku-admin.service
-        - User - Název uživatele, na kterém služba poběží (musít být vlastníkem souborů v ./app a mít veškerá editační oprávnění)
-            ```bash
-            chmod -R a+rwx <cesta ke složce>
-            ```
-        - ExecStart --chdir - Upravte tak, aby cesta odpovídala
-        - Environment variables - Stejně jako v bod č.3
-    
-    - Zkopírujte tento soubor do /etc/systemd/system/
-        ```bash
-        cp ./kokenku-admin.service /etc/systemd/system/
-        ```
-
-        ```bash
-        sudo systemctl daemon-reload
-        ```
-        
-        ```bash
-        sudo systemctl start kokenku-admin.service
-        ```
-
-7. Admin Web UI by nyní mělo být přístupné na _localhost:8000_
-
-- Pro část těchto kroků lze využít ./install.sh skript
-        
+    -
+7. Admin Web UI by nyní mělo být přístupné na _localhost:8000_   
 
