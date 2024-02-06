@@ -7,10 +7,10 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=sd5164dfgdffdhfdf45 # Set password for the root user
+      - MYSQL_ROOT_PASSWORD= # Set password for the root user
       - MYSQL_DATABASE=kOkenku
       - MYSQL_USER=kOkenkuBackEnd
-      - MYSQL_PASSWORD=superSekret # Set password for the kOkenkuBackEnd user
+      - MYSQL_PASSWORD= # Set password for the kOkenkuBackEnd user
       - TZ=Europe/Prague
       - MYSQL_INITDB_SKIP_TZINFO=no
       - MYSQL_LOG_BIN=1
@@ -31,10 +31,10 @@ services:
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_USER=root
-      - MYSQL_PASS=sd5164dfgdffdhfdf45 # Same as MYSQL_ROOT_PASSWORD
+      - MYSQL_PASS= # Same as MYSQL_ROOT_PASSWORD
       - MAX_BACKUPS=15
       - INIT_BACKUP=1
-      - CRON_TIME=30 * * * * # Set cron schedule for creating backups of the database; Preferable to run while all establishments are closed - The backup process can affect writeability to the database
+      - CRON_TIME=* * * * * # Set cron schedule for creating backups of the database; Preferable to run while all establishments are closed - The backup process can affect writeability to the database
       - GZIP_LEVEL=9
       - TZ=Europe/Prague
     volumes:
@@ -61,11 +61,11 @@ services:
       - KO_DB_HOST=mysql
       - KO_DB_NAME=kOkenku
       - KO_DB_USER=kOkenkuBackEnd
-      - KO_DB_PASSWORD=superSekret # Same as MYSQL_PASSWORD
+      - KO_DB_PASSWORD= # Same as MYSQL_PASSWORD
       - KO_DB_SSL_CA=
-      - KO_HASH_SALT=hash_salt # Set password hashing salt
+      - KO_HASH_SALT= # Set password hashing salt
     ports:
-      - "8000:8000"
+      - 8000:8000
     command: python3 -m gunicorn -k gevent -w 1 --bind 0.0.0.0:8000 --chdir ./app/web app:app
     volumes:
       - ./app/web/files/storage:/admin/app/web/files/storage
