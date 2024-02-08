@@ -16,7 +16,7 @@ async function getConfiguration() {
 
 const serverUrl = ""
 const apiToken = ""
-const establishmentId = ""
+const establishmentId = 0 // Replace with actual Establishment ID 
 
 const companyName = ""
 const establishmentName = ""
