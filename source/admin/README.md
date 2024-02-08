@@ -46,6 +46,10 @@ Tento způsob rovnou spouští i kontejner s MySQL databází. Pokud jí nechcet
     ```
 
 7. Admin Web UI by nyní mělo být přístupné na _localhost:8000_
+- Při použití Docker Compose se společně s BackEnd/Adminem spouští i následující kontejnery
+    - MySQL (port 3306)
+    - Adminer (port 8001)
+    - MySQL Backup Service - Zálohuje databázi podle cron rozvrhu
 
 
 
