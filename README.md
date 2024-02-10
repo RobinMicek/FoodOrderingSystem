@@ -4,19 +4,36 @@ Systém pro objednávání a vyvolávání objednávek pro fast food, který zje
 1. BackEnd Server a Admin Dashboard:
 BackEnd Server je srdcem celého systému. Zpracovává objednávky, komunikuje s ostatními komponentami a uchovává veškerá data. Admin Dashboard umožňuje manažerovi sledovat stav objednávek v reálném čase, konfigurovat systém a analyzovat statistiky.
 
+    ![image](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+    ![image](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+    ![image](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+
 
 2. KitchenHub - Vyvolávací obrazovky:
 Systém, který běží na jednotlivých provozovnách. Obsluha přes něj přijímá objednávky a jejich stav se synchronizuje na ostatních obrazovkých. Zákazníci tak snadno vidí, kdy si mohou vyzvednout své hotové jídlo.
 
+    ![image](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+    ![image](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+    ![image](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+
 
 3. Mobilní aplikace:
 Pomocí mobilní aplikace si zákazníci pohodlně prohlédnou menu, vytvoří a odešlou objednávku a můžou sledovat její stav.
+    
+    ![image](https://img.shields.io/badge/Capacitor-119EFF?style=for-the-badge&logo=Capacitor&logoColor=white)
+    ![image](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)
+    ![image](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+    
+    ![image](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+    ![image](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
 
 
 4. POS (Point of Sale):
 Pokladní systém slouží obsluze k přijímání objednávek a plateb od zákazníků. Systém je integrován s BackEnd Serverem, takže se objednávky automaticky přenáší do kuchyně a eliminuje se tak manuální zadávání.
+    
+    ![image](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Tento text zpracovala umělá inteligence
+(Tento text zpracovala umělá inteligence)
 
 
 ## Jak to celé funguje dohromady
