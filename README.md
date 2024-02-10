@@ -1,17 +1,3 @@
-# Předpřipravené prostředí
-V rámci usnadnění rozběhnutí tohoto projektu jsou předpřipravené některé komponenty a jejich hosting.
-- BackEnd server je dostupný na adrese _http://robinmicek.cz_
-- _APK_ mobilní aplikace je dostupné v root složce zdrojového kódu
-
-
-## Demo přihlašovací údaje
-Admin uživatel:
-- Email: 
-- Heslo: 
-
-API token pro POS je dostupný v Admin Dashboardu.
-
-
 # O projektu
 Projekt obsahuje 4 komponenty
 1. BackEnd Server + Admin Dashboard
@@ -26,7 +12,7 @@ Projekt obsahuje 4 komponenty
 # Instalace
 - Návod pro zprovoznění daných komponent je popsán v _README.md_ souboru v root složce zdrojového kódu dané komponenty (_./source/komponenta/README.md_)
 - Všechny komponenty (kromě mobilní aplikace) jsou spustitelné pomocí Dockeru, včetně všech ostatních potřebných programů (MySQL,...)
-- Pro vlastí build mobilní aplikace je zapotřebí Android Studio/XCode - V root složce je dostupné hotové _APK_, pro instalaci na zařízení s OS Android
+- Pro build mobilní aplikace je zapotřebí Android Studio/XCode
 - Pro připojení mobilní aplikace k REST Api serveru je zapotřebí, aby server měl SSL certifikát, jinak requesty neprojdou - Problém je někde v kombinaci VueJS, CapacitorJS a Androidu
 
 
@@ -55,12 +41,3 @@ Projekt obsahuje 4 komponenty
 - https://tailwindcss.com/
 - https://capacitorjs.com/
 - https://github.com/fengyuanchen/vue-qrcode
-
-
-# Working time
-start: 10.06.2023
-end: 
-
-
-# Notes
-local notifications / not push 
