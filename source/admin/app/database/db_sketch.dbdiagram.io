@@ -1,102 +1,109 @@
+/*
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+    Jakákoliv úprava a distribuce tohoto kódu 
+    bez povolení autora je zakázána!
+
+    © Robin Míček 2023 - 2024
+
+********************************************************
+*/
+
+
+// This is a structure of the db diagram
+// Copy this text to dbdiagram.io to see the diagram 
+
+
 Table products {
-  product_id INTEGER
-  name STRING
-  description STRING
+  productId INTEGER [primary key, increment]
+  name VARCHAR(255)
+  description TEXT
   price FLOAT
-  menu_id INTEGER
-  image_path STRING
-  preparation_time INTEGER
-  show BOOLEAN
+  preparationTime TIME
+  imagePath VARCHAR(255)
+  show TINYINT [default: 0]
 }
 
 Table orders {
-  order_id INTEGER
-  account_id INTEGER
-  tag INTEGER
-  pickup_time DATE
-  status STRING
+  orderId INTEGER [primary key, increment]
+  accountId INTEGER [ref: > accounts.accountId]
+  establishmentId INTEGER [ref: > establishments.establishmentId]
+  tag INT [default: NULL]
+  createdTime TIMESTAMP [default: `CURRENT_TIMESTAMP`]
+  pickupTime TIMESTAMP
+  lastUpdate TIMESTAMP [default: `CURRENT_TIMESTAMP`]
+  status VARCHAR(255) [default: 'CREATED']
+  socketSent TINYINT [default: 0]
 }
 
 Table orders_products {
-  order_id INTEGER
-  product_id INTEGER
-  price FLOAT
+  orderId INTEGER [ref: > orders.orderId]
+  productId INTEGER [ref: > products.productId]
+  quantity INTEGER
+  price FLOAT [default: 0]
 }
 
 Table accounts {
-  account_id INTEGER
-  hash STRING
-  firstname STRING
-  surname STRING
-  date_of_birth DATE
-  email STRING
-  active BOOLEAN
-  role STRING
+  accountId INTEGER [primary key, increment]
+  email VARCHAR(255) [unique]
+  phone VARCHAR(255)
+  token VARCHAR(255)
+  hash VARCHAR(255)
+  firstname VARCHAR(255)
+  surname VARCHAR(255)
+  since TIMESTAMP [default: `CURRENT_TIMESTAMP`]
+  dateOfBirth DATE
+  active TINYINT [default: 1]
+  role VARCHAR(255)
+  lastTokenRefresh TIMESTAMP [default: `CURRENT_TIMESTAMP`]
 }
 
 Table menus {
-  menu_id INTEGER
-  name STRING
-  note STRING
-  description STRING
-  image_path STRING
-  show BOOLEAN
+  menuId INTEGER [primary key, increment]
+  name VARCHAR(255)
+  note TEXT
+  description TEXT
+  imagePath VARCHAR(255)
+  show TINYINT [default: 0]
+}
+
+Table menus_products {
+  menuId INTEGER [ref: > menus.menuId]
+  productId INTEGER [ref: > products.productId]
 }
 
 Table establishments {
-  establishment_id INTEGER
-  name INTEGER
-  image_path STRING
-
-  address STRING
-
-  wifi BOOLEAN
-  dine_in BOOLEAN
-  yard BOOLEAN
-  playground BOOLEAN
-  parking BOOLEAN
-  e_charger BOOLEAN
-
-  show BOOLEAN
+  establishmentId INTEGER [primary key, increment]
+  name VARCHAR(255)
+  imagePath VARCHAR(255)
+  address VARCHAR(255)
+  wifi TINYINT [default: 0]
+  dineIn TINYINT [default: 0]
+  yard TINYINT [default: 0]
+  playground TINYINT [default: 0]
+  parking TINYINT [default: 0]
+  eCharger TINYINT [default: 0]
+  show TINYINT [default: 0]
+  slug VARCHAR(255)
+  token VARCHAR(255)
 }
 
 Table establishments_menus {
-  establishment_id INTEGER
-  menu_id INTEGER
+  establishmentId INTEGER [ref: > establishments.establishmentId]
+  menuId INTEGER [ref: > menus.menuId]
 }
 
 Table establishments_openinghours {
-  establishment_id INTEGER
-
-  monday_opening_time FLOAT
-  monday_closing_time FLOAT
-  tuesday_opening_time FLOAT
-  tuesday_closing_time FLOAT
-  wednesday_opening_time FLOAT
-  wednesday_closing_time FLOAT
-  thursday_opening_time FLOAT
-  thursday_closing_time FLOAT
-  friday_opening_time FLOAT
-  friday_closing_time FLOAT
-  saturday_opening_time FLOAT
-  saturday_closing_time FLOAT
-  sunday_opening_time FLOAT
-  sunday_closing_time FLOAT
+  establishmentId INTEGER [ref: > establishments.establishmentId]
+  dayOfTheWeek INTEGER
+  openingTime TIME
+  closingTime TIME
 }
-
-Table newsletters {
-  newsletter_id INTEGER
-  image_path STRING
-  heading STRING
-  body STRING
-}
-
-Ref: establishments.establishment_id > establishments_menus.establishment_id
-Ref: menus.menu_id > establishments_menus.menu_id
-Ref: establishments.establishment_id > establishments_openinghours.establishment_id
-
-Ref: orders.order_id > orders_products.order_id
-Ref: products.product_id > orders_products.product_id
-
-Ref: accounts.account_id > orders.account_id
-Ref: menus.menu_id > products.menu_id
