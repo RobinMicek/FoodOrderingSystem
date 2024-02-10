@@ -288,7 +288,6 @@ Content-Type: application/json
     "message": "Valid user token required!"
 }
 ```
-```
 
 
 
@@ -342,6 +341,172 @@ Content-Type: application/json
 
 {
     "message": "Could not create new order!"
+}
+```
+
+### 401
+```
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+
+{
+    "status": 401,
+    "message": "Valid user token required!"
+}
+```
+
+
+
+
+# /api/get-all-orders
+
+Returns list of all orders.
+
+```
+GET /get-all-orders HTTP/1.1
+Host: [host]
+User-Agent: [user-agent]
+Authorization: Bearer [token]
+```
+
+## Responses
+
+### 200:
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": [
+    {
+      "accountId": 1,
+      "createdTime": "Fri, 09 Feb 2024 10:12:02 GMT",
+      "establishmentId": 1,
+      "lastUpdate": "Fri, 09 Feb 2024 10:17:05 GMT",
+      "name": "Moje provozovna",
+      "orderId": 12,
+      "pickupTime": "Fri, 09 Feb 2024 10:21:00 GMT",
+      "socketSent": 1,
+      "status": "PROCESSING",
+      "tag": 1,
+      "totalPrice": 109.9
+    },
+    {
+      "accountId": 1,
+      "createdTime": "Fri, 09 Feb 2024 08:19:27 GMT",
+      "establishmentId": 1,
+      "lastUpdate": "Fri, 09 Feb 2024 08:19:46 GMT",
+      "name": "Moje provozovna",
+      "orderId": 11,
+      "pickupTime": "Fri, 09 Feb 2024 08:31:00 GMT",
+      "socketSent": 1,
+      "status": "DONE",
+      "tag": null,
+      "totalPrice": 235.7
+    },
+    {
+      "accountId": 1,
+      "createdTime": "Thu, 08 Feb 2024 22:34:16 GMT",
+      "establishmentId": 1,
+      "lastUpdate": "Thu, 08 Feb 2024 22:34:35 GMT",
+      "name": "Moje provozovna",
+      "orderId": 6,
+      "pickupTime": "Thu, 08 Feb 2024 22:37:00 GMT",
+      "socketSent": 1,
+      "status": "DONE",
+      "tag": null,
+      "totalPrice": 39.9
+    },
+    {
+      "accountId": 1,
+      "createdTime": "Thu, 08 Feb 2024 22:33:58 GMT",
+      "establishmentId": 1,
+      "lastUpdate": "Thu, 08 Feb 2024 22:34:36 GMT",
+      "name": "Moje provozovna",
+      "orderId": 5,
+      "pickupTime": "Thu, 08 Feb 2024 22:45:00 GMT",
+      "socketSent": 1,
+      "status": "DONE",
+      "tag": null,
+      "totalPrice": 145.8
+    }
+  ]
+}
+```
+
+### 401
+```
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+
+{
+    "status": 401,
+    "message": "Valid user token required!"
+}
+```
+
+
+
+
+# /api/get-order?orderId=[orderId]
+
+Returns info about a specified order.
+
+```
+GET /get-order?orderId=[orderId] HTTP/1.1
+Host: [host]
+User-Agent: [user-agent]
+Authorization: Bearer [token]
+```
+
+## Responses
+
+### 200:
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "accountId": 1,
+    "createdTime": "Thu, 08 Feb 2024 22:33:58 GMT",
+    "email": "email@example.com",
+    "establishmentId": 1,
+    "firstname": "John",
+    "lastUpdate": "Thu, 08 Feb 2024 22:34:36 GMT",
+    "name": "Moje provozovna",
+    "orderId": 5,
+    "phone": "+420123456789",
+    "pickupTime": "Thu, 08 Feb 2024 22:45:00 GMT",
+    "products": [
+      {
+        "description": "Klasický řízek v housce s čerstvou zeleninou a majonézou.",
+        "imagePath": "/files/storage/images/products/WALf6nlMpQ.png",
+        "name": "Řízek v Housce",
+        "orderPrice": 109.9,
+        "preparationTime": "00:12:00",
+        "price": 109.9,
+        "productId": 5,
+        "quantity": 1,
+        "show": 1
+      }
+    ],
+    "socketSent": 1,
+    "status": "DONE",
+    "surname": "Doe",
+    "tag": null,
+    "totalPrice": 145.8
+  }
+}
+```
+
+### 404
+```
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+
+{
+    "message": "Could not find the order!"
 }
 ```
 

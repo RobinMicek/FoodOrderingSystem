@@ -1,3 +1,7 @@
+# API Routes
+Popis jednotlivých Rest API endpointů je v _./app/API_Routes.md_ 
+
+
 # Jak spustit K Okénku | Backend & Admin Panel 
 
 ## Docker
