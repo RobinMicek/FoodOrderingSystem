@@ -9,11 +9,6 @@
 
     Robin Míček, 8.E
 
-    Jakákoliv úprava a distribuce tohoto kódu 
-    bez povolení autora je zakázána!
-
-    © Robin Míček 2023 - 2024
-
 ********************************************************
 """
 

@@ -1,3 +1,18 @@
+/*
+********************************************************
+
+    Tento kód je součástí projektu 'K Okénku',
+    který je psán jako maturitní práce z informatiky.
+
+    Gymnázium Sokolov a Krajské vzdělávací centrum,
+    příspěvková organizace
+
+    Robin Míček, 8.E
+
+********************************************************
+*/
+
+
 async function loadDatabase() {
   const db = await idb.openDB("kOkenkuPOSDB", 1, {
     upgrade(db, oldVersion, newVersion, transaction) {
