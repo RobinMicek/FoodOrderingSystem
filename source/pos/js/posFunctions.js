@@ -34,6 +34,32 @@ function initApp() {
     receiptNo: null,
     receiptDate: null,
     orderTag: null,
+    allEstablishments: [],
+    establishmentId: parseInt(localStorage.getItem("establishmentId")),
+    establishmentName: localStorage.getItem("establishmentName"),
+    receiptPrefix: localStorage.getItem("receiptPrefix"),
+    companyName: localStorage.getItem("companyName"),
+
+
+    async firstTimeSetup() {
+      this.allEstablishments = await new serverRequests().getAllEstablishments()
+    },
+
+
+    async updateVariables(establishmentId, establishmentName, establishmentSlug) {
+      this.establishmentId = parseInt(establishmentId)
+      localStorage.setItem("establishmentId", this.establishmentId)
+
+      this.establishmentName = establishmentName
+      localStorage.setItem("establishmentName", this.establishmentName)
+      
+      this.receiptPrefix = (`${(establishmentSlug.split('-')[0]).slice(0, 2)}${(establishmentSlug.split('-')[0]).slice(-2)}`).toUpperCase()
+      localStorage.setItem("receiptPrefix", this.receiptPrefix)
+
+      this.companyName = (await getConfiguration()).companyInfo.companyName
+      localStorage.setItem("companyName", this.companyName)
+      
+    },
 
 
     async initDatabase() {
@@ -52,7 +78,7 @@ function initApp() {
         await this.db.deleteAll()
 
         const serverRequest = new serverRequests()
-        this.products = await serverRequest.getAllProducts()
+        this.products = await serverRequest.getAllProducts(this.establishmentId)
         
         for (let product of this.products) {
           product = JSON.parse(JSON.stringify(product))
@@ -163,13 +189,13 @@ function initApp() {
     
     async submit() {
       const serverRequest = new serverRequests()
-      const order = await serverRequest.completeOrder(this.cart)
+      const order = await serverRequest.completeOrder(this.cart, this.establishmentId)
 
       if (order != false) {
         this.orderTag = `#${order.tag}`
         const time = new Date()
         this.isShowModalReceipt = true
-        this.receiptNo = `${receiptPrefix}-${order.orderId}`
+        this.receiptNo = `${this.receiptPrefix}-${order.orderId}`
         this.receiptDate = this.dateFormat(time)
       }
       else {

@@ -265,18 +265,37 @@
     <!-- modal first time -->
     <div x-show="firstTime" class="fixed glass w-full h-screen left-0 top-0 z-10 flex flex-wrap justify-center content-center p-24">
       <div class="w-96 rounded-3xl p-8 bg-white shadow-xl">
-        <div class="text-center">
+
+        <template x-if="allEstablishments.length == 0">
+          <div>
+            <h3 class="text-center text-2xl mb-8">JSTE TU POPRVÉ?</h3>
+
+            <button x-on:click="firstTimeSetup()" class="text-left w-full mb-3 rounded-xl bg-blue-gray-500 text-white focus:outline-none hover:bg-green-400 px-4 py-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block -mt-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">              
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12 8-8 8 8M6 10.5V19c0 .6.4 1 1 1h3v-3c0-.6.4-1 1-1h2c.6 0 1 .4 1 1v3h3c.6 0 1-.4 1-1v-8.5"/>
+              </svg>
+              ZVOLIT PROVOZOVNU
+            </button>
+          </div>
+        </template>
           
-          <h3 class="text-center text-2xl mb-8">JSTE TU POPRVÉ?</h3>
-        </div>
-        <div class="text-left">
-          <button x-on:click="storeDataFromApi()" class="text-left w-full mb-3 rounded-xl bg-blue-gray-500 text-white focus:outline-none hover:bg-green-400 px-4 py-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block -mt-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
-            </svg>
-            STÁHNOUT DATA
-          </button>
-        </div>
+         
+        <template x-if="allEstablishments.length != 0">
+          <div>
+            <h3 class="text-center text-2xl mb-8">ZVOLTE PROVOZOVNU</h3>
+
+            <div class="h-96 overflow-auto">                
+              <template x-for="establishment in allEstablishments" :key="establishment.establishmentId">
+                
+                  <button x-on:click="updateVariables(establishment.establishmentId, establishment.name, establishment.slug) && storeDataFromApi()" class="text-left w-full mb-1 rounded-xl bg-blue-gray-500 text-white focus:outline-none hover:bg-green-400 px-4 py-2">
+                    <p x-text="establishment.name" class="text-lg"></p>
+                    <p x-text="establishment.address" class="text-sm"></p>
+                  </button>
+                  
+              </template>    
+            </div>
+          </div>
+        </template>
       </div>
     </div>
 
@@ -290,7 +309,7 @@
         class="fixed glass w-full h-screen left-0 top-0 z-0" x-on:click="closeModalReceipt()"
         x-transition:enter="transition ease-out duration-100"
         x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
+        x-transition:enter-end="opacity-100";
         x-transition:leave="transition ease-in duration-100"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"

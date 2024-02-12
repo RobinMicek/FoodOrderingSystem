@@ -3,7 +3,26 @@ class serverRequests {
     constructor() {}
 
 
-    async getAllProducts() {
+    async getAllEstablishments() {
+        try {
+            const response = await axios.get(serverUrl + `/api/get-all-establishments`, {
+                headers: {
+                    "Authorization": apiToken 
+                }
+            });
+
+            if (response && response.status === 200) {
+                return response.data.data
+            }
+            
+        } catch (error) {
+            consolele.log(error)
+            return false
+        }
+    }
+
+
+    async getAllProducts(establishmentId) {
         try {            
             const response = await axios.get(serverUrl + `/api/get-establishment?establishmentId=${ establishmentId }`, {
                 headers: {
@@ -48,7 +67,7 @@ class serverRequests {
     }
 
 
-    async completeOrder(products) {
+    async completeOrder(products, establishmentId) {
         try {        
             const configuration = await getConfiguration(
 
