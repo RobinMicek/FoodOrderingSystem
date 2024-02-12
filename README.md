@@ -33,8 +33,6 @@ Pokladní systém slouží obsluze k přijímání objednávek a plateb od záka
     
     ![image](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-(Tento text zpracovala umělá inteligence)
-
 
 ## Jak to celé funguje dohromady
 ![image](/sketches/App%20Diagram.jpg)
@@ -57,6 +55,7 @@ Pokladní systém slouží obsluze k přijímání objednávek a plateb od záka
 ## Ikony
 - https://icons8.com/line-awesome
 - https://feathericons.com/
+- https://flowbite.com/icons/
 
 ## Fonty
 - https://fonts.google.com/specimen/M+PLUS+Rounded+1c?previewtext=gh%C4%8D%C5%A1s%2B%C4%9B%C5%A1%C4%8D%C5%99%C5%BE%C3%BD%C3%A1%C3%AD%C3%A9&preview.text_type=custom

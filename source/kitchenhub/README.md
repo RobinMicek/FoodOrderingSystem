@@ -1,13 +1,12 @@
 # Jak spustit
-## Docker
 1. Vytvořte image pomocí Dockerfile
     ```bash
-    docker build -t kitchenhub:tag .
+    docker build -t kitchenhub .
     ```
 
 2. Spusťte kontejner
     ```bash
-    docker run -d -p 8080:8080 --name kitchenHub kitchenhub:tag
+    docker run -d -p 8080:8080 --name kitchenHub kitchenhub
     ```
 
 3. Jděte na _localhost:8080_ (popřípadně jiný port, který jste specifikovali při spouštění kontejneru)
