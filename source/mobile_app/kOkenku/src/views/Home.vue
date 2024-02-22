@@ -30,7 +30,7 @@
                         <div class="flex items-center justify-center h-full gap-2">
                             <vue-feather type="credit-card" size="30"/>
                             <div class="text-center">
-                                <h1 class="text-xl font-medium pt-1">Nová Objendávka</h1>
+                                <h1 class="text-xl font-medium pt-1">Nová Objednávka</h1>
                             </div>
                         </div>                    
                     </div>
