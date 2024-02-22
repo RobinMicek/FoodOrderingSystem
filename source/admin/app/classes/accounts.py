@@ -195,6 +195,7 @@ class Account:
         db.cursor.execute("""
             SELECT *
             FROM accounts
+            ORDER BY accounts.accountId DESC
         """)
         query = db.cursor.fetchall()
         db.close()
@@ -243,7 +244,7 @@ if __name__ == "__main__":
                 firstname=input("Jméno: "), 
                 surname=input("Příjmení: "),
                 phone=input("Telefonní číslo: "),    
-                dateOfBirth=input("Datum Narození: "), 
+                dateOfBirth=input("Datum Narození (YYYY-MM-DD): "), 
                 password=input("Heslo: "), 
                 role=accountType 
             )
