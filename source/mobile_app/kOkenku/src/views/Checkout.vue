@@ -37,7 +37,7 @@
             </p>
 
             <div class="mt-10">
-                <button @click="completeOrder"
+                <button @click="completeOrder" :disabled="orderCompleted"
                     class="flex items-center justify-center gap-3 p-2 w-full bg-primary rounded-md text-white text-lg font-medium">
                     <vue-feather type="credit-card" size="24"/>
                     Objednat
@@ -148,7 +148,7 @@ import axios from 'axios'
 import { getObject, removeObject } from "@/utils/storage.js"
 import { CartObject } from "@/utils/cart.js"
 import { checkForPickupTimeWindow } from "@/utils/pickupTime.js"
-import { scheduleNotification  } from "@/utils/localNotifications"
+import { scheduleNotification } from "@/utils/localNotifications"
 
 // Import Variables
 import { serverUrl, getConfiguration } from "@/variables.js"
