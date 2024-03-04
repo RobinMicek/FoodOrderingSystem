@@ -103,6 +103,6 @@ Tento způsob rovnou spouští i kontejner s MySQL databází. Pokud jí nechcet
     ```
 
 7. Přidejte Systemd service
-    -
-7. Admin Web UI by nyní mělo být přístupné na _localhost:8000_   
+
+8. Admin Web UI by nyní mělo být přístupné na _localhost:8000_   
 
