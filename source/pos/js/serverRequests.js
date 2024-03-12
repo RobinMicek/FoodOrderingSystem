@@ -31,7 +31,7 @@ class serverRequests {
             }
             
         } catch (error) {
-            consolele.log(error)
+            console.log(error)
             return false
         }
     }
@@ -76,7 +76,7 @@ class serverRequests {
             }
             
         } catch (error) {
-            consolele.log(error)
+            console.log(error)
             return false
         }
     }
