@@ -26,7 +26,7 @@ BEGIN
     -- Find the tag of the row before the new one
     SELECT COALESCE(tag, 0) INTO prev_tag
     FROM orders
-    WHERE establishmentId = NEW.establishmentId AND createdTime <= NEW.createdTime
+    WHERE establishmentId = NEW.establishmentId AND createdTime < NEW.createdTime AND tag IS NOT NULL
     ORDER BY createdTime DESC
     LIMIT 1;
 
