@@ -125,9 +125,9 @@
                     <img :src="serverUrl + product.imagePath" :alt="product.name" class="w-full rounded-xl">
                   </div>
                   <div class="absolute bottom-0 w-full p-2">
-                    <div class="flex p-2 text-sm bg-gray-200 text-black rounded-b-xl">
-                      <p class="font-semibold flex-grow truncate mr-1" x-text="product.name">Product Name</p>
-                      <p class="nowrap font-bold" x-text="priceFormat(product.price)">Price</p>
+                    <div class="flex items-center p-2 text-sm bg-gray-200 text-black rounded-b-xl">
+                      <p class="font-semibold flex-grow truncate mr-1" x-text="product.name">Product Name </p>
+                      <p class="nowrap text-xl font-bold" x-text="priceFormat(product.price)">Price</p>
                     </div>
                   </div>                  
                 </div>
