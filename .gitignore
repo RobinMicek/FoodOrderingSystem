@@ -160,6 +160,8 @@ source/mobile_app/kOkenku/ios
 source/mobile_app/kOkenku/android
 source/mobile_app/kOkenku/src/manifest.webmanifest
 
+source/pos/node_modules
+
 # Logs
 source/admin/app/logs.txt
 source/kitchenHub/app/logs.txt

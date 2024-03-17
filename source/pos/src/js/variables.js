@@ -29,5 +29,5 @@ async function getConfiguration() {
 }
 
 
-const serverUrl = ""
+const serverUrl = "" // Url Address of the Admin Server - Must be HTTPS && without '/' (e.g. https://example.com)
 const apiToken = ""
