@@ -147,6 +147,12 @@
                     `
                 }
 
+                
+                let buttonText = "Připravit"
+                if (order.status === "PROCESSING") {
+                    buttonText = "Hotovo"
+                } 
+
 
                 const orderDiv = `
                     <div class="bg-white shadow-lg rounded-lg p-5 m-5 w-auto h-auto relative" id="order-${order.orderId}">
@@ -168,7 +174,7 @@
                             </div>
 
                             <div class="">
-                                <button onclick="toggleStatus('${JSON.stringify(order.orderId)}')" type="button" class="p-2 w-full rounded-md shadow-md text-white bg-secondary font-medium">Připravit</button>
+                                <button onclick="toggleStatus('${JSON.stringify(order.orderId)}')" type="button" class="p-2 w-full rounded-md shadow-md text-white bg-secondary font-medium">${buttonText}</button>
                             </div>
 
                         </div>
