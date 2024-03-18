@@ -10,7 +10,7 @@ FrontEnd a základní funkce vychází z projektu https://github.com/emsifa/tail
     - serverUrl = URL adresa serveru (adresa admin dashboardu)
     - apiToken = Token vytvořeného _api_ účtu (k dostání v admin dashboardu)
 
-3. Nainstalujte potřebné package
+3. Nainstalujte potřebné knihovny
     ```bash
     npm install
     ```
@@ -20,4 +20,4 @@ FrontEnd a základní funkce vychází z projektu https://github.com/emsifa/tail
     npm run package
     ```
 
-5. Ve složce _./builds_ si vyberte validní (dle OS a architektury) build a spusťte aplikaci
+5. Ve složce _./builds_ naleznete instalátor

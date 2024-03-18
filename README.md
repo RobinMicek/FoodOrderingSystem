@@ -7,6 +7,8 @@ BackEnd Server je srdcem celého systému. Zpracovává objednávky, komunikuje 
     ![image](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
     ![image](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
     ![image](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+    ![image](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
+
 
 
 2. KitchenHub - Vyvolávací obrazovky:
@@ -15,6 +17,8 @@ Systém, který běží na jednotlivých provozovnách. Obsluha přes něj přij
     ![image](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
     ![image](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
     ![image](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+    ![image](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
+
 
 
 3. Mobilní aplikace:
@@ -32,6 +36,8 @@ Pomocí mobilní aplikace si zákazníci pohodlně prohlédnou menu, vytvoří a
 Pokladní systém slouží obsluze k přijímání objednávek a plateb od zákazníků. Systém je integrován s BackEnd Serverem, takže se objednávky automaticky přenáší do kuchyně a eliminuje se tak manuální zadávání.
     
     ![image](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+    ![image](https://img.shields.io/badge/alpinejs-white.svg?style=for-the-badge&logo=alpinedotjs&logoColor=%238BC0D0)
+    ![images](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white)
 
 
 ## Jak to celé funguje dohromady
