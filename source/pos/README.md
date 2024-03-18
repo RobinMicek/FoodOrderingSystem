@@ -21,12 +21,3 @@ FrontEnd a základní funkce vychází z projektu https://github.com/emsifa/tail
     ```
 
 5. Ve složce _./builds_ si vyberte validní (dle OS a architektury) build a spusťte aplikaci
-
-
-
-# Reset provozovny
-Pro navrácení pokladnys do stavu prvotního nastavení je potřeba otevřít Dev Tools pomocí F12 / CTRL+SHIFT+I.
-
-Následně jděte to tabu _Application_ a smažte _IndexedDB_ a _Local Storage_.
-
-Následně refreshněte okno (F5 / CTRL+R) a pokladna by měla být resetována.

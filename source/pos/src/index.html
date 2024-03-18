@@ -68,7 +68,7 @@
           />
           
           <div class="top-2 right-5 absolute">
-            <a x-on:click="storeDataFromApi()"
+            <a x-on:click="if (confirm('Opravdu chcete obnovit tovární nastavení?')) {factoryReset()}"
               class="mt-auto flex items-center justify-center cursor-pointer focus:outline-none">
               <span
                 class="flex items-center justify-center h-12 w-12 rounded-2xl bg-green-400 text-white hover:text-gray-600"                

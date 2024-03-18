@@ -56,6 +56,13 @@ function initApp() {
     companyName: localStorage.getItem("companyName"),
 
 
+    async factoryReset() {
+      localStorage.clear();
+      await this.db.deleteAll()
+      location.reload()
+    },
+
+
     async firstTimeSetup() {
       this.allEstablishments = await new serverRequests().getAllEstablishments()
     },
