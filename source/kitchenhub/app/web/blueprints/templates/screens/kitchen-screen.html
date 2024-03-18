@@ -130,7 +130,7 @@
                 orderProductsDiv += `
                     <div class="flex justify-between">
                         <p class="text-sm xl:text-lg"><span class="font-medium">${order.products[j].quantity}x</span> ${order.products[j].name} </p>
-                        <p class="text-sm xl:text-lg font-medium">${order.products[j].preparationTime}</p>
+                        <p class="text-sm xl:text-lg font-medium">${order.products[j].preparationTime.startsWith("00:") ? order.products[j].preparationTime.substring(3) : order.products[j].preparationTime}</p>
                     </div>
                 `
             }
