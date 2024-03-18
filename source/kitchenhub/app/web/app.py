@@ -42,6 +42,7 @@ def create_app():
         __name__,
         static_folder="files")
     app.secret_key = FLASK_SECRET_KEY
+    app.debug = False
     CORS(app)
     
     return app

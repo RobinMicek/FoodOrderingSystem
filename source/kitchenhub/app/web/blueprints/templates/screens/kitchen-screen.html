@@ -128,7 +128,10 @@
             var orderProductsDiv = ``
             for (let j = 0; j < order.products.length; j++) {
                 orderProductsDiv += `
-                    <p class="text-sm xl:text-lg"><span class="font-medium">${order.products[j].quantity}x</span> ${order.products[j].name}</p>
+                    <div class="flex justify-between">
+                        <p class="text-sm xl:text-lg"><span class="font-medium">${order.products[j].quantity}x</span> ${order.products[j].name} </p>
+                        <p class="text-sm xl:text-lg font-medium">${order.products[j].preparationTime}</p>
+                    </div>
                 `
             }
 
