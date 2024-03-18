@@ -39,7 +39,7 @@ function initApp() {
     firstTime: localStorage.getItem("first_time") === null,
     activeMenu: 'pos',
     loadingSampleData: false,
-    moneys: [1, 2, 5, 10, 20, 50, 100, 200, 500, 500, 1000, 2000, 5000],
+    moneys: [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000],
     products: [],
     keyword: "",
     cart: [],
@@ -57,8 +57,10 @@ function initApp() {
 
 
     async factoryReset() {
-      localStorage.clear();
-      await this.db.deleteAll()
+      localStorage.clear()
+      this.products = []
+      indexedDB.deleteDatabase("kOkenkuPOSDB")
+
       location.reload()
     },
 
