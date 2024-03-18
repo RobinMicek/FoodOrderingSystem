@@ -14,6 +14,9 @@ function createWindow () {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
+
+  // Launch in fullscreen
+  mainWindow.fullScreen = true
 }
 
 app.whenReady().then(() => {

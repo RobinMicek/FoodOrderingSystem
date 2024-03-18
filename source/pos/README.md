@@ -21,3 +21,7 @@ FrontEnd a základní funkce vychází z projektu https://github.com/emsifa/tail
     ```
 
 5. Ve složce _./builds_ naleznete instalátor
+
+
+# Celá obrazovka
+Režim celé obrazovky lze přepínat pomocí klávesy __F11__
