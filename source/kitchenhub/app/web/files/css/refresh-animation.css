@@ -14,19 +14,51 @@
 
 
 @keyframes refreshAnimation {
-    0% {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    60% {
-      opacity: 0.7;
-    }
-    100% {
+  0% {
+      animation-timing-function: ease-in;
       opacity: 1;
-      transform: translateX(0);
+      transform: translateX(-48px);
     }
-
+  
+    24% {
+      opacity: 1;
+    }
+  
+    40% {
+      animation-timing-function: ease-in;
+      transform: translateX(-26px);
+    }
+  
+    65% {
+      animation-timing-function: ease-in;
+      transform: translateX(-13px);
+    }
+  
+    82% {
+      animation-timing-function: ease-in;
+      transform: translateX(-6.5px);
+    }
+  
+    93% {
+      animation-timing-function: ease-in;
+      transform: translateX(-4px);
+    }
+  
+    25%,
+    55%,
+    75%,
+    87%,
+    98% {
+      animation-timing-function: ease-out;
+      transform: translateX(0px);
+    }
+  
+    100% {
+      animation-timing-function: ease-out;
+      opacity: 1;
+      transform: translateX(0px);
+    }
 }
 .refresh-animation {
-    animation: refreshAnimation 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+    animation: refreshAnimation 1s cubic-bezier(0.42, 0, 0.58, 1);
 }
