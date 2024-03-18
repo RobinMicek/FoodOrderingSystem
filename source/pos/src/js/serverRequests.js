@@ -84,9 +84,8 @@ class serverRequests {
 
     async completeOrder(products, establishmentId) {
         try {        
-            const configuration = await getConfiguration(
+            const configuration = await getConfiguration()
 
-            )
             var formattedProducts = []
             var maxPreparationTime = null
             for (var x = 0; x < products.length; x++) {
