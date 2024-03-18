@@ -46,7 +46,6 @@ Pokladní systém slouží obsluze k přijímání objednávek a plateb od záka
 
 # Instalace
 - Návod pro zprovoznění daných komponent je popsán v _README.md_ souboru v root složce zdrojového kódu dané komponenty (_./source/komponenta/README.md_)
-- Všechny komponenty (kromě mobilní aplikace) jsou spustitelné pomocí Dockeru, včetně všech ostatních potřebných programů (MySQL,...)
 - Pro build mobilní aplikace je zapotřebí Android Studio/XCode
 - Pro připojení mobilní aplikace k REST Api serveru je zapotřebí, aby server měl SSL certifikát, jinak requesty neprojdou - Problém je někde v kombinaci VueJS, CapacitorJS a Androidu
 
