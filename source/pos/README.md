@@ -6,18 +6,27 @@ FrontEnd a základní funkce vychází z projektu https://github.com/emsifa/tail
 # Jak spustit
 1. Je potřeba vytvořit _api_ účet
 
-2. Následně jděte do _./js/variables.js a vyplntě potřebné proměnné
+2. Následně jděte do _./src/js/variables.js a vyplntě potřebné proměnné
     - serverUrl = URL adresa serveru (adresa admin dashboardu)
     - apiToken = Token vytvořeného _api_ účtu (k dostání v admin dashboardu)
 
-3. Vytvořte image pomocí Dockerfile
+3. Nainstalujte potřebné package
     ```bash
-    docker build -t kokenku-pos .
+    npm install
     ```
 
-4. Spusťte kontejner
+4. Vytvořte nový build (Musíte provést jako administrátor)
     ```bash
-    docker run -d -p 5000:80 --name KOkenkuPOS kokenku-pos
+    npm run package
     ```
 
-5. Jděte na _localhost_ (popřípadně s jiným portem, který jste specifikovali při spouštění kontejneru)
+5. Ve složce _./builds_ si vyberte validní (dle OS a architektury) build a spusťte aplikaci
+
+
+
+# Reset provozovny
+Pro navrácení pokladnys do stavu prvotního nastavení je potřeba otevřít Dev Tools pomocí F12 / CTRL+SHIFT+I.
+
+Následně jděte to tabu _Application_ a smažte _IndexedDB_ a _Local Storage_.
+
+Následně refreshněte okno (F5 / CTRL+R) a pokladna by měla být resetována.

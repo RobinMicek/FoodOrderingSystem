@@ -1,11 +1,14 @@
 {
-  "name": "pos",
+  "name": "POS",
   "version": "1.0.0",
+  "author": "Robin Míček",
+  "description": "Pokladní terminál pro objednávkový systém K Okénku.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package": "electron-builder"
   },
-  "dependencies": {
+  "devDependencies": {
     "electron": "^29.1.4"
   }
 }

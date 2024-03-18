@@ -161,6 +161,7 @@ source/mobile_app/kOkenku/android
 source/mobile_app/kOkenku/src/manifest.webmanifest
 
 source/pos/node_modules
+source/pos/builds
 
 # Logs
 source/admin/app/logs.txt
