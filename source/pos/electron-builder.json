@@ -14,7 +14,7 @@
   },
   "nsis": {
     "oneClick": false,
-    "perMachine": true,
+    "perMachine": false,
     "allowToChangeInstallationDirectory": true,
     "shortcutName": "K Okénku | POS"
   } 
