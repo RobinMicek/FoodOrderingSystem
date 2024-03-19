@@ -216,7 +216,7 @@ function initApp() {
       const order = await serverRequest.completeOrder(this.cart, this.establishmentId)
 
       if (order != false) {
-        this.orderTag = `#${order.tag}`
+        this.orderTag = `#${String(order.tag).padStart(3, '0')}`
         const time = new Date()
         this.isShowModalReceipt = true
         this.receiptNo = `${this.receiptPrefix}-${order.orderId}`
