@@ -15,50 +15,17 @@
 
 @keyframes refreshAnimation {
   0% {
-      animation-timing-function: ease-in;
-      opacity: 1;
-      transform: translateX(-48px);
-    }
-  
-    24% {
-      opacity: 1;
-    }
-  
-    40% {
-      animation-timing-function: ease-in;
-      transform: translateX(-26px);
-    }
-  
-    65% {
-      animation-timing-function: ease-in;
-      transform: translateX(-13px);
-    }
-  
-    82% {
-      animation-timing-function: ease-in;
-      transform: translateX(-6.5px);
-    }
-  
-    93% {
-      animation-timing-function: ease-in;
-      transform: translateX(-4px);
-    }
-  
-    25%,
-    55%,
-    75%,
-    87%,
-    98% {
-      animation-timing-function: ease-out;
-      transform: translateX(0px);
-    }
-  
-    100% {
-      animation-timing-function: ease-out;
-      opacity: 1;
-      transform: translateX(0px);
-    }
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
 }
 .refresh-animation {
-    animation: refreshAnimation 1s cubic-bezier(0.42, 0, 0.58, 1);
+  -webkit-animation: refreshAnimation 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: refreshAnimation 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
