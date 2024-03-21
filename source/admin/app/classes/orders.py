@@ -336,7 +336,10 @@ class Order():
             LEFT JOIN establishments
             ON orders.establishmentId = establishments.establishmentId
                           
-            WHERE orders.establishmentId = "{establishmentId}"
+            WHERE 
+                orders.establishmentId = "{establishmentId}"
+                AND orders.status != "DONE"
+                AND orders.status != "CANCELED"
 
             GROUP BY 
                 orders.orderId,
