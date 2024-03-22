@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            {% if order.status != "CANCELED" %}
+            {% if order.status != "CANCELED" AND order.status != "DONE" %}
                 <div class="m-5">
                     {% with text="Zrušit Objednávku", type="Submit", icon="las la-times-circle", id="cancelOrderButton" %}
                         {% include "/components/form/button.html" %}
