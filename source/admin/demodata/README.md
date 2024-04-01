@@ -1,11 +1,11 @@
 # Co jsou to demodata?
 Demodata jsou předpřivanené produkty, menu a provozovny. Využívají se pro účely vývoje a demonstrace.
 
--  Obsahují: 
-    - 18 Produktů
-    - 6 Menu
-    - 1 Provozovna
-    - Základní Konfigurace
+Obsahují: 
+- 18 Produktů
+- 6 Menu
+- 1 Provozovna
+- Základní Konfigurace
 
 
 # Jak přidat demodata
