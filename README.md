@@ -66,7 +66,11 @@ Pokladní systém slouží obsluze k přijímání objednávek a plateb od záka
 - https://fonts.google.com/specimen/M+PLUS+Rounded+1c?previewtext=gh%C4%8D%C5%A1s%2B%C4%9B%C5%A1%C4%8D%C5%99%C5%BE%C3%BD%C3%A1%C3%AD%C3%A9&preview.text_type=custom
 
 ## Obrázky
-- https://www.pexels.com/cs-cz/foto/drevo-restaurace-lide-zena-2788792/
+- https://www.pexels.com/cs-cz/foto/drevo-restaurace-lide-zena-2788792
+- https://www.pexels.com/cs-cz/foto/jidlo-talir-zdravy-restaurace-1352262
+- https://www.pexels.com/cs-cz/foto/jidlo-salat-zdravy-menu-4551971
+- https://www.pexels.com/cs-cz/foto/1307698
+
 
 ## Grafy
 - https://www.chartjs.org/
