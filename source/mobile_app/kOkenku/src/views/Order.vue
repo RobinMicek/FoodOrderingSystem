@@ -79,19 +79,19 @@
                             <thead>
                                 <tr>
                                     <th class="px-1 py-1">Produkt</th>
-                                    <th class="px-1 py-1">Cena</th>
+                                    <th class="px-1 py-1 text-right">Cena</th>
                                 </tr>
                             </thead>
                             <tbody v-for="product in order.products">                            
                                 <tr>
                                     <td class="px-1 py-1">{{ product.quantity}}x {{ product.name}}</td>
-                                    <td class="px-1 py-1">{{ (product.price * product.quantity).toFixed(2) }}</td>
+                                    <td class="px-1 py-1 text-right">{{ (product.price * product.quantity).toFixed(2) }}</td>
                                 </tr>                  
                             </tbody>
                             <tfoot>
                                 <tr class="border-t-2 border-white">                                
                                     <td class="px-1 py-2 font-medium">Celkem</td>
-                                    <td class="px-1 py-2 font-medium whitespace-nowrap">{{order.totalPrice }} Kč</td>
+                                    <td class="px-1 py-2 font-medium text-right whitespace-nowrap">{{order.totalPrice }} Kč</td>
                                 </tr>     
                             </tfoot>
                         </table>
