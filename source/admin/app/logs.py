@@ -35,4 +35,4 @@ def create_log(type = None, message = None):
     log_file_path = os.path.join(log_directory, f"{current_day}.txt")
 
     with open(log_file_path, "a") as f:
-        f.write(f"{current_datetime} [{type}] {message}\n\n")
+        f.write(f"{current_datetime} [{type}] {message}\n ------------------------------------------------------------------------------------------- \n")
