@@ -36,6 +36,12 @@ const router = createRouter({
       path: '/navbar',
       component: () => import('@/views/NavBar.vue'),
     },
+    
+    
+    {
+      path: '/wallet',
+      component: () => import('@/views/Wallet.vue'),
+    },
 
 
     {

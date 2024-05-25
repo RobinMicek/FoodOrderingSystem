@@ -42,6 +42,7 @@
                 <th class="px-6 py-4 text-md font-bold text-left">Účet</th>
                 <th class="px-6 py-4 text-md font-bold text-left">Provozovna</th>
                 <th class="px-6 py-4 text-md font-bold text-left">Vytvořeno</th>
+                <th class="px-6 py-4 text-md font-bold text-left">Platba</th>
                 <th class="px-6 py-4 text-md font-bold text-left">Cena</th>
                 <th class="px-6 py-4 text-md font-bold text-left">Stav</th>
                 <th class="px-6 py-4 text-md font-bold text-left"></th>
@@ -54,6 +55,7 @@
                     <td class="px-6 py-4 text-md border-secondary text-left">{{ order.firstname }} {{ order.surname }}</td>
                     <td class="px-6 py-4 text-md border-secondary text-left">{{ order.name }}</td>
                     <td class="px-6 py-4 text-md border-secondary text-left">{{ order.createdTime }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{{ "Peněženka" if order.paymentType == 'WALLET' else "Hotovost" }}</td>
                     <td class="px-6 py-4 text-md border-secondary text-left">{{ order.totalPrice }} Kč</td>
                     <td class="px-6 py-4 text-md border-secondary text-left">
                         {% if order.status == "CREATED" %}

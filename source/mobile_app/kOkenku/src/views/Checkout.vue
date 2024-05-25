@@ -17,34 +17,6 @@
     
     <TopBar :backLink="'/menus?establishmentId=' + establishmentId" text="Košík"/>
 
-    <!-- Pay and Order PopUp Info -->
-    <div v-if="payAndOrder" class="fixed z-10 bottom-0 left-0 w-full">
-        <div class="mx-5vw py-2vh pb-20vh px-3vh bg-secondary text-white text-center rounded-tl-lg rounded-tr-lg shadow-xl">
-            <div>
-                <button @click="togglePayAndOrder" class="absolute right-0 mr-5vw pr-5">
-                    <vue-feather type="x" size="24" class="text-red-500"/>
-                </button>
-            </div>  
-
-            <h1 class="font-medium text-xl border-b-2">Informace k Platbě</h1>
-            <p class="mt-3 text-sm">
-                Protože je tento projekt maturitní práce, tak není napojen na žádnou platební bránu. 
-                <br><br>
-                V ostrém provozu byste nyní byli vyzváni k zadání údajů z karty 
-                nebo mohli využít bezpečné platební metody jako <b>Apple Pay <sup>TM</sup></b> nebo <b>Google Pay<sup>TM</sup></b>.
-                <br><br>
-                Děkuji za pochopení.
-            </p>
-
-            <div class="mt-10">
-                <button @click="completeOrder" :disabled="orderCompleted"
-                    class="flex items-center justify-center gap-3 p-2 w-full bg-primary rounded-md text-white text-lg font-medium">
-                    <vue-feather type="credit-card" size="24"/>
-                    Objednat
-                </button>
-            </div>
-        </div>
-    </div>
     
     <div class="h-full flex flex-col items-center mx-5vw my-5vh">
 
@@ -61,21 +33,21 @@
                         <thead>
                             <tr>
                                 <th class="px-1 py-1">Produkt</th>
-                                <th class="px-1 py-1">Cena</th>
+                                <th class="px-1 py-1 text-right">Cena</th>
                                 <th class="px-1 py-1"></th>
                             </tr>
                         </thead>
                         <tbody v-for="product in products">                            
                             <tr>
                                 <td class="px-1 py-1.5">{{ product.quantity}}x {{ product.name}}</td>
-                                <td class="px-1 py-1.5">{{ (product.price * product.quantity).toFixed(2) }}</td>
+                                <td class="px-1 py-1.5 text-right">{{ (product.price * product.quantity).toFixed(2) }}</td>
                                 
-                                <td v-if="deleteItemsFromCart" class="px-1 py-1.5">
+                                <td v-if="!payAndOrder" class="px-1 py-1.5 text-right">
                                     <button type="button" @click="removeItem(product.productId)">
                                         <vue-feather type="x" size="16" class="pt-1 text-red-500"/>
                                     </button>
                                 </td>
-                                <td v-else class="px-1 py-1.5">
+                                <td v-else class="px-1 py-1.5 text-right">
                                     <button disabled>
                                         <vue-feather type="x" size="16" class="pt-1 text-gray-400"/>
                                     </button>
@@ -85,7 +57,7 @@
                         <tfoot>
                             <tr class="border-t-2 border-white">                                
                                 <td class="px-1 py-2 font-medium">Celkem</td>
-                                <td class="px-1 py-2 font-medium whitespace-nowrap">{{ totalPrice }}Kč</td>
+                                <td class="px-1 py-2 font-medium text-right whitespace-nowrap">{{ totalPrice }} Kč</td>
                             </tr>     
                         </tfoot>
                     </table>
@@ -94,19 +66,26 @@
 
             
             <div v-if="pickupTimeDetails">                
-                <div class="mt-10 m-5vw grid grid-cols-3 text-white">
-                    <div class="col-span-2">
-                        <h1 class="text-xl font-medium p-2">Čas vyzvednutí</h1>
-                    </div>
-
-                    <div class="col-span-1">
+                <div class="mt-10 m-5vw text-white">
+                    <div>
+                        <h1 class="font-semibold">Čas Vyzvednutí</h1>
                         <input type="time" id="pickupTime" v-model="pickupTime" :min="pickupTimeDetails.earliestPickupTime" :max="pickupTimeDetails.latestPickupTime" step="60" @input="validatePickupTime"
-                            class="text-primary bg-white p-2 rounded-lg">
+                            class="text-primary bg-white p-2 rounded-lg w-full h-12">
+                        
+                        <br>
+                        <br>
+
+                        <h1 class="font-semibold">Typ Platby</h1>
+                        <select id="paymentType" v-model="paymentType"
+                            class="text-primary bg-white p-2 rounded-lg w-full h-12">
+
+                                <option value="WALLET">PENĚŽENKA</option>
+                        </select>
                     </div>
                 </div>
                 
-                <div v-if="!orderCompleted" class="mt-10 p-2 m-3vw">
-                    <button @click="togglePayAndOrder"
+                <div v-if="payAndOrder" class="mt-10 p-2 m-3vw">
+                    <button @click="completeOrder"
                         class="flex items-center justify-center gap-3 p-2 w-full bg-secondary rounded-md text-white text-lg font-medium">
                         <vue-feather type="credit-card" size="24"/>
                         Zaplatit a Objednat
@@ -152,7 +131,6 @@ import { scheduleNotification } from "@/utils/localNotifications"
 
 // Import Variables
 import { serverUrl, getConfiguration } from "@/variables.js"
-import { withCtx } from "vue"
 
 export default {
   data() {
@@ -163,13 +141,13 @@ export default {
         establishmentId: new URLSearchParams(window.location.search).get("establishmentId"),
         establishment: null,
 
+        paymentType: "WALLET",
         pickupTimeDetails: null,
         pickupTime: null,
         totalPrice: 0,
         configuration: null,    
 
         payAndOrder: false,
-        deleteItemsFromCart: true,
         orderCompleted: false
     }
   },
@@ -246,6 +224,9 @@ export default {
 
         this.pickupTime = response.earliestPickupTime
         this.pickupTimeDetails = response
+
+        this.deleteItemsFromCart = false
+        this.payAndOrder = true
         
     },
 
@@ -256,16 +237,6 @@ export default {
       if ( selectedTime < earliestPickupTime || selectedTime > latestPickupTime)  {        
         this.pickupTime = earliestPickupTime;
       }
-    },
-
-    togglePayAndOrder() {
-        if (this.payAndOrder === false) {
-            this.deleteItemsFromCart = false // Disable the ability to delete items from cart
-            this.payAndOrder = true    
-        } else {
-            this.deleteItemsFromCart = true
-            this.payAndOrder = false    
-        }
     },
 
     async completeOrder() {
@@ -281,12 +252,14 @@ export default {
                 }
 
                 const data = {
+                    "cardNumber": await getObject("cardNumber"),
+                    "paymentType": this.paymentType,
                     "establishmentId": parseInt(this.establishmentId),
                     "pickupTime": this.pickupTime,
                     "products": this.products
                 }
                 
-                const response = await axios.post(serverUrl + "/api/create-order",            
+                const response = await axios.post(serverUrl + "/api/create-order-user",            
                     data,
                     { headers }
                 );

@@ -51,6 +51,7 @@ export default {
   methods: {
     async logout() {
         await removeObject("token")
+        await removeObject("cardNumber")
         location.replace("/login")
     }
   }

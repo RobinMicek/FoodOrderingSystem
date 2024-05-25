@@ -30,9 +30,13 @@
                 <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Základní</span> Informace</h1>
                 <hr>        
 
-                {% if account_info.role != "api" %}
+                {% if account_info.role != "pos" %}
 
                     {% with text="Jméno a Příjmení", type="text", disabled="true", value=account_info.firstname + " " + account_info.surname %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    {% with text="Číslo Karty", type="text", disabled="true", value=account_info.cardNumber %}
                         {% include "/components/form/input.html" %}
                     {% endwith %}
 
@@ -94,6 +98,43 @@
         
     
         <div class="md:col-span-1">
+
+            <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+                <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Peněženka</span> Zákazníka</h1>
+                <hr>
+
+                <div class="mt-5">
+                    <div class="p-5 bg-secondary text-white shadow-md rounded-md">
+                        <h1 class="text-4xl font-bold">{{ account_info.walletBalance }} Kč</h1>
+                        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Aktuální Zůstatek</span> | Peněženka</h1>
+                    </div> 
+                </div>
+
+                <div class="mt-5">
+
+                    {% with text="Kolik chcete dobít?", type="number", disabled="false", value=0, name="walletRefillAmountInput" %}
+                        {% include "/components/form/input.html" %}
+                    {% endwith %}
+
+                    <script>
+                        walletRefillAmount = document.getElementById("walletRefillAmountInput")
+                        walletRefillAmount.addEventListener("change", () => {
+                            walletRefillAmount.value = Math.round(walletRefillAmount.value)
+                            
+                            if (walletRefillAmount.value != 0) {
+                                if (confirm(`Opravdu chcete dobít: ${ walletRefillAmount.value } Kč?`)) {
+                                    window.location.replace(`/accounts/refill-wallet?amount=${ walletRefillAmount.value }&accountId={{ account_info.accountId }}`)
+                                }
+                                else {
+                                    walletRefillAmount.value = 0
+                                }
+                            }
+                        })
+                    </script>
+                </div>
+            </div>
+
 
             <div class="bg-white p-5 m-5 rounded-md shadow-md">
 
@@ -254,7 +295,7 @@
                                             </span>                            
                                         {% endif %}
                                     </td>
-                                    <td class="px-6 py-4 text-md border-secondary text-left">
+                                    <td class="px-6 py-4 text-md border-secondary text-center">
                                         <a href="/orders/view?id={{ orders[x].orderId }}">
                                             {% with text="", type="button", icon="las la-info-circle", button="table" %}
                                                 {% include "/components/form/button.html" %}
@@ -262,6 +303,41 @@
                                         </a>
                                     </td>
                                 </tr>
+
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    
+    <div class="bg-white p-5 m-5 rounded-md shadow-md">
+
+        <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Dobíjení</span> Karty</h1>                 
+        <hr>
+
+        <div class="mt-5">
+            <table style="width: 100%;" class="text-center rounded-md shadow-md bg-secondary">
+                <thead class="text-white uppercase">
+                    <tr id="thead">
+                        <th class="px-6 py-4 text-md font-bold text-left">Číslo</th>
+                        <th class="px-6 py-4 text-md font-bold text-left">Provozovna</th>
+                        <th class="px-6 py-4 text-md font-bold text-left">Datum</th>
+                        <th class="px-6 py-4 text-md font-bold text-left">Cena</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white" id="tbody">
+                    {% if wallet_refills|length > 0 %}      
+                        {% for x in range(6) %}
+                            {% if x < wallet_refills|length %}
+                
+                                <tr>
+                                    <td class="px-6 py-4 text-md border-secondary text-left">#{{ wallet_refills[x].refillId }}</td>
+                                    <td class="px-6 py-4 text-md border-secondary text-left">{{ wallet_refills[x].name if wallet_refills[x].name != None else "Admin"}}</td>
+                                    <td class="px-6 py-4 text-md border-secondary text-left">{{ wallet_refills[x].date }}</td>
+                                    <td class="px-6 py-4 text-md border-secondary text-left whitespace-nowrap">{{ wallet_refills[x].amount }} Kč</td>
 
                             {% endif %}
                         {% endfor %}

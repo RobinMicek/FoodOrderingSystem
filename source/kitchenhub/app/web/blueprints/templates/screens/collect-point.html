@@ -126,21 +126,32 @@
 
                     <div class="border-t-gray-700 border-t-2 pt-2">
                         <div class="text-primary text-left text-lg m-3">
-                            <div class="flex items-center">
-                                <i class="las la-tag text-secondary text-md xl:text-xl mr-2"></i>
-                                <h1 class="text-primary text-md xl:text-xl">${order.orderId}</h1>
+                            <div class="flex items-center w-full justify-between">
+                                <div class="flex items-center">
+                                    <i class="las la-user text-secondary text-sm xl:text-lg mr-2"></i>
+                                    <h1 class="text-primary text-sm xl:text-lg">Jméno a Příjmení</h1>
+                                </div>
+                                <div>
+                                    <h1 class="text-primary text-sm xl:text-lg font-semibold">${order.firstname} ${order.surname}</h1>
+                                </div>
                             </div>
-                            <div class="flex items-center">
-                                <i class="las la-user text-secondary text-md xl:text-xl mr-2"></i>
-                                <h1 class="text-primary text-md xl:text-xl">${order.firstname} ${order.surname}</h1>
+                            <div class="flex items-center w-full justify-between">
+                                <div class="flex items-center">
+                                    <i class="las la-coins text-secondary text-sm xl:text-lg mr-2"></i>
+                                    <h1 class="text-primary text-sm xl:text-lg">Cena</h1>
+                                </div>
+                                <div>
+                                    <h1 class="text-primary text-sm xl:text-lg font-semibold">${Math.round(order.totalPrice)} Kč</h1>
+                                </div>
                             </div>
-                            <div class="flex items-center">
-                                <i class="las la-phone text-secondary text-md xl:text-xl mr-2"></i>
-                                <h1 class="text-primary text-md xl:text-xl">${order.phone}</h1>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="las la-coins text-secondary text-md xl:text-xl mr-2"></i>
-                                <h1 class="text-primary text-md xl:text-xl">${order.totalPrice} Kč</h1>
+                            <div class="flex items-center w-full justify-between">
+                                <div class="flex items-center">
+                                    <i class="las la-wallet text-secondary text-sm xl:text-lg mr-2"></i>
+                                    <h1 class="text-primary text-sm xl:text-lg">Typ Platby</h1>
+                                </div>
+                                <div>
+                                    <h1 class="text-primary text-sm xl:text-lg font-semibold">${ order.paymentType == "WALLET" ? "Peněženka" : "Hotovost" }</h1>
+                                </div>
                             </div>
                         </div>
 

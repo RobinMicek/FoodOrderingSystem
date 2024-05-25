@@ -54,6 +54,16 @@
                         <p class="text-white">{{ configuration.companyInfo.email  }}</p>
                     </div>
                 </div>
+
+                <div class="mb-10">
+                    <div class="text-white flex gap-x-3 items-center justify-left w-full h-full">                
+                        <vue-feather type="compass" size="24" class="text-secondary"/>
+                        IČO
+                    </div>
+                    <div class="mt-2">
+                        <p class="text-white">{{ configuration.companyInfo.CIN  }}</p>
+                    </div>
+                </div>
             </div>
         </div>
         

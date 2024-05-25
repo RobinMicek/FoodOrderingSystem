@@ -54,6 +54,11 @@ export default {
         appName,
         buttons: [
             {
+                "text": "Peněženka",
+                "link": "/wallet",
+                "icon": "credit-card"
+            },
+            {
                 "text": "Moje Objednávky",
                 "link": "/orders",
                 "icon": "shopping-cart"

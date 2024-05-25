@@ -19,7 +19,7 @@
 import axios from 'axios'
 
 
-export const serverUrl = "" // Url Address of the Admin Server - Must be HTTPS && without '/'
+export const serverUrl = "http://localhost:8000" // Url Address of the Admin Server - Must be HTTPS && without '/'
 
 export const appName = "K Okénku"
 

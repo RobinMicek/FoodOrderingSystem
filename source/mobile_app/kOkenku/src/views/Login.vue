@@ -84,6 +84,7 @@ export default {
 
         if (response && response.status === 200) {
           await setObject("token", response.data.token);
+          await setObject("cardNumber", response.data.cardNumber);
           location.replace("/");
         } else {
           this.msg = "Přihlášení se nezdařilo!";

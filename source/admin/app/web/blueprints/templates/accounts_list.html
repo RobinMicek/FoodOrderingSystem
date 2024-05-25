@@ -48,10 +48,10 @@
         <tbody class="bg-white" id="tbody">            
             {% for acc in accounts %}
                 <tr>
-                    <td class="px-6 py-4 text-md border-secondary text-left">{% if acc.role != "api" %} {{ acc.firstname }} {{ acc.surname }} {% else %} {{ acc.firstname }} {% endif %}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left">{% if acc.role != "pos" %} {{ acc.firstname }} {{ acc.surname }} {% else %} {{ acc.firstname }} {% endif %}</td>
                     <td class="px-6 py-4 text-md border-secondary text-left">{{ acc.email }}</td>
                     <td class="px-6 py-4 text-md border-secondary text-left">{{ acc.phone }}</td>
-                    <td class="px-6 py-4 text-md border-secondary text-left">{{ acc.role }}</td>
+                    <td class="px-6 py-4 text-md border-secondary text-left uppercase">{{ acc.role }}</td>
                     <td class="px-6 py-4 text-md border-secondary text-left">
                         {% if acc.active == 1 %}
                             <a href="/accounts/toggle-active?id={{ acc.accountId }}">

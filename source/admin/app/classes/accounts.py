@@ -54,7 +54,7 @@ class Account:
         return True if query[0]["@exists"] == 1 else False
         
     
-    def user_info(self, email=None):
+    def user_info_from_email(self, email=None):
 
         db = Database()
         db.connect()
@@ -63,6 +63,23 @@ class Account:
             SELECT *
             FROM accounts
             WHERE email = "{email}"
+        """)
+        query = db.cursor.fetchall()
+        
+        db.close()
+
+        return query[0] if len(query) != 0 else None
+        
+    
+    def user_info_from_cardnumber(self, card_number=None):
+
+        db = Database()
+        db.connect()
+
+        db.cursor.execute(f"""
+            SELECT *
+            FROM accounts
+            WHERE cardNumber = "{card_number}"
         """)
         query = db.cursor.fetchall()
         
@@ -114,12 +131,12 @@ class Account:
                 db.cursor.execute(f"""CALL InsertAccount('{email}', '{phone}','Bearer {self.create_token(string=email)}', '{self.create_hash(string=f"{password[-1]}{HASH_SALT}{password}{email}{password[0]}")}', '{firstname}', '{surname}', '{dateOfBirth}', '{role}')""")
                 db.close()
 
-                create_log(type="ALERT", message=f"New user has been created - Email: {email}")
+                create_log(type="ALERT", message=f"New account has been created - Email: {email}")
 
                 return True
             
             except Error as e:
-                create_log(type="ERROR", message=f"Could not create new user - Email: {email} [{e}]")
+                create_log(type="ERROR", message=f"Could not create new account - Email: {email} [{e}]")
 
                 return False
 
@@ -219,16 +236,85 @@ class Account:
             create_log(type="ERROR", message=f"Could not toggle account active status [{e}]")
 
 
+    def refill_wallet(self, accountId=None, amount=None, establishmentId=None):
 
-# Create new admin user if the file is called directly
+        try:
+            db = Database()
+            db.connect()
+            db.cursor.execute(f"""
+                CALL RefillWalletBalance('{accountId}', '{amount}', '{establishmentId}')
+            """)
+            db.close()
+
+            create_log(type="ALERT", message=f"Refilled wallet - accountId: {accountId}, amount: {amount}")
+
+            return True
+
+        except Exception as e:
+            create_log(type="ERROR", message=f"Could not refill wallet - accountId: {accountId}, amount: {amount} [{e}]")
+            return False
+    
+    
+    def refund_money(self, accountId=None, amount=None, orderId=None):
+
+        try:
+            db = Database()
+            db.connect()
+            db.cursor.execute(f"""
+                CALL RefundMoneyFromCanceledOrder('{accountId}', '{amount}')
+            """)
+            db.close()
+
+            create_log(type="ALERT", message=f"Refunded money from canceled order - orderId: {orderId}, accountId: {accountId}, amount: {amount}")
+
+            return True
+
+        except Exception as e:
+            create_log(type="ERROR", message=f"Could not refund money from canceled order - orderId: {orderId}, accountId: {accountId}, amount: {amount} [{e}]")
+            return False
+
+    def get_all_account_refills(self, accountId=None):
+        db = Database()
+        db.connect()
+        db.cursor.execute(f"""
+            SELECT 
+                accounts_wallet_refills.refillId,
+                accounts_wallet_refills.amount, 
+                accounts_wallet_refills.date,
+                establishments.establishmentId,
+                establishments.name 
+            FROM
+                accounts_wallet_refills
+            LEFT JOIN
+                accounts
+            ON
+                accounts.accountId = accounts_wallet_refills.accountId 
+            LEFT JOIN
+                establishments
+            ON
+                establishments.establishmentId = accounts_wallet_refills.establishmentId 
+            WHERE
+                accounts.accountId = {accountId}
+            ORDER BY
+                accounts_wallet_refills.date DESC
+        """)
+        query = db.cursor.fetchall()
+        db.close()
+
+        return query
+
+
+
+
+# Create new account if the file is called directly
 if __name__ == "__main__":
     try:
-        accountTypes = ["admin", "user", "api"]
-        accountType = input(f"Typ účtu | Možnosti: {', '.join(accountTypes)} (U API účtů se v Admin Dashboardu zobrazuje Token): ")
+        accountTypes = ["admin", "user", "pos"]
+        accountType = input(f"Typ účtu | Možnosti: {', '.join(accountTypes)} (U POS účtů se v Admin Dashboardu zobrazuje API Token): ")
         while accountType not in accountTypes: accountType = input(f"Zadejte správný typ účtu ({', '.join(accountTypes)}): ")
 
         account = Account()
-        if accountType == "api":
+        if accountType == "pos":
             account.create_new_account(
                 email=input("Emailová adresa (společně s heslem slouží k získání tokenu, nemusí být reálná): "), 
                 firstname=input("Název účtu: "), 
@@ -236,7 +322,7 @@ if __name__ == "__main__":
                 phone="",    
                 dateOfBirth="1989-03-12", 
                 password=input("Heslo: "), 
-                role="api" 
+                role="pos" 
             )
         else:
             account.create_new_account(

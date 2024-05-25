@@ -68,6 +68,23 @@ def auth_require_token(func):
     return wrap
 
 
+def auth_require_pos(func):
+    def wrap(*args, **kwargs):
+        account = Account()
+
+        if str(request.headers.get("Authorization", "None"))[:6] == "Bearer":
+            if account.user_info_from_token(token=request.headers.get("Authorization", "None"))["role"] == "pos":
+                return func(*args, **kwargs)
+        
+        return jsonify({
+            "status": 401,
+            "message": "Valid user token required!"
+        }), 401
+
+    wrap.__name__ = func.__name__
+    return wrap
+
+
 # ESTABLISHMENT API
 def auth_require_establishment(func):
     def wrap(*args, **kwargs):

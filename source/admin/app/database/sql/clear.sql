@@ -23,10 +23,13 @@ DROP TABLE IF EXISTS `products`;
 DROP TABLE IF EXISTS `orders_products`;
 DROP TABLE IF EXISTS `orders`;
 DROP TABLE IF EXISTS `accounts`;
+DROP TABLE IF EXISTS `accounts_wallet_refills`;
 
 
 -- Delete statements for procedures
 DROP PROCEDURE IF EXISTS InsertAccount;
+DROP PROCEDURE IF EXISTS RefillWalletBalance;
+DROP PROCEDURE IF EXISTS RefundMoneyFromCanceledOrder;
 DROP PROCEDURE IF EXISTS CheckUserExists;
 DROP PROCEDURE IF EXISTS AuthUserPassword;
 DROP PROCEDURE IF EXISTS AuthUserToken;

@@ -60,12 +60,12 @@
                     
                     <div class="mt-10 grid grid-cols-3">
                         <div class="col-span-1 text-left">
-                            <p class="text-sm mb-2">Číslo Objednávky:</p>
+                            <p class="text-sm mb-2">Typ Platby:</p>
                             <p class="text-sm">Čas Objednání:</p>
                             <p class="text-sm">Čas Vyzvednutí:</p>
                         </div>
                         <div class="col-span-2 text-right">
-                            <p class="text-sm font-medium mb-2">#{{ order.orderId }}</p>
+                            <p class="text-sm font-medium mb-2">{{ order.paymentType == "WALLET" ? "PENĚŽENKA" : "HOTOVOST  " }}</p>
                             <p class="text-sm font-medium">{{ (new Date(new Date(order.createdTime) - new Date(order.createdTime).getTimezoneOffset() * (-60000))).toLocaleString(configuration.app.dateTime.timezone, configuration.app.dateTime) }}</p>
                             <p class="text-sm font-medium">{{ (new Date(new Date(order.pickupTime) - new Date(order.createdTime).getTimezoneOffset() * (-60000))).toLocaleString(configuration.app.dateTime.timezone, configuration.app.dateTime) }}</p>
                         </div>

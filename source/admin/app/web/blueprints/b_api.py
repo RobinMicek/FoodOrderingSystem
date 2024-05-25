@@ -29,7 +29,7 @@ from classes.establishments import Establishment
 from classes.menus import Menu
 from classes.orders import Order
 
-from classes.auth_wrappers import auth_require_token
+from classes.auth_wrappers import auth_require_token, auth_require_pos
 
 # IMPORT CONSTANT VARIABLES (/app/variables.py)
 
@@ -50,15 +50,17 @@ def api_login():
     email = request.json.get("email", "None")
     password = request.json.get("password", "None")
 
-    if Account().auth_password(email=email, password=password) == True and Account().user_info(email=email)["active"] == 1:
+    if Account().auth_password(email=email, password=password) == True and Account().user_info_from_email(email=email)["active"] == 1:
 
         # Update account token
         new_token = Account().update_token(email=email)
 
         if new_token != False:
+            user_info = Account().user_info_from_email(email=email)
 
             return jsonify({
-                    "token": Account().user_info(email=email)["token"]                    
+                    "token": user_info["token"],
+                    "cardNumber": user_info["cardNumber"]            
                 }), 200
         
         else:
@@ -95,6 +97,8 @@ def api_getAllEstablishments():
         establishment_data = Establishment().all_info(establishmentId=establishment["establishmentId"])
         del establishment_data["menus"]
         del establishment_data["openingHours"]
+        del establishment_data["slug"]
+        del establishment_data["token"]
 
         data += [establishment_data] if establishment_data["show"] == 1 else [] 
 
@@ -113,6 +117,8 @@ def api_getEstablishment():
         establishment_data = Establishment().all_info(establishmentId=establishmentId)
         if establishment_data != False:
             del establishment_data["openingHours"]
+            del establishment_data["slug"]
+            del establishment_data["token"]
 
             establishment_data["menus"] = [menu for menu in establishment_data["menus"] if menu["show"] != 0]
 
@@ -126,7 +132,7 @@ def api_getEstablishment():
 
 
 
-# Menus
+# MENUS
 @b_api.route("/get-menu", methods=["GET"])
 @auth_require_token
 def api_getMenu():
@@ -147,12 +153,40 @@ def api_getMenu():
 
 
 # ORDERS
-@b_api.route("/create-order", methods=["POST"])
+@b_api.route("/create-order-user", methods=["POST"])
 @auth_require_token
-def api_createOrder():
+def api_createOrderUser():
 
     data = request.json
-    data["accountId"] = Account().user_info_from_token(token=request.headers.get("Authorization", "None")).get("accountId", "Nonew")
+
+    accountId_fromToken = Account().user_info_from_token(token=request.headers.get("Authorization", "None"))
+    accountId_fromToken = accountId_fromToken.get("accountId", "NoneTokenAcId") if accountId_fromToken != None else "NoneTokenAcId"
+    accountId_fromCardNumber = Account().user_info_from_cardnumber(card_number=data.get("cardNumber", "None"))
+    accountId_fromCardNumber = accountId_fromCardNumber.get("accountId", "NoneCardAcId") if accountId_fromCardNumber != None else "NoneCardAcid"
+
+    if accountId_fromToken == accountId_fromCardNumber:
+
+        data["accountId"] = accountId_fromToken
+
+        new_order = Order().create_order(data=data)
+        if new_order != False:
+            return jsonify({
+                "data": new_order
+            }), 200 
+
+    return jsonify({
+                "message": "Could not create new order!"
+            }), 400
+
+
+@b_api.route("/create-order-pos", methods=["POST"])
+@auth_require_pos
+def api_createOrderPOS():
+
+    data = request.json
+
+    data["accountId"] = Account().user_info_from_cardnumber(card_number=data.get("cardNumber", "None"))["accountId"]
+    data["paymentType"] = "WALLET"
 
     new_order = Order().create_order(data=data)
     if new_order != False:
@@ -192,3 +226,51 @@ def api_getAllOrder():
     return jsonify({
         "data": Order().all_account_orders(accountId=Account().user_info_from_token(token=request.headers.get("Authorization", "None"))["accountId"])
     }), 200 
+
+
+#WALLET
+@b_api.route("/get-wallet", methods=["get"])
+@auth_require_token
+def api_getWalletInfo():
+
+    account_info = Account().user_info_from_token(token=request.headers.get("Authorization", "None"))
+
+    return jsonify({
+        "data": {
+            "walletBalance": account_info["walletBalance"],
+            "cardNumber": account_info["cardNumber"]
+        }
+    }), 200 
+
+
+@b_api.route("/get-wallet-card", methods=["get"])
+@auth_require_pos
+def api_getWalletInfoFromCard():
+
+    account_info = Account().user_info_from_cardnumber(card_number=request.args.get("cardNumber", "None"))
+
+    return jsonify({
+        "data": {
+            "walletBalance": account_info["walletBalance"],
+            "cardNumber": account_info["cardNumber"]
+        }
+    }), 200 
+
+
+@b_api.route("/refill-wallet", methods=["get"])
+@auth_require_pos
+def api_refillWallet():
+
+    establishmentId = request.args.get("establishmentId", "None")
+    cardNumber = request.args.get("cardNumber", "None")
+    accountId = Account().user_info_from_cardnumber(card_number=cardNumber if cardNumber[0:5] == "Karta" else "None")["accountId"]
+    amount = request.args.get("amount", "None")
+
+    if Account().refill_wallet(accountId=accountId, amount=amount, establishmentId=establishmentId) == True:
+        return jsonify({
+            "status": "Ok!"
+        }), 200
+    
+    return jsonify({
+        "status": "Wallet could not be refilled!"
+    }), 400

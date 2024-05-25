@@ -36,7 +36,8 @@ CREATE TABLE `orders` (
   `orderId` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `accountId` INTEGER,
   `establishmentId` INTEGER,
-  `tag` INT DEFAULT NULL,
+  `tag` INTEGER DEFAULT NULL,
+  `paymentType` VARCHAR(255) DEFAULT "CASH",
   `createdTime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `pickupTime` TIMESTAMP,
   `lastUpdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -59,17 +60,29 @@ CREATE TABLE `orders_products` (
 -- Table accounts: Stores information about user accounts
 CREATE TABLE `accounts` (
   `accountId` INTEGER PRIMARY KEY AUTO_INCREMENT,
+  `cardNumber` VARCHAR(255) UNIQUE,
   `email` VARCHAR(255) UNIQUE,
   `phone` VARCHAR(255),
   `token` VARCHAR(255),
   `hash` VARCHAR(255),
   `firstname` VARCHAR(255),
   `surname` VARCHAR(255),
+  `walletBalance` INTEGER DEFAULT 0,
   `since` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `dateOfBirth` DATE,
   `active` TINYINT DEFAULT 1,
   `role` VARCHAR(255),
   `lastTokenRefresh` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Table accounts_wallet_refills: Stores information about user wallet refills
+CREATE TABLE `accounts_wallet_refills` (
+  `refillId` INTEGER PRIMARY KEY AUTO_INCREMENT,
+  `accountId` INTEGER,
+  `amount` INTEGER,
+  `establishmentId` INTEGER DEFAULT NULL,
+  `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 

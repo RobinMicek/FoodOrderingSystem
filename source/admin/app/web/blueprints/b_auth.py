@@ -53,8 +53,8 @@ def page_login():
 
         if account.auth_password(email=email, password=password) == True:
             session["account"] = f"{email}"
-            session["role"] = account.user_info(email=f"{email}")["role"]
-            session["active"] = account.user_info(email=f"{email}")["active"]
+            session["role"] = account.user_info_from_email(email=f"{email}")["role"]
+            session["active"] = account.user_info_from_email(email=f"{email}")["active"]
 
             return redirect("/")
         else:

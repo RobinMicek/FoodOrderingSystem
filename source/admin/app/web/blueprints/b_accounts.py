@@ -55,10 +55,12 @@ def page_accounts_view():
     
     account = Account().user_info_from_id(accountId=id)
     orders = Order().all_account_orders(accountId=id)
+    wallet_refills = Account().get_all_account_refills(accountId=id)
 
     return render_extended_template("accounts_view.html",
         account_info=account,
-        orders=orders)
+        orders=orders,
+        wallet_refills=wallet_refills)
 
 
 @b_accounts.route("/toggle-active")
@@ -69,3 +71,14 @@ def page_accounts_toggleActive():
     Account().update_active(accountId=id)
 
     return redirect("/accounts")
+
+
+@b_accounts.route("/refill-wallet")
+@auth_require_admin
+def page_accounts_refillWallet():
+
+    accountId = request.args.get("accountId", None)
+    amount = request.args.get("amount", None)
+    Account().refill_wallet(accountId=accountId, amount=amount, establishmentId=0)
+
+    return redirect(f"/accounts/view?id={ accountId }")

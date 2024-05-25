@@ -30,8 +30,53 @@ CREATE PROCEDURE InsertAccount(
       IN p_role VARCHAR(255)
     )
     BEGIN
-        INSERT INTO accounts (`email`, `phone`, `token`, `hash`, `firstname`, `surname`, `dateOfBirth`, `role`)
-        VALUES (p_email, p_phone, p_token, p_hash, p_firstname, p_surname, p_dateOfBirth, p_role);
+        INSERT INTO accounts (`email`, `cardNumber`, `phone`, `token`, `hash`, `firstname`, `surname`, `dateOfBirth`, `role`)
+        VALUES (p_email, CONCAT("Karta-", UUID()), p_phone, p_token, p_hash, p_firstname, p_surname, p_dateOfBirth, p_role);
+    END //
+
+
+CREATE PROCEDURE RefillWalletBalance(
+      IN p_id INTEGER,
+      IN p_amount INTEGER,
+      IN p_establishmentId INTEGER
+    )
+    BEGIN
+        DECLARE current_balance DECIMAL(10, 2);
+    
+        -- Select current wallet balance into a variable
+        SELECT `walletBalance` INTO current_balance
+        FROM accounts
+        WHERE `accountId` = p_id;
+    
+        -- Insert into accounts_wallet_refills
+        INSERT INTO accounts_wallet_refills (`accountId`, `amount`, `establishmentId`)
+        VALUES (p_id, ROUND(p_amount, 0), p_establishmentId);
+        
+        -- Update the wallet balance using the variable
+        UPDATE accounts
+        SET `walletBalance` = current_balance + ROUND(p_amount, 0)
+        WHERE `accountId` = p_id;
+      
+    END //
+
+
+CREATE PROCEDURE RefundMoneyFromCanceledOrder(
+      IN p_id INTEGER,
+      IN p_amount INTEGER
+    )
+    BEGIN
+        DECLARE current_balance DECIMAL(10, 2);
+    
+        -- Select current wallet balance into a variable
+        SELECT `walletBalance` INTO current_balance
+        FROM accounts
+        WHERE `accountId` = p_id;
+        
+        -- Update the wallet balance using the variable
+        UPDATE accounts
+        SET `walletBalance` = current_balance + ROUND(p_amount, 0)
+        WHERE `accountId` = p_id;
+      
     END //
 
 
@@ -287,12 +332,13 @@ END //
 CREATE PROCEDURE InsertOrder(
     IN p_accountId INTEGER,
     IN p_establishmentId INTEGER,
+    IN p_paymentType VARCHAR(255),
     IN p_pickupTime TIMESTAMP,
     OUT p_insertedID INTEGER
 )
 BEGIN
-    INSERT INTO `orders` (`accountId`, `establishmentId`, `pickupTime`)
-    VALUES (p_accountId, p_establishmentId, p_pickupTime);
+    INSERT INTO `orders` (`accountId`, `establishmentId`, `paymentType`, `pickupTime`)
+    VALUES (p_accountId, p_establishmentId, p_paymentType, p_pickupTime);
 
     SET p_insertedID = (LAST_INSERT_ID());
 END //

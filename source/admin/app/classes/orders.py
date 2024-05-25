@@ -47,15 +47,17 @@ class Order():
         pass
 
     
-    def create_order(self, data):
+    def create_order(self, data = None):
         try:
             # Validate json
             schema = {
                 "type": "object",
                 "properties": {
                     "accountId": {"type": "integer", "minimum": 1},
+                    "cardNumber": {"type": "string", "minimum": 1},
                     "establishmentId": {"type": "integer", "minimum": 1},
-                    "pickupTime": {"type": "string"},
+                    "pickupTime": {"type": "string", "minimum": 1},
+                    "paymentType": {"type": "string", "minimum": 1},
                     "products": {
                         "type": "array",
                         "items": {
@@ -68,9 +70,8 @@ class Order():
                         }
                     }
                 },
-                "required": ["establishmentId", "pickupTime", "products", "accountId"]
+                "required": ["establishmentId", "pickupTime", "products", "accountId", "cardNumber", "paymentType"]
             }
-
             
             validate(data, schema)
 
@@ -82,62 +83,79 @@ class Order():
 
                 # Check if the establishment is open
                 establishment = Establishment().all_info(establishmentId=data["establishmentId"])
-                
-                if establishment != [] and establishment["isOpen"]["isOpen"] == True and datetime.datetime.strptime(establishment["isOpen"]["closingTime"], "%H:%M").time() > time_obj:
 
-                    # Create new order
+                if establishment and establishment["isOpen"]["isOpen"] and datetime.datetime.strptime(establishment["isOpen"]["closingTime"], "%H:%M").time() > time_obj:
                     db = Database()
                     db.connect()
-                    db.cursor.execute(f"""
-                        CALL InsertOrder('{data["accountId"]}', '{data["establishmentId"]}', '{data["pickupTime"]}', @insertedID);
-                    """)
-                    db.cursor.execute("""
-                        SELECT @insertedID;
-                    """)
-                    orderId = db.cursor.fetchall()[0]["@insertedID"]
 
+                    # If paymentType is wallet, check wallet balance and update if sufficient
+                    if data["paymentType"] == "WALLET":
+                        wallet_info = Account().user_info_from_id(accountId=data["accountId"])
+                        wallet_balance = wallet_info["walletBalance"]
+                        total_price = sum(Product().info(productId=prod["productId"])["price"] * prod["quantity"] for prod in data["products"])
 
-                    # Get all available products from menus
-                    available_products = []
-                    for menu in establishment["menus"]:
-                        for product in Menu().products(menuId=menu["menuId"]):
-                            if product["show"] == 1:
-                                available_products += [product["productId"]]
-
-                    # Insert Products
-                    for product in data["products"]:                        
-                        product_info = Product().info(productId=product["productId"])
-
-                        if product != [] and product_info["productId"] in available_products:
+                        if wallet_balance >= total_price:
                             db.cursor.execute(f"""
-                                CALL InsertOrderProduct('{orderId}', '{product_info["productId"]}', '{product["quantity"]}', '{product_info["price"]}')                  
+                                UPDATE accounts
+                                SET walletBalance = {round(wallet_balance - total_price, 0)}
+                                WHERE accountId = {data["accountId"]};
                             """)
 
                         else:
-                            db.close()
-                            create_log(type="ERROR", message=f"""Could not create new order - unable to order a product - productId: {data["productId"]}""")
-                            return False
+                            raise Exception("Not enough money in wallet!")
+
+
+                    # Get all available products from menus
+                    available_products = [
+                        product["productId"]
+                        for menu in establishment["menus"]
+                        if Menu().info(menuId=menu["menuId"])["show"] == 1
+                        for product in Menu().products(menuId=menu["menuId"])
+                        if product["show"] == 1
+                    ]
+                    are_all_products_available = [ordered_product["productId"] in available_products for ordered_product in data["products"]][0]
+
+
+                    if are_all_products_available == True:
+                        # Create new order
+                        db.cursor.execute(f"""
+                            CALL InsertOrder('{data["accountId"]}', '{data["establishmentId"]}', '{data["paymentType"] if data["paymentType"] == "WALLET" else "CASH"}', '{data["pickupTime"]}', @insertedID);
+                        """)
+                        db.cursor.execute("SELECT @insertedID;")
+                        order_id = db.cursor.fetchone()["@insertedID"]
+
+                    else:
+                        raise Exception("Not all product are available")
+
+
+                    # Insert products into the order
+                    for product in data["products"]:
+                        product_info = Product().info(productId=product["productId"])
+
+                        db.cursor.execute(f"""
+                            CALL InsertOrderProduct('{order_id}', '{product_info["productId"]}', '{product["quantity"]}', '{product_info["price"]}');
+                        """)
 
 
                     db.close()
-                
-                    create_log(type="ALERT", message=f"Created new order - orderId: {orderId}")                    
 
-                    # Send information about the order to KitchenHub through socket
-                    orderTag = self.send_through_socket(orderId=orderId)
+                    create_log(type="ALERT", message=f"Created new order - orderId: {order_id}, establishmentId: {data['establishmentId']}, accountId: {data['accountId']}, cardNumber: {data['cardNumber']}")
 
-                    return {"orderId": orderId, "tag": orderTag}
+                    # Send order information to KitchenHub through socket
+                    order_tag = self.send_through_socket(orderId=order_id)
+                   
+                    return {"orderId": order_id, "tag": order_tag}
                 
                 else:
-                    create_log(type="ERROR", message=f"""Could not create order - establishment is closed - establishmentId: {data["establishmentId"]}, accountId: {data["accountId"]}""")
-                    return False
+                    raise Exception(f"Establishment is closed!")
+            
             
             except Exception as e:
-                create_log(type="ERROR", message=f"Could not create new order [{e}]")
+                create_log(type="ERROR", message=f"Could not create new order - establishmentId: {data['establishmentId']}, accountId: {data['accountId']}, cardNumber: {data['cardNumber']} [{e}]")
                 return False
+        
 
-
-        except json.JSONDecodeError:
+        except Exception as e:
             create_log(type="ERROR", message=f"Could not create new order - Request JSON did not match the schema [{data}] [{e}]")
             return False
 
@@ -214,9 +232,6 @@ class Order():
         try:
             db = Database()
             db.connect()
-            db.cursor.execute(f"""
-                CALL CancelOrder('{orderId}');
-            """)
 
             # Get establishment slug
             db.cursor.execute(f"""
@@ -231,8 +246,18 @@ class Order():
                 WHERE orderId = '{orderId}'
             """)
             slug = db.cursor.fetchall()[0]["slug"]
-            db.close()
 
+
+            db.cursor.execute(f"""
+                CALL CancelOrder('{orderId}');
+            """)
+            
+            # Return money to wallet
+            order_info = self.info(orderId=orderId)
+            if order_info["paymentType"] == "WALLET":
+                Account().refund_money(accountId=order_info["accountId"], amount=order_info["totalPrice"], orderId=orderId)
+
+            db.close()
 
             # Send message to the socket about the new order
             socketio = current_app.extensions['socketio']
