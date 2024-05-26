@@ -2,7 +2,7 @@
   // Navbar
   import Navbar from "./lib/navbar.svelte"
 
-  let currentPage = "SETTINGS"
+  let currentPage = localStorage.getItem("apiToken") != null ? "POS" : "SETTINGS"
   function handlePageChange(event) {
     currentPage = event.detail
   }

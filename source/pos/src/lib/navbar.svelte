@@ -2,7 +2,7 @@
     import { createEventDispatcher  } from "svelte"
     const dispatch = createEventDispatcher()
 
-    let currentPage = "SETTINGS"
+    let currentPage = localStorage.getItem("apiToken") != null ? "POS" : "SETTINGS"
     function changePage(changeTo) {
         currentPage = changeTo
         dispatch("pageChange", currentPage)
