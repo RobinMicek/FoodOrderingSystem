@@ -30,7 +30,7 @@
 
 
 <main>
-    <button on:click={() => addToCart(productId=productId)} class="rounded-lg aspect-square overflow-hidden relative shadow-lg border-2 border-transparent hover:border-secondary">
+    <button on:click={() => addToCart(productId=productId)} class="rounded-lg aspect-square overflow-hidden h-full relative shadow-lg border-2 border-transparent hover:border-secondary">
         <img src={ serverUrl + imagePath } alt="Náhledový obrázek" class="object-cover rounded-lg w-full h-full">
         
         
