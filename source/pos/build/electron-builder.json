@@ -1,0 +1,22 @@
+{
+  "appId": "com.kokenku.pos",
+  "directories": {
+    "output": "builds"
+  },
+  "win": {
+    "target": {
+      "target": "nsis",
+      "arch": [
+        "x64"
+      ]
+    },
+    "icon": "src/favicon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "shortcutName": "K Okénku | POS"
+  } 
+  
+}
