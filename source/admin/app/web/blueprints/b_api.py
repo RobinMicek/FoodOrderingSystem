@@ -158,6 +158,7 @@ def api_getMenu():
 def api_createOrderUser():
 
     data = request.json
+    data["paymentType"] = "WALLET"
 
     accountId_fromToken = Account().user_info_from_token(token=request.headers.get("Authorization", "None"))
     accountId_fromToken = accountId_fromToken.get("accountId", "NoneTokenAcId") if accountId_fromToken != None else "NoneTokenAcId"
@@ -186,7 +187,6 @@ def api_createOrderPOS():
     data = request.json
 
     data["accountId"] = Account().user_info_from_cardnumber(card_number=data.get("cardNumber", "None"))["accountId"]
-    data["paymentType"] = "WALLET"
 
     new_order = Order().create_order(data=data)
     if new_order != False:
