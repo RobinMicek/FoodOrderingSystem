@@ -29,7 +29,7 @@
 <main>
     <div class="fixed inset-0 h-full w-full z-20 flex justify-center items-center backdrop-filter backdrop-blur-lg">
         
-        <div class=" bg-white p-4 w-1/2 2xl:w-1/4 rounded-lg space-y-4">
+        <div class=" bg-white p-4 w-2/5 2xl:w-1/3 rounded-lg space-y-4">
             <div class="bg-secondary text-center rounded-lg p-4 my-1">
                 <h1 class="text-white font-semibold text-xl uppercase">Uživatelská karta</h1>
             </div>
