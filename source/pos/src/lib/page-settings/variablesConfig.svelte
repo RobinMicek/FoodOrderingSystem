@@ -27,7 +27,7 @@
     
         <div>
             <h1 class="text-white text-lg font-semibold">API Token</h1>
-            <input bind:value={ apiToken } type="text" class="w-full p-4 rounded-lg border-2 border-secondary bg-transparent text-white">
+            <input bind:value={ apiToken } type="password" placeholder="Bearer 4a6ca7091e8c501a26320ca3a8971c57fa8e11f0c3d6731e0a72a00b268f8928" class="w-full p-4 rounded-lg border-2 border-secondary bg-transparent text-white">
         </div>
     
         <div>

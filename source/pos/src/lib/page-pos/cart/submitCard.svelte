@@ -35,7 +35,7 @@
             </div>
     
             <div>
-                <input type="text" bind:value={ cardNumber } placeholder="Karta-6db3b89e-178d-11ef-bdbf-0242ac110002" class="w-full p-4 rounded-lg border-2 border-zinc-500">
+                <input type="password" bind:value={ cardNumber } placeholder="Karta-6db3b89e-178d-11ef-bdbf-0242ac110002" class="w-full p-4 rounded-lg border-2 border-zinc-500">
             </div>
     
             <div class="flex justify-between gap-2">
