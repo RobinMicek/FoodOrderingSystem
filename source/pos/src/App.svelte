@@ -2,7 +2,7 @@
   // Navbar
   import Navbar from "./lib/navbar.svelte"
 
-  let currentPage = "POS"
+  let currentPage = "SETTINGS"
   function handlePageChange(event) {
     currentPage = event.detail
   }

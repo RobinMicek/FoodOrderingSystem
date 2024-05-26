@@ -11,10 +11,24 @@
     
     .print {
         visibility: visible !important;
+        height: auto;
+        page-break-inside: auto;
+    }
+
+    .print * {
+        page-break-inside: auto;
+        page-break-after: auto;
     }
     
     @page {
         size: auto;
         margin: 0
     }
+}
+
+/* Vertical scrollbar styling */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
 }
