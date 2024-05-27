@@ -43,10 +43,10 @@ FLASK_SECRET_KEY = random_string(length=32)
 
 
 # DATABASE SERVER INFO
-DB_HOST = "localhost"# str(os.environ.get("KO_DB_HOST", None))
-DB_NAME = "kOkenku" # str(os.environ.get("KO_DB_NAME", None)) 
-DB_USER = "kOkenkuBackEnd" # str(os.environ.get("KO_DB_USER", None))
-DB_PASSWORD = "admin" # str(os.environ.get("KO_DB_PASSWORD", None))
+DB_HOST = str(os.environ.get("KO_DB_HOST", None))
+DB_NAME = str(os.environ.get("KO_DB_NAME", None)) 
+DB_USER = str(os.environ.get("KO_DB_USER", None))
+DB_PASSWORD = str(os.environ.get("KO_DB_PASSWORD", None))
 DB_SSL_CA = str(os.environ.get("KO_DB_SSL_CA", None)) # If not using SSL -> Leave blank
 
 
