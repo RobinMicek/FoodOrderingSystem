@@ -52,7 +52,7 @@ DB_SSL_CA = str(os.environ.get("KO_DB_SSL_CA", None)) # If not using SSL -> Leav
 
 # RABBITMQ
 RABBITMQ_URL = str(os.environ.get("KO_RABBITMQ_URL", None))
-RABBITMQ_PUBLIC_URL = "url" # str(os.environ.get("KO_RABBITMQ_PUBLIC_URL", None))
+RABBITMQ_PUBLIC_URL = str(os.environ.get("KO_RABBITMQ_PUBLIC_URL", None))
 RABBITMQ_PORT = str(os.environ.get("KO_RABBITMQ_PORT", None))
 RABBITMQ_USERNAME = str(os.environ.get("KO_RABBITMQ_USERNAME", None))
 RABBITMQ_PASSWORD = str(os.environ.get("KO_RABBITMQ_PASSWORD", None))
