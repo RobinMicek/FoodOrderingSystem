@@ -31,7 +31,7 @@ from classes.menus import Menu
 from web.render_extended_template import render_extended_template
 
 # IMPORT CONSTANT VARIABLES (/app/variables.py)
-from variables import RABBITMQ_PUBLIC_URL, RABBITMQ_KITCHENHUB_USERNAME, RABBITMQ_KITCHENHUB_PASSWORD
+from variables import RABBITMQ_PUBLIC_URL
 
 
 # INICIALIZE BLUEPRINT
