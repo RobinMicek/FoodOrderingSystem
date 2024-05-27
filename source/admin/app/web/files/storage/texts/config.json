@@ -1,1 +1,27 @@
-{"app":{"dateTime":{"day":"numeric","hour":"numeric","minute":"numeric","month":"numeric","second":"numeric","timezone":"cs-CZ","weekday":"short","year":"numeric"},"generateQRCodes":false,"showLocalNotifications":true},"companyInfo":{"CIN":00000000,"address":"","companyName":"","email":"","phone":""},"orders":{"defaultOrderWait":300,"ignorePreparationTimes":false}}
+{
+    "app": {
+      "dateTime": {
+        "day": "numeric",
+        "hour": "numeric",
+        "minute": "numeric",
+        "month": "numeric",
+        "second": "numeric",
+        "timezone": "cs-CZ",
+        "weekday": "short",
+        "year": "numeric"
+      },
+      "generateQRCodes": false,
+      "showLocalNotifications": true
+    },
+    "companyInfo": {
+      "CIN": "",
+      "address": "",
+      "companyName": "",
+      "email": "",
+      "phone": ""
+    },
+    "orders": {
+      "defaultOrderWait": 300,
+      "ignorePreparationTimes": false
+    }
+  }
