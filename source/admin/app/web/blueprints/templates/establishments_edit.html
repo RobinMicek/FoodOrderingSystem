@@ -139,30 +139,37 @@
             <div class="mt-10">
                 <h1 class="text-lg font-bold">Jak propojit <span class="text-secondary">KitchenHub</span> a BackEnd server:</h1>
                 <div class="mt-5">                    
-                    <p>1. Spusťe KitchenHub server a pomocí webového prohlížeče jděte na jeho ip adresu</p>
-                    <p>2. Projděte prvotním nastavením</p>                    
-                    <p>3. Jděte do <span class="text-secondary font-bold">přehledů</span> a prověďte <span class="text-secondary font-bold">Připojení k Serveru</span> a <span class="text-secondary font-bold">Stáhnutí Objednávek z API</span></p>
-                    <p>4. Nyní jste připraveni používat KitchenHub k přípravě objednávek</p>                    
+                    <p>1. V <span class="text-secondary font-bold">RabbitMQ dashboardu</span> je potřeba vytvořit uživatelský účet pro KitchenHub - Přihlašovací údaje se následně zadají při prvotním nastavení KitchenHubu</p>
+                    <p>2. Spusťe KitchenHub server a pomocí webového prohlížeče jděte na jeho ip adresu</p>
+                    <p>3. Projděte prvotním nastavením</p>                    
+                    <p>4. Jděte do <span class="text-secondary font-bold">přehledů</span> a prověďte <span class="text-secondary font-bold">Připojení k Serveru</span> a <span class="text-secondary font-bold">Stáhnutí Objednávek z API</span></p>
+                    <p>5. Nyní jste připraveni používat KitchenHub k přípravě objednávek</p>                    
                 </div>
 
                 <div class="mt-10">
                     <h1 class="text-lg font-bold">Propojovací informace:</h1>
 
-                    {% with text="URL Adresa Serveru", type="text", name="serverUrl", required="true", value="", disabled="true" %}
-                        {% include "/components/form/input.html" %}
-                    {% endwith %}
-                    <script>
-                        const serverUrlInput = document.getElementById("serverUrl")
-                        serverUrlInput.value = window.location.origin
-                    </script>
+                    <div class="w-full grid grid-cols-2 gap-4">
+                        {% with text="URL Adresa Serveru", type="text", name="serverUrl", required="true", value="", disabled="true" %}
+                            {% include "/components/form/input.html" %}
+                        {% endwith %}
+                        <script>
+                            const serverUrlInput = document.getElementById("serverUrl")
+                            serverUrlInput.value = window.location.origin
+                        </script>
 
-                    {% with text="Identifikace Provozovny", type="text", name="establishmentSlug", required="true", value=est_info.slug, disabled="true" %}
-                        {% include "/components/form/input.html" %}
-                    {% endwith %}
+                        {% with text="Identifikace Provozovny", type="text", name="establishmentSlug", required="true", value=est_info.slug, disabled="true" %}
+                            {% include "/components/form/input.html" %}
+                        {% endwith %}
 
-                    {% with text="Propojovací Kód", type="text", name="establishmentToken", required="true", value=est_info.token, disabled="true" %}
-                        {% include "/components/form/input.html" %}
-                    {% endwith %}
+                        {% with text="Propojovací Kód", type="text", name="establishmentToken", required="true", value=est_info.token, disabled="true" %}
+                            {% include "/components/form/input.html" %}
+                        {% endwith %}
+
+                        {% with text="RabbitMQ URL", type="text", name="rabbitmqURL", required="true", value=rabbitmq.url, disabled="true" %}
+                            {% include "/components/form/input.html" %}
+                        {% endwith %}
+                    </div>
                 </div>
             </div>
         </div>   

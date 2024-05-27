@@ -1,3 +1,10 @@
+# DEFAULT EXPOSED PORTS
+# MySQL - 3306
+# Adminer - 8001
+# RabbitMQ - 5672, 15672 (for management dashboard)
+# Backend Server / Admin dashboard - 8000
+
+
 version: '3'
 
 services:
@@ -23,6 +30,7 @@ services:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
       timeout: 10s
       retries: 5
+
 
   mysql-backup:
     container_name: kOkenku-Mysql-Backup-Service
@@ -53,6 +61,20 @@ services:
       mysql:
         condition: service_healthy
 
+
+  rabbitmq:
+    container_name: kOkenku-RabbitMQ
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=kOkenkuBackEndMQ
+      - RABBITMQ_DEFAULT_PASS= # RabbitMQ admin password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+
   kokenku-admin:
     container_name: kOkenku-BackEnd-Admin
     build: .
@@ -64,6 +86,11 @@ services:
       - KO_DB_PASSWORD= # Same as MYSQL_PASSWORD
       - KO_DB_SSL_CA=
       - KO_HASH_SALT= # Set password hashing salt
+      - KO_RABBITMQ_URL=rabbitmq 
+      - KO_RABBITMQ_PUBLIC_URL= # Set public url for RabbitMQ
+      - KO_RABBITMQ_PORT=5672
+      - KO_RABBITMQ_USER=kOkenkuBackEndMQ
+      - KO_RABBITMQ_PASSWORD= # Same as RABBITMQ_DEFAULT_PASS
     ports:
       - 8000:8000
     command: python3 -m gunicorn -k gevent -w 1 --bind 0.0.0.0:8000 --chdir ./app/web app:app
@@ -76,3 +103,4 @@ services:
 
 volumes:
   mysql-data:
+  rabbitmq_data:

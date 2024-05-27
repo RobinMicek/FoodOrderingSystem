@@ -82,8 +82,6 @@ def page_establishments_edit():
             return render_extended_template("establishments_edit.html",
                 est_info = Establishment().all_info(establishmentId=id),
                 rabbitmq = {
-                    "username": RABBITMQ_KITCHENHUB_USERNAME,
-                    "password": RABBITMQ_KITCHENHUB_PASSWORD,
                     "url": RABBITMQ_PUBLIC_URL
                 },
                 all_menus = Menu().all_menus())
