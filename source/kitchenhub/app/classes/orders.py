@@ -131,8 +131,8 @@ class Order():
                 create_log(type="ERROR", message=f"Could not get orders from BackEnd server [{e}]")
 
 
-    def store_orders_from_socket(self, order = None):
-        # This function stores new order received by socketio.
+    def store_orders_from_rabbitmq(self, order = None):
+        # This function stores new order received by RabbitMQ.
 
         try:            
             if order != None:
@@ -180,14 +180,14 @@ class Order():
                 # so it needs an active request to be able to send messages from the server
                 sendOrders = requests.get("http://localhost:8080/func/send-local-socket")
 
-                create_log(type="ALERT", message=f"Got new order from socketio [orderId: {order['orderId']}]")
+                create_log(type="ALERT", message=f"Got new order from RabbitMQ [orderId: {order['orderId']}]")
 
         except Exception as e:
-                create_log(type="ERROR", message=f"Could not store order from socketio [{e}]")
+                create_log(type="ERROR", message=f"Could not store order from RabbitMQ [{e}]")
 
 
-    def canceled_order_from_socket(self, orderId = None):
-        # This function updates status to canceled for a order received by socketio.
+    def canceled_order_from_rabbitmq(self, orderId = None):
+        # This function updates status to canceled for a order received by RabbitMQ.
 
         try:            
             if orderId != None:
@@ -204,10 +204,10 @@ class Order():
                 # so it needs an active request to be able to send messages from the server
                 sendOrders = requests.get("http://localhost:8080/func/send-local-socket")
 
-                create_log(type="ALERT", message=f"Canceled an order from socketio [orderId: {orderId}]")
+                create_log(type="ALERT", message=f"Canceled an order from RabbitMQ [orderId: {orderId}]")
 
         except Exception as e:
-                create_log(type="ERROR", message=f"Could not cancel an order from socketio [{e}]")
+                create_log(type="ERROR", message=f"Could not cancel an order from RabbitMQ [{e}]")
 
 
     def sync_local_orders(self):
@@ -281,13 +281,14 @@ class Order():
         try:
             
             orders = self.all_local_orders()
-            sioServer = current_app.extensions["sioServer"]
 
-            with current_app.app_context():                
-                sioServer.emit('allOrders', {
-                    "msg": "All local orders.",
-                    "data": json.dumps(orders)
-                })
+            from flask import current_app
+            socketio = current_app.extensions['socketio']
+         
+            socketio.emit('allOrders', {
+                "msg": "All local orders.",
+                "data": json.dumps(orders)
+            })
 
             create_log(type="ALERT", message=f"Sent orders through local socket")
 

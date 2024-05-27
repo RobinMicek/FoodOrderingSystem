@@ -104,14 +104,6 @@ from blueprints.b_kitchenhub import b_kitchenhub
 app.register_blueprint(b_kitchenhub, url_prefix="/kitchenhub")
 
 
-# SocketIO
-from flask_socketio import SocketIO
-socketio = SocketIO(
-    app, 
-    cors_allowed_origins="*"
-)
-import blueprints.b_socketio
-
 
 # IMPORT ERROR HANDLERS
 # from blueprints.b_errors import page_not_found
@@ -121,8 +113,7 @@ import blueprints.b_socketio
 # RUN THE FLASK TEST SERVER
 while __name__ == "__main__":
 
-    socketio.run(
-        app,
+    app.run(
         host="0.0.0.0",
         debug=True,
         port=8000

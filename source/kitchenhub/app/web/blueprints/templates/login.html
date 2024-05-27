@@ -17,7 +17,12 @@
 
 {% block content %}
 
-<div class="flex flex-cold items-center justify-center h-screen w-screen">
+<div class="flex flex-col items-center justify-center h-screen w-screen space-y-10">
+
+    <div class="flex items-center justify-center flex-col">
+        <img src="/files/media/favicon.png" class="w-24" alt="Logo">
+    </div>
+
     <form action="/login" method="POST">
         <div class="relative w-96">
             <input type="text" name="pin" id="preview" class="bg-white text-primary p-5 text-4xl text-center w-full h-20 rounded-tr-lg rounded-tl-lg"></input>

@@ -48,3 +48,13 @@ DB_NAME = str(os.environ.get("KO_DB_NAME", None))
 DB_USER = str(os.environ.get("KO_DB_USER", None))
 DB_PASSWORD = str(os.environ.get("KO_DB_PASSWORD", None))
 DB_SSL_CA = str(os.environ.get("KO_DB_SSL_CA", None)) # If not using SSL -> Leave blank
+
+
+# RABBITMQ
+RABBITMQ_URL = str(os.environ.get("KO_RABBITMQ_URL", None))
+RABBITMQ_PUBLIC_URL = str(os.environ.get("KO_RABBITMQ_PUBLIC_URL", None))
+RABBITMQ_PORT = str(os.environ.get("KO_RABBITMQ_PORT", None))
+RABBITMQ_USERNAME = str(os.environ.get("KO_RABBITMQ_USERNAME", None))
+RABBITMQ_PASSWORD = str(os.environ.get("KO_RABBITMQ_PASSWORD", None))
+RABBITMQ_KITCHENHUB_USERNAME = str(os.environ.get("KO_RABBITMQ_KITCHENHUB_USERNAME", None))
+RABBITMQ_KITCHENHUB_PASSWORD = str(os.environ.get("KO_RABBITMQ_KITCHENHUB_PASSWORD", None))

@@ -17,4 +17,4 @@ RUN pip3 install -r ./app/requirements.txt
 
 RUN python3 ./app/database/handle_database.py
 
-CMD ["python3", "./app/web/app.py"]
+CMD ["python3", "-m", "gunicorn", "-k", "gevent", "-w", "1", "--bind", "0.0.0.0:8080", "--chdir", "./app/web", "app:app"]

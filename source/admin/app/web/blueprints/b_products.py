@@ -76,21 +76,7 @@ def page_products_edit():
     if request.method != "POST":
         if id != None:
             return render_extended_template("products_edit.html",
-                prod_info = Product().info(productId=id),
-                stats = {
-                    "purchases": {
-                        "today": Product().number_of_purchases(productId = id, timeWindow = "today"),
-                        "month": Product().number_of_purchases(productId = id, timeWindow = "month"),
-                        "year": Product().number_of_purchases(productId = id, timeWindow = "year"),
-                        "allTime": Product().number_of_purchases(productId = id, timeWindow = "allTime")                        
-                    },
-                    "revenue": {
-                        "today": Product().revenue(productId = id, timeWindow = "today"),
-                        "month": Product().revenue(productId = id, timeWindow = "month"),
-                        "year": Product().revenue(productId = id, timeWindow = "year"),
-                        "allTime": Product().revenue(productId = id, timeWindow = "allTime")
-                    }
-                })        
+                prod_info = Product().info(productId=id))        
         else:
             return redirect("/products")        
     else:

@@ -31,6 +31,7 @@ from classes.menus import Menu
 from web.render_extended_template import render_extended_template
 
 # IMPORT CONSTANT VARIABLES (/app/variables.py)
+from variables import RABBITMQ_PUBLIC_URL, RABBITMQ_KITCHENHUB_USERNAME, RABBITMQ_KITCHENHUB_PASSWORD
 
 
 # INICIALIZE BLUEPRINT
@@ -80,23 +81,12 @@ def page_establishments_edit():
         if id != None:
             return render_extended_template("establishments_edit.html",
                 est_info = Establishment().all_info(establishmentId=id),
-                all_menus = Menu().all_menus(),
-                stats = {
-                    "orders": {
-                        "today": Establishment().number_of_orders(establishmentId = id, timeWindow = "today"),
-                        "month": Establishment().number_of_orders(establishmentId = id, timeWindow = "month"),
-                        "year": Establishment().number_of_orders(establishmentId = id, timeWindow = "year"),
-                        "allTime": Establishment().number_of_orders(establishmentId = id, timeWindow = "allTime"),
-                        "orders_per_day": Establishment().orders_per_day(establishmentId = id)
-                    },
-                    "revenue": {
-                        "today": Establishment().revenue(establishmentId = id, timeWindow = "today"),
-                        "month": Establishment().revenue(establishmentId = id, timeWindow = "month"),
-                        "year": Establishment().revenue(establishmentId = id, timeWindow = "year"),
-                        "allTime": Establishment().revenue(establishmentId = id, timeWindow = "allTime"),
-                        "revenue_per_day": Establishment().revenue_per_day(establishmentId = id)
-                    }
-                })
+                rabbitmq = {
+                    "username": RABBITMQ_KITCHENHUB_USERNAME,
+                    "password": RABBITMQ_KITCHENHUB_PASSWORD,
+                    "url": RABBITMQ_PUBLIC_URL
+                },
+                all_menus = Menu().all_menus())
         else:
             return redirect("/establishments")        
     else:

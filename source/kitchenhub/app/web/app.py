@@ -15,15 +15,12 @@
 import os
 import sys
 
-import socketio
+import threading
 
 # IMPORTS FROM PACKAGES
 from flask import Flask, Blueprint, request, current_app
 from flask_cors import CORS
-from flask_socketio import SocketIO
 
-from gevent import pywsgi
-from geventwebsocket.handler import WebSocketHandler
 
 # IMPORTS FROM OTHER FILES
 # Fix
@@ -31,6 +28,7 @@ root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__
 sys.path.append(root_folder)
 
 from web.render_extended_template import render_extended_template
+from database.handle_database import Database
 
 # IMPORT CONSTANT VARIABLES (/app/variables.py)
 from variables import FLASK_SECRET_KEY
@@ -46,11 +44,6 @@ def create_app():
     CORS(app)
     
     return app
-
-def create_sioServer(app):
-    sioServer = SocketIO(app, cors_allowed_origins="*")
-    app.extensions["sioServer"] = sioServer
-    return sioServer
 
 app = create_app()
 
@@ -90,17 +83,29 @@ app.register_error_handler(404, handle_bad_request)
 # from blueprints.b_errors import page_not_found
 # app.register_error_handler(404, page_not_found)
 
-# SERVER
-from blueprints.socketio import start_socketio_server
-sioServer = create_sioServer(app)
+# SocketIO
+from flask_socketio import SocketIO
+socketio = SocketIO(
+    app, 
+    cors_allowed_origins="*"
+)
+import blueprints.socketio
 
 
 
 # RUN THE FLASK TEST SERVER
 if __name__ == "__main__":
-    start_socketio_server(sioServer)
 
-    # The port needs to stay the 8080, check /app/classes/orders Order.store_orders_from_socket for info
-    server = pywsgi.WSGIServer(('0.0.0.0', 8080), app, handler_class=WebSocketHandler)
-    
-    server.serve_forever()
+    socketio.run(
+        app,
+        host="0.0.0.0",
+        debug=True,
+        port=8080
+    )
+
+    # !!!!!!
+    # RUN WITH COMMAND "python3 -m gunicorn -k gevent -w 1 --bind 0.0.0.0:8080 --chdir ./app/web app:app"
+    #
+    # Otherwise change from app import socketio -> from __main__ import socketion - in ./blueprints/socketio.py
+    # In that case RabbitMQ thread will not work since the default socketio/flask dev server cannot handle separate thread
+    # !!!!!!

@@ -27,6 +27,7 @@ sys.path.append(root_folder)
 from classes.auth_wrappers import auth_require_admin
 from classes.accounts import Account
 from classes.orders import Order
+from classes.rabbitmq import RabbitMQ
 
 from web.render_extended_template import render_extended_template
 

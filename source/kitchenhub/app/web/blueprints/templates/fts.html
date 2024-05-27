@@ -34,6 +34,7 @@
                     <input type="url" name="serverUrl" placeholder="https://k-okenku.moje-bistro.cz" class="px-3 py-2 rounded-md w-96 text-primary border-b-4 border-secondary text-lg shadow-lg" required>                
                 </div>
 
+
                 <div class="my-10">
                     <div>
                         <label for="establishmentSlug" class="block text-white text-lg font-medium mb-2">Identifikace Provozovny</label>
@@ -45,7 +46,31 @@
                         <input type="text" name="establishmentToken" placeholder="EST-Rest-1A2B-3c4d-5E6F-7G8h" class="px-3 py-2 rounded-md w-96 text-primary border-b-4 border-secondary text-lg shadow-lg" required>                 
                     </div>
                 </div>
+                
+
+                <div class="my-10">
+                    <div>
+                        <label for="rabbitmqUrl" class="block text-white text-lg font-medium mb-2">RabbitMQ URL</label>
+                        <input type="text" name="rabbitmqUrl" placeholder="rabbitmq.k-okenku.moje-bistro.cz" class="px-3 py-2 rounded-md w-96 text-primary border-b-4 border-secondary text-lg shadow-lg" required>                
+                    </div>
+                    
+                    <div>
+                        <label for="rabbitmqPort" class="block text-white text-lg font-medium mb-2">RabbitMQ Port</label>
+                        <input type="number" name="rabbitmqPort" placeholder="5672" class="px-3 py-2 rounded-md w-96 text-primary border-b-4 border-secondary text-lg shadow-lg" required>                
+                    </div>
+                    
+                    <div>
+                        <label for="rabbitmqUsername" class="block text-white text-lg font-medium mb-2">RabbitMQ Uživatelské Jméno</label>
+                        <input type="text" name="rabbitmqUsername" placeholder="user" class="px-3 py-2 rounded-md w-96 text-primary border-b-4 border-secondary text-lg shadow-lg" required>                
+                    </div>
+                    
+                    <div>
+                        <label for="rabbitmqPassword" class="block text-white text-lg font-medium mb-2">RabbitMQ Heslo</label>
+                        <input type="text" name="rabbitmqPassword" placeholder="password" class="px-3 py-2 rounded-md w-96 text-primary border-b-4 border-secondary text-lg shadow-lg" required>                
+                    </div>
+                </div>
           
+
                 <div>
                     <label for="pin" class="block text-white text-lg font-medium mb-2">Přihlašovací PIN</label>
                     <input type="number" min="1" max="9999" name="pin" placeholder="1234" class="px-3 py-2 rounded-md w-96 text-primary border-b-4 border-secondary text-lg shadow-lg" required>                

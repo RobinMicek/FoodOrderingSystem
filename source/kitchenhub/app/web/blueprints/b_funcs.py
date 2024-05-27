@@ -16,6 +16,8 @@
 import os
 import sys
 
+import threading
+
 # IMPORTS FROM PACKAGES
 from flask import Flask, Blueprint, render_template, request, redirect, jsonify, session
 
@@ -27,6 +29,7 @@ sys.path.append(root_folder)
 from classes.auth_wrapper import auth_require_login
 from web.render_extended_template import render_extended_template
 from classes.orders import Order
+from classes.rabbitmq import RabbitMQ
 
 # IMPORT CONSTANT VARIABLES (/app/variables.py)
 
@@ -40,11 +43,11 @@ b_funcs = Blueprint(
 
 
 # ROUTES
-@b_funcs.route("/socket-client-connect")
+@b_funcs.route("/rabbitmq-connect")
 @auth_require_login
 def func_socketClientConnect():
-    from blueprints.socketio import socketioClient_connect
-    socketioClient_connect()
+    thread = threading.Thread(target=RabbitMQ().consume_messages)
+    thread.start()
 
     return redirect(request.referrer)
 

@@ -32,8 +32,7 @@
             <h1 class="text-xl"><span class="font-medium">Poslední Aktualizace přes API:</span> {{ config.lastSync }}</h1>
 
             <div class="mt-10 flex items-center">
-                <h1 class="text-xl"><span class="font-medium">Spojení se Serverem:</span></h1>
-                {% if config.socketClientConnected == 1 %} <div class="rounded-full ml-2 h-5 w-5 bg-green-500"></div> {% else %} <div class="rounded-full ml-2 h-5 w-5 bg-red-600"></div> {% endif %}
+                <h1 class="text-xl">Poslední Připojení k RabbitMQ:<span class="font-medium"> {{ config.rabbitmqLastConnected }}</span></h1>
             </div>
         </div>
 
@@ -53,7 +52,7 @@
 
     <div class="grid grid-cols-2 xl:grid-cols-4">
         <div class="grid-cols-1 w-full mt-5 xl:mt-20 p-5">
-            <a href="/func/socket-client-connect">
+            <a href="/func/rabbitmq-connect">
                 <button class="bg-secondary w-full p-5 rounded-lg text-xl">
                     Připojit k Serveru
                     <p class="text-sm text-gray-200">Připojit se k socketu serveru</p>

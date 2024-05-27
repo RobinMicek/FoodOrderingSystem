@@ -31,6 +31,7 @@ from classes.products import Product
 from classes.establishments import Establishment
 from classes.menus import Menu
 from classes.accounts import Account
+from classes.rabbitmq import RabbitMQ
 
 from database.handle_database import Database
 from random_string import random_string, random_string_without_numbers
@@ -141,8 +142,8 @@ class Order():
 
                     create_log(type="ALERT", message=f"Created new order - orderId: {order_id}, establishmentId: {data['establishmentId']}, accountId: {data['accountId']}, cardNumber: {data['cardNumber']}")
 
-                    # Send order information to KitchenHub through socket
-                    order_tag = self.send_through_socket(orderId=order_id)
+                    # Send order information to KitchenHub through RabbitMQ
+                    order_tag = self.send_through_RabbitMQ(orderId=order_id)
                    
                     return {"orderId": order_id, "tag": order_tag}
                 
@@ -259,19 +260,23 @@ class Order():
 
             db.close()
 
-            # Send message to the socket about the new order
-            socketio = current_app.extensions['socketio']
-            socketio.emit('canceledOrder', {
+
+            # Send message to the RabbitMQ Server about the canceled order
+            RabbitMQ().publish_message(
+                queue_name=slug,
+                message=json.dumps({
+                    "type": "canceledOrder",
                     "msg": "Order has been canceled.",
                     "orderId": orderId
-                },
-                room=slug
+                
+                })
             )
 
-            create_log(type="ALERT", message=f"Sent info about canceled order through socketio - orderId: {orderId}")   
+
+            create_log(type="ALERT", message=f"Sent info about canceled order through RabbitMQ - orderId: {orderId}")   
                             
         except Exception as e:
-            create_log(type="ERROR", message=f"Could not send info about canceled order through socket - orderId: {orderId} [{e}]")                    
+            create_log(type="ERROR", message=f"Could not send info about canceled order through RabbitMQ - orderId: {orderId} [{e}]")                    
 
 
     def all_orders(self):
@@ -387,8 +392,8 @@ class Order():
         return query
     
 
-    def send_through_socket(self, orderId = None):
-        # Only use this function for the KitchenHub Socket
+    def send_through_RabbitMQ(self, orderId = None):
+        # Only use this function for the KitchenHub RabbitMQ connection
         # - Packages all information into one response, 
         # including product names etc.
 
@@ -434,15 +439,17 @@ class Order():
             del query["lastUpdate"]
 
             
-            # Send message to the socket about the new order
-            socketio = current_app.extensions['socketio']
-            socketio.emit('newOrder', {
+            # Send message to the RabbitMQ Server about the new order
+            RabbitMQ().publish_message(
+                queue_name=query["slug"],
+                message=json.dumps({
+                    "type": "newOrder",
                     "msg": "New order has been created.",
-                    "data": json.dumps(query)
-                },
-                room=query["slug"]
+                    "data": query
+                
+                })
             )
-
+            
 
             # If sent, update it in the database
             db.cursor.execute(f"""
@@ -451,13 +458,13 @@ class Order():
 
             db.close()
 
-            create_log(type="ALERT", message=f"Sent new order through socketio - orderId: {orderId}")   
+            create_log(type="ALERT", message=f"Sent new order through RabbitMQ - orderId: {orderId}")   
 
 
             return query["tag"] # Sent as a response to the createOrder request                             
 
         except Exception as e:
-            create_log(type="ERROR", message=f"Could not send new order through socket - orderId: {orderId} [{e}]")                    
+            create_log(type="ERROR", message=f"Could not send new order through RabbitMQ - orderId: {orderId} [{e}]")                    
     
 
     def update_status(self, orderId = None, newStatus = None):

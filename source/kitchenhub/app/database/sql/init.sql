@@ -51,7 +51,11 @@ CREATE TABLE `app_configuration` (
   establishmentToken TEXT,
   establishmentSlug TEXT,
   establishmentName TEXT,
+  rabbitmqUrl TEXT,
+  rabbitmqPort INT,
+  rabbitmqUsername TEXT,
+  rabbitmqPassword TEXT,
   pin TEXT,
   lastSync TIME,
-  socketClientConnected INTEGER DEFAULT 0
+  rabbitmqLastConnected TIMESTAMP
 )

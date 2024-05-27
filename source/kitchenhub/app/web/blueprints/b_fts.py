@@ -68,10 +68,28 @@ def page_fts():
                 db = Database()
                 db.cursor.execute(f"""
                     INSERT INTO app_configuration
-                    (serverUrl, establishmentSlug, establishmentToken, pin, establishmentName)
+                    (
+                        serverUrl, 
+                        establishmentSlug, 
+                        establishmentToken, 
+                        rabbitmqUrl,
+                        rabbitmqPort,
+                        rabbitmqUsername,
+                        rabbitmqPassword,
+                        pin, 
+                        establishmentName)
                                 
                     VALUES
-                    ('{serverUrl}', '{request.form["establishmentSlug"]}', '{request.form["establishmentToken"]}', '{request.form["pin"]}', '{establishmentName}')
+                    (
+                        '{serverUrl}', 
+                        '{request.form["establishmentSlug"]}', 
+                        '{request.form["establishmentToken"]}', 
+                        '{request.form["rabbitmqUrl"]}', 
+                        '{request.form["rabbitmqPort"]}', 
+                        '{request.form["rabbitmqUsername"]}', 
+                        '{request.form["rabbitmqPassword"]}', 
+                        '{request.form["pin"]}', 
+                        '{establishmentName}')
                 """)
                 db.close()
 
