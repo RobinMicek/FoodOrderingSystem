@@ -41,7 +41,7 @@ DO CALL stats_insertDailyStatsEstablishments(CURDATE());
 --
 -- Run stats_insertDailyStatsOverall on a schedule
 CREATE EVENT event_insertDailyStatsOverall_previousDay
-ON SCHEDULE EVERY 1 MINUTE
+ON SCHEDULE EVERY 1 DAY
 STARTS CURRENT_DATE + INTERVAL 1 DAY
 ON COMPLETION PRESERVE
 DO CALL stats_insertDailyStatsOverall((CURRENT_DATE - INTERVAL 1 DAY));
@@ -49,7 +49,7 @@ DO CALL stats_insertDailyStatsOverall((CURRENT_DATE - INTERVAL 1 DAY));
 
 -- Run stats_insertDailyStatsEstablishments on a schedule
 CREATE EVENT event_insertDailyStatsEstablishments_previousDay
-ON SCHEDULE EVERY 1 MINUTE
+ON SCHEDULE EVERY 1 DAY
 STARTS CURRENT_DATE + INTERVAL 1 DAY
 ON COMPLETION PRESERVE
 DO CALL stats_insertDailyStatsEstablishments((CURRENT_DATE - INTERVAL 1 DAY));
