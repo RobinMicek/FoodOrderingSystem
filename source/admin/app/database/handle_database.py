@@ -78,7 +78,11 @@ class Database():
                 self.cursor.execute(x)
             for x in self.handle_sql_file(filename="procedures.sql"):
                 self.cursor.execute(x)
+            for x in self.handle_sql_file(filename="procedures-stats.sql"):
+                self.cursor.execute(x)
             for x in self.handle_sql_file(filename="triggers.sql"):
+                self.cursor.execute(x)
+            for x in self.handle_sql_file(filename="events.sql"):
                 self.cursor.execute(x)
 
             create_log(type="ALERT", message="Database has been inicialized.")
@@ -120,12 +124,12 @@ class Database():
 
             script = f.read()
 
-            if filename == "init.sql" or filename == "clear.sql":
+            if filename == "init.sql" or filename == "events.sql" or filename == "clear.sql":
                 script = script.split(";")
                 for x in script:
                     x.replace(";", "")
 
-            elif filename == "procedures.sql" or filename == "triggers.sql":
+            elif filename == "procedures.sql" or filename == "procedures-stats.sql" or filename == "triggers.sql":
                 script = script.split("//")
                 for x in script:
                     x.replace("//", "")
@@ -135,7 +139,11 @@ class Database():
 
 # Inicialize the DB if the file is called directly
 if __name__ == "__main__":
-    db = Database()
+    confirmation = input("Opravdu chcete zinicializovat databázi - může mít za následek ztrátu dat (y/n)? ").lower()
+    while confirmation not in ["y", "n"]:
+        confirmation = input("Prosím zadejte 'y' pro ano nebo 'n' pro ne: ").lower()
 
-    db.clear()
-    db.initialize()
+    if confirmation == "y":
+        db = Database()
+        db.clear()
+        db.initialize()

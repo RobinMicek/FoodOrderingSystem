@@ -24,6 +24,8 @@ DROP TABLE IF EXISTS `orders_products`;
 DROP TABLE IF EXISTS `orders`;
 DROP TABLE IF EXISTS `accounts`;
 DROP TABLE IF EXISTS `accounts_wallet_refills`;
+DROP TABLE IF EXISTS `stats_daily_overall`;
+DROP TABLE IF EXISTS `stats_daily_establishments`;
 
 
 -- Delete statements for procedures
@@ -52,4 +54,13 @@ DROP PROCEDURE IF EXISTS InsertOrderProduct;
 DROP PROCEDURE IF EXISTS ToggleOrderStatus;
 DROP PROCEDURE IF EXISTS UpdateOrderStatus;
 DROP PROCEDURE IF EXISTS CancelOrder;
-DROP PROCEDURE IF EXISTS SocketSentOrder
+DROP PROCEDURE IF EXISTS SocketSentOrder;
+
+DROP PROCEDURE IF EXISTS stats_insertDailyStatsOverall;
+DROP PROCEDURE IF EXISTS stats_insertDailyStatsEstablishmentsCall;
+DROP PROCEDURE IF EXISTS stats_insertDailyStatsEstablishments;
+
+DROP EVENT IF EXISTS event_insertDailyStatsOverall_today;
+DROP EVENT IF EXISTS event_insertDailyStatsEstablishments_today;
+DROP EVENT IF EXISTS event_insertDailyStatsOverall_previousDay;
+DROP EVENT IF EXISTS event_insertDailyStatsEstablishments_previousDay

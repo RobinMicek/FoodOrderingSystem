@@ -168,123 +168,7 @@
         </div>   
         
         
-        <!-- Modal Stats -->
-        <div id="modal-stats" class="hidden m-5 p-10 bg-primary shadow-md fixed inset-0 z-10 rounded-lg">
-            
-            <div class="flex">
-                <div class="text-left font-bold text-2xl">
-                    <h1><span class="text-secondary">Statistiky</span> Prodeje</h1>
-
-                </div>
-                <!-- Close Modal Stats -->    
-                <div class="flex-grow text-right">
-                    {% with text="", type="button", icon="las la-times", button="table", id="close_modal_stats" %}
-                        {% include "/components/form/button.html" %}
-                    {% endwith %}
-                </div>
-            </div>
-
-            <script>
-                const buttonCloseStats = document.getElementById("close_modal_stats")
-                const modalOpenStats = document.getElementById("modal-stats")
-
-                buttonCloseStats.addEventListener("click", (event => {
-                    modalOpenStats.classList.add("hidden")
-                }))
-            </script>
-
-            <div class="mt-10 md:grid md:grid-cols-4 m-5 gap-5">
-                
-                <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.today == None %} 0 {% else %} {{ stats.revenue.today }} {% endif %} Kč</h1>
-                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | Tržby</h1>
-                </div>
-            
-                <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.month == None %} 0 {% else %} {{ stats.revenue.month }} {% endif %} Kč</h1>
-                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | Tržby</h1>
-                </div>
-
-                <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.year == None %} 0 {% else %} {{ stats.revenue.year }} {% endif %} Kč</h1>
-                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento Rok</span> | Tržby</h1>
-                </div>
-            
-                <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.revenue.allTime == None %} 0 {% else %} {{ stats.revenue.allTime }} {% endif %} Kč</h1>
-                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Celkově</span> | Tržby</h1>
-                </div>
-
-
-                <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.orders.today == None %} 0 {% else %} {{ stats.orders.today }} {% endif %}</h1>
-                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | Objednávky</h1>
-                </div>
-            
-                <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.orders.month == None %} 0 {% else %} {{ stats.orders.month }} {% endif %}</h1>
-                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | Objednávky</h1>
-                </div>
-
-                <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.orders.year == None %} 0 {% else %} {{ stats.orders.year }} {% endif %}</h1>
-                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento Rok</span> | Objednávky</h1>
-                </div>
-            
-                <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.orders.allTime == None %} 0 {% else %} {{ stats.orders.allTime }} {% endif %}</h1>
-                    <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Celkově</span> | Objednávky</h1>
-                </div>
-            </div>
-
-
-            <div class="m-5 p-5 bg-white shadow-md rounded-md">
-                <h1 class="text-lg text-secondary uppercase"><span class="font-bold">Tržby & Objednávky</span> | všechny dny s tržbou</h1>
-                <div>
-                    
-                    <canvas id="revenue-per-day" style="height: 40vh;">            
-                        <script>
-                            var chart = ""
-                            function createChart () {                                 
-                                if (chart === "") {
-                                    chart = new Chart(
-                                        document.getElementById('revenue-per-day'),
-                                        {
-                                            type: 'line',                        
-                                            data: {
-                                                labels: JSON.parse('{{ stats.revenue.revenue_per_day|tojson }}').orderDate,
-                                                datasets: [
-                                                    {
-                                                        label: "Třžby (Kč)",
-                                                        data: JSON.parse('{{ stats.revenue.revenue_per_day|tojson }}').totalRevenue,                          
-                                                        tension: 0.25,
-                                                        borderColor: '#008550',
-                                                        backgroundColor: '#008550',                              
-                                                        hoverOffset: 4
-                                                    },
-                                                    {
-                                                        label: "Objednávky (Ks)",
-                                                        data: JSON.parse('{{ stats.orders.orders_per_day|tojson }}').totalOrders,                          
-                                                        tension: 0.25,
-                                                        borderColor: '#E53E5B',
-                                                        backgroundColor: '#E53E5B',                              
-                                                        hoverOffset: 4
-                                                    },
-                                                    
-                                                ]
-                                            },
-                                            options: chartOptions
-                                        }                
-                                    )
-                                }
-                            }
-                        </script>
-                    </canvas>
-                </div>
-            </div>            
-        
-        </div>   
-        
+       
         
         <div class="static md:grid md:grid-cols-2">
     
@@ -293,8 +177,8 @@
                     <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Obecné</span> Nastavení</h1>
                     <hr>
 
-                    <div class="my-5">
-                        <img src="{{ est_info.imagePath }}" class="w-full rounded-md shadow-md">
+                    <div class="my-5 flex justify-center">
+                        <img src="{{ est_info.imagePath }}" class="rounded-md shadow-md w-96">
                     </div>
                     
                     {% with text="Název Provozovny", type="text", name="name", required="true", value=est_info.name %}
@@ -311,25 +195,7 @@
 
 
                     <!-- Modal Triggers -->
-                    <div class="mt-10 flex justify-start gap-x-5">
-
-                        <div>
-                            <!-- Open Modal Stats -->    
-                            {% with text="Statistiky Prodeje", type="button", icon="las la-chart-area", button="table", id="open_modal_stats" %}
-                                {% include "/components/form/button.html" %}
-                            {% endwith %}
-                            
-                            <script>
-                                const buttonOpenStats = document.getElementById("open_modal_stats")
-                                const modalCloseStats = document.getElementById("modal-stats")
-
-                                buttonOpenStats.addEventListener("click", (event => {
-                                    modalCloseStats.classList.remove("hidden")
-                                    createChart()
-                                }))
-                            </script>
-                        </div>
-
+                    <div class="mt-10 flex justify-center gap-x-5">
                         <div>
                             <!-- Open Modal Hours-->    
                             {% with text="Otevírací Doba", type="button", icon="las la-clock", button="table", id="open_modal_hours" %}

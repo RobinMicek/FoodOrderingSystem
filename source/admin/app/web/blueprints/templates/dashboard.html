@@ -16,82 +16,157 @@
 
 {% block content %}
 
+<div class="grid grid-cols-2 p-4 m-4 gap-4 bg-secondary_dark rounded-lg shadow-lg">
 
-<!-- Stats -->
-<div class="md:grid md:grid-cols-4 m-5 gap-5">
+    <div class="col-span-1 w-full grid grid-cols-2 gap-4">
 
-    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
-        <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.stats.revenue.today.totalRevenue == None %} 0 {% else %} {{ stats.stats.revenue.today.totalRevenue }} {% endif %} Kč</h1>
-        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | Tržby</h1>
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ stats_sum.total_orders }}</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-shopping-cart text-2xl"></i>
+                <h1 class="text-sm uppercase">Objednávky</h1>
+            </div>
+        </div>
+        
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ stats_sum.revenue_total }} Kč</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-coins text-2xl"></i>
+                <h1 class="text-sm uppercase">Tržby</h1>
+            </div>
+        </div>
+        
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ stats_sum.total_canceled_orders }}</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-trash text-2xl"></i>
+                <h1 class="text-sm uppercase">Zrušené objednávky</h1>
+            </div>
+        </div>
+
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ stats_sum.new_acc_created }}</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-user-plus text-2xl"></i>
+                <h1 class="text-sm uppercase">Nové Účty</h1>
+            </div>
+        </div>
+       
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ stats_sum.total_wallet_refills }}</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-wallet text-2xl"></i>
+                <h1 class="text-sm uppercase">Dobité Peněženky</h1>
+            </div>
+        </div>
+        
+        
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ stats_sum.total_wallet_refills_amount }} Kč</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-credit-card text-2xl"></i>
+                <h1 class="text-sm uppercase">Celkem Dobito</h1>
+            </div>
+        </div>
+        
+        
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ stats_sum.average_order_price }} Kč</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-tag text-2xl"></i>
+                <h1 class="text-sm uppercase">Průměrná Cena Objednávky</h1>
+            </div>
+        </div>
+        
+        
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">
+                {% if stats_sum.revenue_total != None and stats_sum.revenue_total != 0 and stats_sum.revenue_cash != None and stats_sum.revenue_cash != 0 and stats_sum.revenue_wallet != None and stats_sum.revenue_wallet != 0 %}
+                    {{ ((stats_sum.revenue_cash / stats_sum.revenue_total) * 100)|round|int }} /
+                    {{ ((stats_sum.revenue_wallet / stats_sum.revenue_total) * 100)|round|int }}
+                {% else %}
+                    Není
+                {% endif %}
+            </h1>
+             
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-percent text-2xl"></i>
+                <h1 class="text-sm uppercase">Hotovost vs. Peněženka</h1>
+            </div>
+        </div>
+
     </div>
 
-    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
-        <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.stats.revenue.month.totalRevenue == None %} 0 {% else %} {{ stats.stats.revenue.month.totalRevenue }} {% endif %} Kč</h1>
-        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | Tržby</h1>
-    </div>
+    <div class="col-span-1 w-full space-y-4">
+        <form method="get">
+            <div class="p-4 bg-secondary shadow-mg rounded-lg w-full flex justify-between items-center">
 
-    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
-        <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.stats.revenue.year.totalRevenue == None %} 0 {% else %} {{ stats.stats.revenue.year.totalRevenue }} {% endif %} Kč</h1>
-        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento Rok</span> | Tržby</h1>
-    </div>
+                <div class="flex items-center gap-2">
+                    <h1 class="text-white text-2xl font-semibold">Od:</h1>
+                    <input id="rangeFrom" name="rangeFrom" type="date" class="p-2 rounded-md bg-secondary_dark text-white" required>
+                </div>
+                <script>
+                    const rangeFrom = document.getElementById("rangeFrom")
+                    rangeFrom.value = new URLSearchParams(window.location.search).get("rangeFrom") != null ? new URLSearchParams(window.location.search).get("rangeFrom") : new Date().toISOString().split('T')[0]
+                </script>
+                
+                <div class="flex items-center gap-2">
+                    <h1 class="text-white text-2xl font-semibold">Do:</h1>
+                    <input id="rangeTo" name="rangeTo" type="date" class="p-2 rounded-md bg-secondary_dark text-white" required>
+                </div>
+                <script>
+                    const rangeTo = document.getElementById("rangeTo")
+                    rangeTo.value = new URLSearchParams(window.location.search).get("rangeTo") != null ? new URLSearchParams(window.location.search).get("rangeTo") : new Date().toISOString().split('T')[0]
+                </script>
 
-    <div class="md:col-span-1 p-5 bg-secondary text-white shadow-md rounded-md">
-        <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.stats.revenue.allTime.totalRevenue == None %} 0 {% else %} {{ stats.stats.revenue.allTime.totalRevenue }} {% endif %} Kč</h1>
-        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Celkově</span> | Tržby</h1>
-    </div>
+                <div>
+                    {% with text="Zobrazit", type="submit", icon="las la-sync-alt" %}
+                        {% include "/components/form/button.html" %}
+                    {% endwith %}
+                </div>
 
-
-    <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
-        <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.stats.orders.count.today.orders == None %} 0 {% else %} {{ stats.stats.orders.count.today.orders }} {% endif %}</h1>
-        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | Objednávky</h1>
-    </div>
-
-    <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
-        <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.stats.orders.count.month.orders == None %} 0 {% else %} {{ stats.stats.orders.count.month.orders }} {% endif %}</h1>
-        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | Objednávky</h1>
-    </div>
-
-    <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
-        <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.stats.orders.max.today.totalPrice == None %} 0 {% else %} {{ stats.stats.orders.max.today.totalPrice }} {% endif %} Kč</h1>
-        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Dnes</span> | TOP Objednávka</h1>
-    </div>
-
-    <div class="md:col-span-1 p-5 bg-white shadow-md rounded-md">
-        <h1 class="text-4xl font-bold whitespace-nowrap">{% if stats.stats.orders.max.month.totalPrice == None %} 0 {% else %} {{ stats.stats.orders.max.month.totalPrice }} {% endif %} Kč</h1>
-        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Tento měsíc</span> | TOP Objednávka</h1>
-    </div>
-    
-</div>
-
-
-<!-- Charts -->
-<div class="static md:grid md:grid-cols-5 gap-5 m-5">
-
-    <!-- Chart - This day-->
-    <div class="md:col-span-3">
-
-        <div class="p-5 bg-white shadow-md rounded-md">
-            <h1 class="text-lg text-secondary uppercase"><span class="font-bold">Průběh</span> | dnešní den</h1>
+            </div>
+        </form> 
+        
+        
+        <div class="p-4 bg-white shadow-lg rounded-lg">
+            <h1 class="text-lg text-secondary uppercase"><span class="font-bold">Tržby</h1>
             <div>
-                <canvas id="revenue-per-hour" style="height: 35vh;">
+                <canvas id="revenue-per-hour">
                     <script>
+                        const chartData = {{ stats|tojson }}.reverse()
+        
                         new Chart(
                             document.getElementById('revenue-per-hour'),
                             {
                                 type: 'line',                        
                                 data: {
-                                    labels: JSON.parse('{{ stats.revenue_per_hour|tojson }}').orderHour,
+                                    labels: chartData.map(item => `${ new Date(item.date).getDate() }/${ new Date(item.date).getMonth() }/${ new Date(item.date).getFullYear() }`),
                                     datasets: [
                                         {
-                                            label: 'Tržby (Kč)',
-                                            data: JSON.parse('{{ stats.revenue_per_hour|tojson }}').totalRevenue,
-                                            borderColor: '#008550',
-                                            backgroundColor: '#008550',                              
+                                            label: 'Celkem',
+                                            data: chartData.map(item => item.revenue_total),
+                                            borderColor: '#228B22',
+                                            backgroundColor: '#228B22',                              
                                             tension: 0.25
                                         },
                                         {
-                                            label: 'Objednávky (Ks)',
-                                            data: JSON.parse('{{ stats.revenue_per_hour|tojson }}').totalOrders,
+                                            label: 'Hotovost',
+                                            data: chartData.map(item => item.revenue_cash),
+                                            borderColor: '#FF6347',
+                                            backgroundColor: '#FF6347',
+                                            tension: 0.25
+                                        },
+                                        {
+                                            label: 'Peněženka',
+                                            data: chartData.map(item => item.revenue_wallet),
                                             borderColor: '#E53E5B',
                                             backgroundColor: '#E53E5B',
                                             tension: 0.25
@@ -108,160 +183,110 @@
 
     </div>
 
+</div>
 
-    <!-- Most Popular Products -->
-    <div class="md:col-span-2">
 
-        <div class="p-5 bg-white shadow-md rounded-md">
-            <h1 class="text-lg text-secondary uppercase"><span class="font-bold">Produkty</span> | nejprodávanější</h1>
+
+<div class="bg-secondary_dark rounded-lg shadow-lg m-4 p-4">
+
+    <div class="w-full mb-4">
+        <div class="p-4 bg-secondary shadow-mg rounded-lg w-full flex items-center justify-center">
+
             <div>
-                <canvas id="most-visited-establishments" style="height: 35vh;">
-                    <script>
-                        new Chart(
-                            document.getElementById('most-visited-establishments'),
-                            {
-                                type: 'doughnut',                        
-                                data: {
-                                    labels: JSON.parse('{{ stats.most_purchased_products|tojson }}').name,
-                                    datasets: [
-                                        {
-                                            label: "Prodáno (ks)",
-                                            data: JSON.parse('{{ stats.most_purchased_products|tojson }}').totalPurchased,                          
-                                            tension: 0.25,
-                                            backgroundColor: [
-                                                "#009e49",
-                                                "#bad80a",
-                                                "#00b294",
-                                                "#68217a",
-                                                "#00bcf2",                                                   
-                                                "#ec008c",
-                                                "#e81123",
-                                                "#ff8c00",                                                    
-                                                "#00188f",
-                                                "#fff100"
-                                            ],
-                                            hoverOffset: 4
-                                        },
-                                    ]
-                                },
-                                options: {
-                                    maintainAspectRatio: false
-                                }
-                            }                
-                        )
-                    </script>
-                </canvas>
+                <select id="selectedEstablishment" name="selectedEstablishment" class="p-2 bg-secondary_dark text-white rounded-md w-full">
+                    <option class="w-full" value="None" selected>Žádná provozovna</option>
+                    {% for establishment in all_establishments %}
+                        <option class="w-full" value="{{ establishment.establishmentId }}">{{ establishment.name }} - {{ establishment.address }}</option>
+                    {% endfor %}
+                </select>
+                <script>
+                    const selectElement = document.getElementById("selectedEstablishment")
+            
+                    const currentlySelectedEstablishment = new URLSearchParams(window.location.search).get("selectedEstablishment")
+                    for (let i = 0; i < selectElement.options.length; i++) {
+                        if (selectElement.options[i].value === currentlySelectedEstablishment) {
+                            selectElement.options[i].setAttribute("selected", "selected")
+                        }
+                    }
+            
+                    // Add an event listener to listen for changes
+                    selectElement.addEventListener("change", function () {            
+                        var selectedOption = selectElement.value
+            
+                        window.location.href = `/?selectedEstablishment=${selectedOption}&rangeFrom=${ new URLSearchParams(window.location.search).get("rangeTo") != null ? new URLSearchParams(window.location.search).get("rangeTo") : new Date().toISOString().split('T')[0] }&rangeTo=${ new URLSearchParams(window.location.search).get("rangeTo") != null ? new URLSearchParams(window.location.search).get("rangeTo") : new Date().toISOString().split('T')[0] }`
+                        
+                    })
+                </script>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-span-1 w-full grid grid-cols-2 gap-4">
+
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ establishment_sum.total_orders }}</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-shopping-cart text-2xl"></i>
+                <h1 class="text-sm uppercase">Objednávky</h1>
             </div>
         </div>
         
-    </div>
-
-</div>
-
-
-<!-- Revenue per establishment -->
-<div class="m-5 p-5 bg-white shadow-md rounded-md">
-    <h1 class="text-lg text-secondary uppercase"><span class="font-bold">Tržby</span> | dle provozovny</h1>
-    <div>
-        
-        <canvas id="revenue-per-establishment" style="height: 30vh;">            
-            <script>
-                new Chart(
-                    document.getElementById('revenue-per-establishment'),
-                    {
-                        type: 'bar',                        
-                        data: {
-                            labels: JSON.parse('{{ stats.revenue_per_establishment|tojson }}').name,
-                            datasets: [
-                                {
-                                    label: "Třžby (Kč)",
-                                    data: JSON.parse('{{ stats.revenue_per_establishment|tojson }}').totalRevenue,                          
-                                    tension: 0.25,
-                                    borderColor: '#008550',
-                                    backgroundColor: '#008550',                              
-                                    hoverOffset: 4
-                                },
-                            ]
-                        },
-                        options: chartOptions
-                    }                
-                )
-            </script>
-        </canvas>
-    </div>
-</div>
-
-
-<!-- Revenue all time -->
-<div class="m-5 p-5 bg-white shadow-md rounded-md">
-    <h1 class="text-lg text-secondary uppercase"><span class="font-bold">Tržby</span> | všechny dny s tržbou</h1>
-    <div>
-        
-        <canvas id="revenue-per-day" style="height: 30vh;">            
-            <script>
-                new Chart(
-                    document.getElementById('revenue-per-day'),
-                    {
-                        type: 'line',                        
-                        data: {
-                            labels: JSON.parse('{{ stats.revenue_per_day|tojson }}').orderDate,
-                            datasets: [
-                                {
-                                    label: "Třžby (Kč)",
-                                    data: JSON.parse('{{ stats.revenue_per_day|tojson }}').totalRevenue,                          
-                                    tension: 0.25,
-                                    borderColor: '#008550',
-                                    backgroundColor: '#008550',                              
-                                    hoverOffset: 4
-                                },
-                            ]
-                        },
-                        options: chartOptions
-                    }                
-                )
-            </script>
-        </canvas>
-    </div>
-</div>
-
-
-<div class="mt-5 text-right">
-    <label for="timeWindowSelector" class="text-lg">Zobrazované Období Grafů:</label>
-    <select id="timeWindowSelector" class="m-5 p-3 bg-secondary text-white rounded-md shadow-md">                        
-
-        <option value="today" class="hover:bg-secondary hover:text-primary m-1 p-2 rounded">
-            Dnes
-        </option>
-        <option value="week" class="hover:bg-secondary hover:text-primary m-1 p-2 rounded">
-            Tento týden
-        </option>
-        <option value="month" class="hover:bg-secondary hover:text-primary m-1 p-2 rounded">
-            Tento měsíc
-        </option>
-        <option value="year" class="hover:bg-secondary hover:text-primary m-1 p-2 rounded">
-            Tento rok
-        </option>
-                    
-    </select>
-
-    <script>
-        const selectElement = document.getElementById("timeWindowSelector")
-
-        const currentTimeWindow = new URLSearchParams(window.location.search).get("timeWindow")
-        for (let i = 0; i < selectElement.options.length; i++) {
-            if (selectElement.options[i].value === currentTimeWindow) {
-                selectElement.options[i].setAttribute("selected", "selected")
-            }
-        }
-
-        // Add an event listener to listen for changes
-        selectElement.addEventListener("change", function () {            
-            var selectedOption = selectElement.value
-
-            window.location.href = `/?timeWindow=${selectedOption}`
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ establishment_sum.revenue_total }} Kč</h1>
             
-        })
-    </script>
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-coins text-2xl"></i>
+                <h1 class="text-sm uppercase">Tržby</h1>
+            </div>
+        </div>
+        
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">{{ establishment_sum.total_canceled_orders }}</h1>
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-trash text-2xl"></i>
+                <h1 class="text-sm uppercase">Zrušené objednávky</h1>
+            </div>
+        </div>
+        
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">
+                {% if establishment_sum.total_orders != None and establishment_sum.total_orders != 0 %}
+                    {{ (establishment_sum.revenue_total|float / establishment_sum.total_orders|float)|round }} Kč
+                {% else %}
+                    Není
+                {% endif %}
+            </h1>
+            
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-tag text-2xl"></i>
+                <h1 class="text-sm uppercase">Průměrná Cena Objednávky</h1>
+            </div>
+        </div>
+        
+        
+        <div class="p-4 bg-secondary text-white shadow-md rounded-md">
+            <h1 class="text-4xl font-bold whitespace-nowrap text-center">
+                {% if establishment_sum.revenue_total != None and establishment_sum.revenue_total != 0 and establishment_sum.revenue_cash != None and establishment_sum.revenue_cash != 0 and establishment_sum.revenue_wallet != None and establishment_sum.revenue_wallet != 0 %}
+                    {{ ((establishment_sum.revenue_cash / establishment_sum.revenue_total) * 100)|round|int }} /
+                    {{ ((establishment_sum.revenue_wallet / establishment_sum.revenue_total) * 100)|round|int }}
+                {% else %}
+                    Není
+                {% endif %}
+            </h1>
+            
+            
+            <div class="flex items-center gap-2 mt-3">
+                <i class="las la-percent text-2xl"></i>
+                <h1 class="text-sm uppercase">Hotovost vs. Peněženka</h1>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 

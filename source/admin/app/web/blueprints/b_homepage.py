@@ -15,6 +15,7 @@
 # PACKAGES IMPORTS
 import os
 import sys
+import datetime
 
 # IMPORTS FROM PACKAGES
 from flask import Flask, Blueprint, render_template, request, redirect
@@ -27,6 +28,7 @@ sys.path.append(root_folder)
 from classes.auth_wrappers import auth_require_admin
 
 from classes.stats import Stats
+from classes.establishments import Establishment
 
 from web.render_extended_template import render_extended_template
 
@@ -44,17 +46,13 @@ b_homepage = Blueprint(
 @b_homepage.route("/")
 @auth_require_admin
 def page_homepage():
+    rangeFrom = request.args.get("rangeFrom", datetime.date.today())
+    rangeTo = request.args.get("rangeTo", datetime.date.today())
+    establishmentId = request.args.get("selectedEstablishment", "None")
 
-    timeWindow = request.args.get("timeWindow", None)
-    timeWindow = timeWindow if timeWindow in ["today", "week", "month", "year"] else "today"
-
-    return render_extended_template("dashboard.html",
-        stats = {
-            "stats": Stats().stats(),
-            "most_purchased_products": Stats().most_purchased_products(timeWindow=timeWindow),
-            "most_visited_establishments": Stats().most_visited_establishments(timeWindow=timeWindow),
-            "revenue_per_day": Stats().revenue_per_day(),
-            "revenue_per_hour": Stats().revenue_per_hour(),
-            "revenue_per_establishment": Stats().revenue_per_establishment(timeWindow=timeWindow)
-        }
+    return render_extended_template(f"dashboard.html",
+        stats_sum = Stats().stats_sum(rangeTo=rangeTo, rangeFrom=rangeFrom),
+        stats = Stats().stats(rangeTo=rangeTo, rangeFrom=rangeFrom),
+        all_establishments = Establishment().all_establishments(),
+        establishment_sum = Stats().establishment_sum(rangeTo=rangeTo, rangeFrom=rangeFrom, establishmentId=establishmentId)
     )

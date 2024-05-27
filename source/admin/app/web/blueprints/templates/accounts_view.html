@@ -99,42 +99,44 @@
     
         <div class="md:col-span-1">
 
-            <div class="bg-white p-5 m-5 rounded-md shadow-md">
+            {% if account_info.role != "pos" %}
 
-                <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Peněženka</span> Zákazníka</h1>
-                <hr>
+                <div class="bg-white p-5 m-5 rounded-md shadow-md">
 
-                <div class="mt-5">
-                    <div class="p-5 bg-secondary text-white shadow-md rounded-md">
-                        <h1 class="text-4xl font-bold">{{ account_info.walletBalance }} Kč</h1>
-                        <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Aktuální Zůstatek</span> | Peněženka</h1>
-                    </div> 
-                </div>
+                    <h1 class="text-2xl font-bold text-text"><span class="text-secondary">Peněženka</span> Zákazníka</h1>
+                    <hr>
 
-                <div class="mt-5">
+                    <div class="mt-5">
+                        <div class="p-5 bg-secondary text-white shadow-md rounded-md">
+                            <h1 class="text-4xl font-bold">{{ account_info.walletBalance }} Kč</h1>
+                            <h1 class="mt-3 text-sm uppercase"><span class="font-bold">Aktuální Zůstatek</span> | Peněženka</h1>
+                        </div> 
+                    </div>
 
-                    {% with text="Kolik chcete dobít?", type="number", disabled="false", value=0, name="walletRefillAmountInput" %}
-                        {% include "/components/form/input.html" %}
-                    {% endwith %}
+                    <div class="mt-5">
 
-                    <script>
-                        walletRefillAmount = document.getElementById("walletRefillAmountInput")
-                        walletRefillAmount.addEventListener("change", () => {
-                            walletRefillAmount.value = Math.round(walletRefillAmount.value)
-                            
-                            if (walletRefillAmount.value != 0) {
-                                if (confirm(`Opravdu chcete dobít: ${ walletRefillAmount.value } Kč?`)) {
-                                    window.location.replace(`/accounts/refill-wallet?amount=${ walletRefillAmount.value }&accountId={{ account_info.accountId }}`)
+                        {% with text="Kolik chcete dobít?", type="number", disabled="false", value=0, name="walletRefillAmountInput" %}
+                            {% include "/components/form/input.html" %}
+                        {% endwith %}
+
+                        <script>
+                            walletRefillAmount = document.getElementById("walletRefillAmountInput")
+                            walletRefillAmount.addEventListener("change", () => {
+                                walletRefillAmount.value = Math.round(walletRefillAmount.value)
+                                
+                                if (walletRefillAmount.value != 0) {
+                                    if (confirm(`Opravdu chcete dobít: ${ walletRefillAmount.value } Kč?`)) {
+                                        window.location.replace(`/accounts/refill-wallet?amount=${ walletRefillAmount.value }&accountId={{ account_info.accountId }}`)
+                                    }
+                                    else {
+                                        walletRefillAmount.value = 0
+                                    }
                                 }
-                                else {
-                                    walletRefillAmount.value = 0
-                                }
-                            }
-                        })
-                    </script>
+                            })
+                        </script>
+                    </div>
                 </div>
-            </div>
-
+            {% endif %}
 
             <div class="bg-white p-5 m-5 rounded-md shadow-md">
 

@@ -140,4 +140,37 @@ CREATE TABLE `establishments_openinghours` (
   `dayOfTheWeek` INTEGER,
   `openingTime` TIME,
   `closingTime` TIME
+);
+
+
+-- Table stats_overall: Stores information about order statistics for each day - is generated automatically on a schedule
+CREATE TABLE `stats_daily_overall` (
+  `date` DATE PRIMARY KEY,
+  `total_orders` INTEGER DEFAULT 0,
+  `total_canceled_orders` INTEGER DEFAULT 0,
+  `revenue_total` FLOAT DEFAULT 0,
+  `revenue_cash` FLOAT DEFAULT 0,
+  `revenue_wallet` FLOAT DEFAULT 0,
+  `new_acc_created` INTEGER DEFAULT 0,
+  `total_wallet_refills` INTEGER DEFAULT 0,
+  `total_wallet_refills_amount` FLOAT DEFAULT 0,
+  `average_order_price` FLOAT DEFAULT 0,
+  `most_purchased_productId` INTEGER DEFAULT 0,
+  `lastUpdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Table stats_overall: Stores information about order statistics for each day - is generated automatically on a schedule
+CREATE TABLE `stats_daily_establishments` (
+  `statsEstablishmentId` VARCHAR(255) PRIMARY KEY,
+  `date` DATE NOT NULL,
+  `establishmentId` INTEGER NOT NULL,
+  `total_orders` INTEGER DEFAULT 0,
+  `total_canceled_orders` INTEGER DEFAULT 0,
+  `revenue_total` FLOAT DEFAULT 0,
+  `revenue_cash` FLOAT DEFAULT 0,
+  `revenue_wallet` FLOAT DEFAULT 0,
+  `average_order_price` FLOAT DEFAULT 0,
+  `most_purchased_productId` INTEGER DEFAULT 0,
+  `lastUpdate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
