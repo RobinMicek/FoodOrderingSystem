@@ -35,7 +35,7 @@ with open(f"{root_folder}/app/web/files/storage/texts/config.json", "r") as file
 
 
 # HASHING
-HASH_SALT = "salticka" # str(os.environ.get("KO_HASH_SALT", None))
+HASH_SALT = str(os.environ.get("KO_HASH_SALT", None))
 
 
 # FLASK
