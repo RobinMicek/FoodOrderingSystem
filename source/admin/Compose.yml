@@ -89,7 +89,7 @@ services:
       - KO_RABBITMQ_URL=rabbitmq 
       - KO_RABBITMQ_PUBLIC_URL= # Set public url for RabbitMQ
       - KO_RABBITMQ_PORT=5672
-      - KO_RABBITMQ_USER=kOkenkuBackEndMQ
+      - KO_RABBITMQ_USERNAME=kOkenkuBackEndMQ
       - KO_RABBITMQ_PASSWORD= # Same as RABBITMQ_DEFAULT_PASS
     ports:
       - 8000:8000
